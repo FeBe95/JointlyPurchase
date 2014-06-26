@@ -62,7 +62,7 @@
 		<div id="head">
 			<div id="headcontent">
 				<div id="logo">
-					<img src="../logo_klein.png" width="250px"/>
+					<a href="../index.php" class="logobutton"><img src="../logo_klein.png" width="250px"/></a>
 				</div>
 				<div id="headbuttons">
 					<form action="../Php/Authentification/Login.php" method="post">
@@ -94,11 +94,12 @@
         <div id="mainReg">
             <div id="greybox">
 				<?php
-					if(isset($_REQUEST["n"]) && $_REQUEST["v"] && isset($_REQUEST["em"]) && isset($_REQUEST["e"])){
-					$n=$_REQUEST["n"];
-					$v=$_REQUEST["v"];
-					$em=$_REQUEST["em"];
-					$e=$_REQUEST["e"];
+					if(isset($_GET["n"]) && isset($_GET["v"]) && isset($_GET["em"]) && isset($_GET["e"]) && isset($_GET["p"])){
+					$n=$_GET["n"];
+					$v=$_GET["v"];
+					$em=$_GET["em"];
+					$e=$_GET["e"];
+					$p=$_GET["p"];
 						if ($e === "1")
 						{
 							echo "<p class='formError'>Es existiert bereits ein Konto mit dieser E-mail Adresse. Bitte melde dich an oder versuche es mit einer anderen E-mail Adresse.</p>";
@@ -108,6 +109,7 @@
 						$v = null;
 						$em = null;
 						$e = null;
+						$p = null;
 					}
 				?>
 				
@@ -117,7 +119,7 @@
                     <form id="reg" action="../Php/Authentification/Registration.php"  method="post">
 						<p>Vorname<input name="Vname" type="text" maxlength="20"autofocus required value="<?php echo $v ?>"/></p>
 						<p>Nachname<input name="Name" type="text" maxlength="20" required value="<?php echo $n ?>"/></p>
-						<p>Plz.<input type="text" name="Plz" onkeypress="return isNumberKey(event)" maxlength="5" value="<?php //echo $plz ?>"/></p>
+						<p>Plz.<input type="text" name="Plz" onkeypress="return isNumberKey(event)" maxlength="5" value="<?php echo $p ?>" required/></p>
 						<p>Email<input name="Email" type="email" maxlength="50" required value="<?php echo $em ?>"/></p>
 						<p>Passwort<input  name ="Pw" id="Pw" type="password" maxlength="20" required/></p>
 						<p>Passwort wiederholen<input id="Pw2" type="password" maxlength="20" required/><img style="height:12px;float:right;"id="status"></p></br>

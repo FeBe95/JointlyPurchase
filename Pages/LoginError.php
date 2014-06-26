@@ -13,10 +13,10 @@
         ?>
         <div id="main">
             <div id="greybox">
-                <p class="alert">Ups... Da ist wohl etwas schief gelaufen. Versuchen Sie es noch einmal.</p>
+                <p class="alert">Ups... Da ist wohl etwas schief gelaufen. Bitte versuch es nochmal.</p>
                 <div id="regbox">
                     <form action="../Php/Authentification/Login.php"  method="post">
-                       <p>Email<input name="Email" type="email" maxlength="50"/></p>
+                       <p>E-Mail<input name="Email" type="email" maxlength="50"/></p>
                        <p>Passwort<input name="Pw" type="password" maxlength="20"/></p></br>
                         <button name="send" type="submit" value="send">
                         Login

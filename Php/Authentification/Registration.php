@@ -6,8 +6,8 @@
 				$mailres = mysqli_num_rows($mailcheck);
 				if ($mailres !== 0)
 				{
-					header('Location:../../Pages/NewAccount.php?e=1&&n='.$_POST['Name'].'&&v='.$_POST['Vname'].'&&em='.$_POST['Email'].'');
-				}elseif ($_POST['Name'] || $_POST['Vname'] || $_POST['Email'] ||  md5($_POST['Pw']) != '')
+					header('Location:../../Pages/NewAccount.php?e=1&n='.$_POST['Name'].'&v='.$_POST['Vname'].'&em='.$_POST['Email'].'&p='.$_POST['Plz'].'');
+				}elseif ($_POST['Name'] != '' || $_POST['Vname'] != '' || $_POST['Email'] != '' ||  md5($_POST['Pw']) != '')
                 {
 				$abf1 = "INSERT user(name,vorname,email,plz,passwort) values ('".@$_POST['Name']."','".@$_POST['Vname']."','".@$_POST['Email']."','".@$_POST['Plz']."','".md5($_POST['Pw'])."')";
                 mysqli_query($conUser,$abf1);

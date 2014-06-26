@@ -52,7 +52,7 @@
             include "../Templates/HeadTemplate.php";
         ?>
 		<div id="mainwindow">
-			<table cellpadding="10px" cellspacing="10px">
+			<table cellpadding="10px" cellspacing="10px" style="margin:auto;">
 				<tr>
 					<td class="contentBlock">
 						<div id="main_left">

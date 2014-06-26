@@ -59,9 +59,38 @@
 		</script>
     </head>
     <body>
-        <?php 
-            include "../Templates/LoginHeadTemplate.php"
-        ?>
+		<div id="head">
+			<div id="headcontent">
+				<div id="logo">
+					<img src="../logo_klein.png" width="250px"/>
+				</div>
+				<div id="headbuttons">
+					<form action="../Php/Authentification/Login.php" method="post">
+						<table>
+							<tr>
+								<td>
+									<p class="headfont">Email:<input name="Email" type="email" maxlength="50" autofocus/></p>
+								</td>
+								<td>
+									<p class="headfont">Passwort:<input name="Pw" type="password" maxlength="20"/></p>
+								</td>
+								<td>
+									<button name="send" type="submit" value="send">Login</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+								</td>
+								<td>
+									<p class="headfont newbg" style="font-size:12px;float:right;">Angemeldet bleiben<input type="checkbox" name="stayLogIn" value="true"/></p> 
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		
         <div id="mainReg">
             <div id="greybox">
 				<?php
@@ -83,7 +112,7 @@
 				?>
 				
             	<p style="display:none;" class='formError'></p>	
-                <p>Bitte registriere dich mit deinen korrekten Angaben.</p></br>
+                <p>Bitte registriere Dich mit Deinen korrekten Angaben.</p></br>
                 <div id="regbox">
                     <form id="reg" action="../Php/Authentification/Registration.php"  method="post">
 						<p>Vorname<input name="Vname" type="text" maxlength="20"autofocus required value="<?php echo $v ?>"/></p>

@@ -123,7 +123,7 @@
 					Die Passwörten stimmen nicht überein!
 				</div>
 			<?php } ?>	
-			<table cellpadding="10" cellspacing="10px">
+			<table cellpadding="10" cellspacing="10px" style="margin:auto;">
 				<tr>
 					<td class="contentBlock">
 						<div id="main_left">
@@ -138,7 +138,7 @@
 						<br/>
 						<button id="create-user" style="width:100%;">Profilbild ändern</button>
 					</td>
-					<td class="contentBlock" valign="top" style="padding-top:20px;width:650px;">
+					<td class="contentBlock" valign="top" style="padding-top:20px;width:672px;">
 						<div class="contentBlock" id="main_center">
 							<form name="updateData" onSubmit="return checkPW()" action="../Php/Profil/ChangeData.php" method="post">
 								<table>

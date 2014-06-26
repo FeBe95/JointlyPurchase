@@ -205,11 +205,11 @@ button:hover {
 }
 
 .formError {
-	font-family: Arial,sans-serif;
-	background-color: red;
-	padding: 5px 0;
-	border: 1px solid;
-	border-radius: 10px;
-	font-size: 15px;
-	margin: 10px;
+	background-color: #d00;
+	color: #000;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	margin-top: -34px;
+	margin-bottom: 4px;
 }

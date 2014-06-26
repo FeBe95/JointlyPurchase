@@ -42,7 +42,7 @@
 								<td>
 								</td>
 								<td>
-									<p class="headfont" style="font-size:12px;float:right;">Angemeldet bleiben<input type="checkbox" name="stayLogIn" value="true"/></p> 
+									<p class="headfont newbg" style="font-size:12px;float:right;">Angemeldet bleiben<input type="checkbox" name="stayLogIn" value="true"/></p> 
 								</td>
 							</tr>
 						</table>
@@ -54,7 +54,7 @@
         <div id="main">
             <h1>Join Now</h1>
             <div id="mainbuttonscontainer">
-                <a class="mainbuttons" href="#">Erfahre mehr</a>
+                <a class="mainbuttons" href="Pages/ErfahreMehr.php">Erfahre mehr</a>
                 <a class="mainbuttons" href="Pages/NewAccount.php">Registrieren</a>
             </div>
         </div>

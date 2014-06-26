@@ -26,7 +26,16 @@ p {
 	height: 40px;
 	position: relative;
 	z-index: 30;
-	box-shadow: 0 0 2px #555;}
+	box-shadow: 0 0 2px #555;
+}
+
+.newbg{
+	background-color: #575757;
+	padding: 10px 8px;
+	position: relative;
+	z-index: 31;
+	box-shadow: 0 0 2px #555;
+}
 
 #headcontent {
 	width: 60%;

@@ -1,0 +1,55 @@
+#upload-wrapper {
+	margin: auto;
+	font-family: sans-serif;
+}
+
+#upload-wrapper input[type=file] {
+	border: 1px solid #DDD;
+	padding: 6px;
+	background: #FFF;
+	border-radius: 5px;
+}
+#output{
+    margin-top: 10px;
+	padding: 5px;
+	font-size: 12px;
+}
+#output img {
+	border: 1px solid #DDD;
+	padding: 5px;
+}
+
+#output img[alt='Resized Image'] {
+	width: 90%;
+}
+
+#output .alert{
+	background-color: #B3C833;
+}
+
+/* progress bar style */
+#progressbox {
+	border: 1px solid #aaa;
+	padding: 1px; 
+	position:relative;
+	border-radius: 3px;
+	margin: 10px;
+	display:none;
+	text-align:left;
+}
+#progressbar {
+	height:20px;
+	border-radius: 3px;
+	background-color: #B3C833;
+	width:1%;
+}
+#statustxt {
+	top:5px;
+	left: 45%;
+	width: 10%;
+	text-align: center;
+	position: absolute;
+	display: inline-block;
+	color: #fff;
+	font-size: 11px;
+}

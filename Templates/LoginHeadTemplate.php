@@ -4,7 +4,7 @@
             <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein.png" width="250px"/></a>
         </div>
         <div id="headbuttons">
-            <form action="../Php/Authentification/Login.php" method="post">
+            <!--<form action="../Php/Authentification/Login.php" method="post">
 				<table>
 					<tr>
 						<td>
@@ -25,7 +25,7 @@
 						</td>
 					</tr>
 				</table>
-			</form>
+			</form>-->
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@ p {
 #head {
 	background-color: #575757;
 	padding: 3px 0px;
-	height: 55px;
+	height: 40px;
 	position: relative;
 	z-index: 30;
 	box-shadow: 0 0 2px #555;
@@ -48,7 +48,7 @@ p {
 }
 
 .headfont {
-	color: grey;
+	color: white;
 	font-size: 11px;
 	margin: 0px 0 0px 0;
 }

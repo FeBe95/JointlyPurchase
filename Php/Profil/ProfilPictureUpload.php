@@ -1,12 +1,11 @@
 <?php
-	if(isset($_POST))
-	{
+	if(isset($_POST)){
 		############ Edit settings ##############
-		$ThumbSquareSize        = 200; //Thumbnail will be 200x200
-		$BigImageMaxSize        = 640; //Image Maximum height or width
-		$ThumbPrefix            = "../Thumbnails/"; //Normal thumb Prefix
-		$DestinationDirectory   = '../Pictures/ProfilPictures/'; //specify upload directory ends with / (slash)
-		$Quality                = 90; //jpeg quality
+		$ThumbSquareSize        = 200; 								//Thumbnail will be 200x200
+		$BigImageMaxSize        = 640; 								//Image Maximum height or width
+		$ThumbPrefix            = "../Thumbnails/"; 				//Normal thumb Prefix
+		$DestinationDirectory   = '../Pictures/ProfilPictures/';	//specify upload directory ends with / (slash)
+		$Quality                = 90; 								//JPEG quality
 		##########################################
 	
 		//check if this is an ajax request
@@ -15,24 +14,21 @@
 		}
 	
 		// check $_FILES['ImageFile'] not empty
-		if(!isset($_FILES['ImageFile']) || !is_uploaded_file($_FILES['ImageFile']['tmp_name']))
-		{
-				die('Irgendetwas ist schief gelaufen, bitte wähle ein anderes Foto!'); // output error when above checks fail.
+		if(!isset($_FILES['ImageFile']) || !is_uploaded_file($_FILES['ImageFile']['tmp_name'])){
+			die('Irgendetwas ist schief gelaufen, bitte wähle ein anderes Foto!'); // output error when above checks fail.
 		}
 	
 		// Random number will be added after image name
 		$RandomNumber   = rand(0, 9999999999);
+			
+		//$ImageName      = str_replace(' ','-',strtolower($_FILES['ImageFile']['name'])); //get image name
+		$ImageName      = preg_replace("/[^a-zA-Z0-9-.]/", "_", $_FILES["ImageFile"]["name"]);	//get image name
+		$ImageSize      = $_FILES['ImageFile']['size'];
+		$TempSrc        = $_FILES['ImageFile']['tmp_name'];
+		$ImageType      = $_FILES['ImageFile']['type'];
 	
-		$ImageName      = str_replace(' ','-',strtolower($_FILES['ImageFile']['name'])); //get image name
-		$ImageSize      = $_FILES['ImageFile']['size']; // get original image size
-		$TempSrc        = $_FILES['ImageFile']['tmp_name']; // Temp name of image file stored in PHP tmp folder
-		$ImageType      = $_FILES['ImageFile']['type']; //get file type, returns "image/png", image/jpeg, text/plain etc.
-	
-		//Let's check allowed $ImageType, we use PHP SWITCH statement here
-		switch(strtolower($ImageType))
-		{
+		switch(strtolower($ImageType)){
 			case 'image/png':
-				//Create a new image from file
 				$CreatedImage =  imagecreatefrompng($_FILES['ImageFile']['tmp_name']);
 				imagealphablending($CreatedImage, true);	// PNG-Tranparenz-Fix
 				break;
@@ -44,13 +40,10 @@
 				$CreatedImage = imagecreatefromjpeg($_FILES['ImageFile']['tmp_name']);
 				break;
 			default:
-				die('Unsupported File!'); //output error and exit
+				die('Nicht unterstützer Dateityp!'); //output error and exit
 		}
-	
-		//PHP getimagesize() function returns height/width from image file stored in PHP tmp folder.
-		//Get first two values from image, width and height.
-		//list assign svalues to $CurWidth,$CurHeight
-		list($CurWidth,$CurHeight)=getimagesize($TempSrc);
+
+		list($CurWidth,$CurHeight) = getimagesize($TempSrc);
 	
 		//Get file extension from Image name, this will be added after random name
 		$ImageExt = substr($ImageName, strrpos($ImageName, '.'));
@@ -76,28 +69,30 @@
 				}
 			/*
 			We have succesfully resized and created thumbnail image
-			We can now output image to user's browser or store information in the database
 			*/
-			echo '<div class="alert">Gespeichert!</div>';
-			echo '<table border="0" cellpadding="4" cellspacing="0">';
-			echo '<tr>';
-			echo '<td align="center"><img src="'.$DestinationDirectory.$NewImageName.'" alt="Resized Image"></td>';
-			echo '</tr>';
-			echo '</table>';
+			?>
 			
+			<table border="0" cellpadding="4" cellspacing="0">
+				<tr>
+					<td align="center">
+						<p class="formError">Du kannst dieses Bild übernehmen, ein anderes hochladen oder den Vorgang abbrechen</p>
+						<br/>
+						<form name="updatePic" action="../Pages/ProfilSettings.php?success" method="post">
+							<input name="submit" type="submit" value="Übernehmen"/>
+							<input name="NewImage" type="hidden" value="<?php echo $NewImageName;?>"/>
+						</form>
+						<br/>
+						<button onclick="location.href = 'ProfilSettings.php'">Abbrechen</button>
+						<br/>
+						<br/>
+					</td>
+				</tr>
+				<tr>
+					<td align="center"><img src="<?php echo $DestinationDirectory.$NewImageName ?>" alt="Resized Image"></td>
+				</tr>
+			</table>
 			
-			// Insert info into database table!
-			
-			
-			include "../../Templates/MYSQLConnectionString.php";
-			// Check connection
-			if (mysqli_connect_errno())
-				{
-				echo "Failed to connect to MySQL: " . mysqli_connect_error();
-				}
-			mysqli_query($conUser,"UPDATE user SET profilPic='".$NewImageName."' WHERE email='".$_POST["mail"]."'");
-			mysqli_close($conUser);
-			
+		<?php
 	
 		}else{
 			die('Resize Error'); //output error

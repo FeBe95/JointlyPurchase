@@ -53,7 +53,7 @@ $(document).ready(function() {
 				case 'image/png': case 'image/gif': case 'image/jpeg': case 'image/pjpeg':
 					break;
 				default:
-					$("#output").html("<b>"+ftype+"</b> Unsupported file type!");
+					$("#output").html("<b>"+ftype+"</b> Nicht unterstützer Dateityp!");
 					return false
 			}
 			

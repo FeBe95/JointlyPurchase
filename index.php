@@ -29,10 +29,10 @@
 						<table>
 							<tr>
 								<td>
-									<p class="headfont">Email:<input name="Email" type="email" maxlength="50" autofocus/></p>
+									<p class="headfont">Email:<input name="Email" type="email" maxlength="50" autofocus required/></p>
 								</td>
 								<td>
-									<p class="headfont">Passwort:<input name="Pw" type="password" maxlength="20"/></p>
+									<p class="headfont">Passwort:<input name="Pw" type="password" maxlength="20" required/></p>
 								</td>
 								<td>
 									<button name="send" type="submit" value="send">Login</button>

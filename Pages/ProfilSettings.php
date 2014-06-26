@@ -86,10 +86,28 @@
 					return false;
 				}
 			}
+			
+			function isNumberKey(evt){	
+				var charCode = (evt.which) ? evt.which : event.keyCode
+				if (charCode > 31 && (charCode < 48 || charCode > 57)){
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
 		</script>
 	
     </head>
     <body>
+		<?php
+		// Insert new Picture into database!
+			if(isset($_POST['NewImage'])){
+				include "../Templates/MYSQLConnectionString.php";
+				mysqli_query($conUser,"UPDATE user SET profilPic='".$_POST['NewImage']."' WHERE email='".$email."'");
+				mysqli_close($conUser);
+			}
+		?>
         <?php 
             include "../Templates/HeadTemplate.php";
 		?>
@@ -105,6 +123,11 @@
 			echo ("</script>");
 		?>
 		-->
+		
+		
+		
+		
+		
 		<div id="mainwindow">
 			<?php if(isset($_GET['success'])){ ?>
 				<div class="settingsalert success">
@@ -136,9 +159,10 @@
 							?>
 						</div>
 						<br/>
+						<br/>
 						<button id="create-user" style="width:100%;">Profilbild ändern</button>
 					</td>
-					<td class="contentBlock" valign="top" style="padding-top:20px;width:672px;">
+					<td class="contentBlock" valign="top" style="padding-top:20px;width:752px;">
 						<div class="contentBlock" id="main_center">
 							<form name="updateData" onSubmit="return checkPW()" action="../Php/Profil/ChangeData.php" method="post">
 								<table>
@@ -191,7 +215,7 @@
 											<p class="ProfilInfo">Wiederholen:</p>
 										</td>
 										<td class="RowWidth">
-											<input tabindex="7" name="neuesPWwiederholen" maxlength="20" type="password" onkeyup="checkPW()"></input>
+											<input tabindex="7" name="neuesPWwiederholen" maxlength="20" type="password" onkeypress="checkPW()"></input>
 										</td>
 										<td>
 											<img id="PWchecked" style="display:none;margin:0px 10px;" class="del_Image" src="../Pictures/SiteContent/tick.svg">
@@ -202,7 +226,7 @@
 											<p class="ProfilInfo">Postleitzahl:</p>
 										</td>
 										<td class="RowWidth">
-											<input tabindex="4" name="UserPLZ" value="<?php echo $plz;?>"></input>
+											<input tabindex="4" name="UserPLZ" onkeypress="return isNumberKey(event)" value="<?php echo $plz;?>"></input>
 										</td>
 										<td></td>
 										<td></td>
@@ -211,7 +235,7 @@
 									</tr>
 									<tr>
 										<td class="RowWidth">
-											<button type= "submit">Speichern</button>
+											<button type="submit">Speichern</button>
 										</td>
 										<td></td>
 										<td></td>
@@ -235,9 +259,9 @@
 										<h2>Profilbild auswählen:</h2>
 										<span style="margin-bottom: 10px">Erlaubte Dateitypen: JPEG, JPG, PNG und GIF. <br> Maximale Größe: 1 MB</span>
 										<form action="../Php/Profil/ProfilPictureUpload.php" onSubmit="return false" method="post" enctype="multipart/form-data" id="MyUploadForm">
-											<input name="ImageFile" id="imageInput" type="file" />
+											<input onchange="document.getElementById('submit-btn').click();" name="ImageFile" id="imageInput" type="file" accept="image/*"/>
 											<input hidden="true" name="mail" value="<?php echo $email ?>" />
-											<input type="submit"  id="submit-btn" value="Upload" />
+											<input style="display:none;" type="submit"  id="submit-btn" value="Upload" />
 											<img src="http://www.sanwebe.com/assets/ajax-image-upload-progressbar/images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
 										</form>
 										<div id="progressbox" style="display:none;"><div id="progressbar"></div ><div id="statustxt">0%</div></div>

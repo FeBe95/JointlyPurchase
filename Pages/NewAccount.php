@@ -18,6 +18,7 @@
 		
 		<script>
 			$(document).ready(function() {
+				//$("#Pw").keyup(validate);
 				//$("#Pw2").keyup(validate);
 				$("#send").click(pwcheck);
 			});
@@ -69,7 +70,7 @@
 						<table>
 							<tr>
 								<td>
-									<p class="headfont">Email:<input name="Email" type="email" maxlength="50" autofocus/></p>
+									<p class="headfont">Email:<input name="Email" type="email" maxlength="50"/></p>
 								</td>
 								<td>
 									<p class="headfont">Passwort:<input name="Pw" type="password" maxlength="20"/></p>
@@ -117,7 +118,7 @@
                 <p>Bitte registriere Dich mit Deinen korrekten Angaben.</p></br>
                 <div id="regbox">
                     <form id="reg" action="../Php/Authentification/Registration.php"  method="post">
-						<p>Vorname<input name="Vname" type="text" maxlength="20"autofocus required value="<?php echo $v ?>"/></p>
+						<p>Vorname<input name="Vname" type="text" maxlength="20" autofocus required value="<?php echo $v ?>"/></p>
 						<p>Nachname<input name="Name" type="text" maxlength="20" required value="<?php echo $n ?>"/></p>
 						<p>Plz.<input type="text" name="Plz" onkeypress="return isNumberKey(event)" maxlength="5" value="<?php echo $p ?>" required/></p>
 						<p>Email<input name="Email" type="email" maxlength="50" required value="<?php echo $em ?>"/></p>

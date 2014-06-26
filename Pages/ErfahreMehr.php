@@ -29,7 +29,7 @@
 				<img style="width:600px;" src="../Pictures/SiteContent/Spokesman_Character_Big.png">
 			</div>
 		</section>
-		<section>
+		<section style="background-color:#B3C833;">
 			<div class="Picture2">
 				<img style="width:600px;" src="../Pictures/SiteContent/Caveman_Character.png">
 			</div>

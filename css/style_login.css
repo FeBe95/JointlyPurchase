@@ -167,6 +167,8 @@ padding:10% 6%;
 }
 #second{
 padding:10% 6%;
+float:right;
+display:inline;
 }
 .Picture1{
 position:absolute;

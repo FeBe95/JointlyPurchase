@@ -1,6 +1,6 @@
 <?php
-	$path = $_SERVER['DOCUMENT_ROOT'] ;
-	$path.= "/jp/Templates/MYSQLConnectionString.php";
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path.= "/JointlyPurchase/Templates/MYSQLConnectionString.php";
 	include $path;
 	//$userID = $_SESSION['login'];
     $query="SELECT * FROM user WHERE ID = ".$_SESSION['login']."";

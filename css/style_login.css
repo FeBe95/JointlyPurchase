@@ -26,15 +26,10 @@ p {
 	height: 40px;
 	position: relative;
 	z-index: 30;
-	box-shadow: 0 0 2px #555;
-	/* background: rgb(87, 87,87) transparent;
-    background: rgba(87, 87, 87, 0.6);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#575757, endColorstr=#575757);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#575757, endColorstr=#575757)"; */
-}
+	box-shadow: 0 0 2px #555;}
 
 #headcontent {
-	width: 900px;
+	width: 60%;
 	margin: 0 auto;
 }
 
@@ -45,12 +40,13 @@ p {
 
 #logo {
 	float: left;
+	margin-top: 5px;
 }
 
 .headfont {
-	color: white;
-	font-size: 11px;
-	margin: 0px 0 0px 0;
+	color: #fff;
+	font-size: 12px;
+	margin: 0;
 }
 
 .logobutton {

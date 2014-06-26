@@ -22,7 +22,7 @@
 		<div id="head">
 			<div id="headcontent">
 				<div id="logo">
-					<img style="border:0px;height:400px;position:absolute;transform:rotate(-10deg);-webkit-transform:rotate(-10deg);top:-100px;" src="Pictures/SiteContent/pricetag.png">
+					<img src="logo_klein.png" width="250px"/>
 				</div>
 				<div id="headbuttons">
 					<form action="Php/Authentification/Login.php" method="post">

@@ -158,26 +158,35 @@ button {
 button:hover {
 	border: 1px solid #B3C833;
 }
-
+#section1{
+height:600px;
+}
+#section2{
+height:600px;
+}
+#content1{
+width:1500px;
+margin:0 auto;
+padding-top:200px;
+}
+#content2{
+width:1500px;
+margin:0 auto;
+padding-top:200px;
+}
 .learnMoreTitelBox{
-width:500px;
+
 }
 #first{
-padding:10% 6%;
+float:left;
+width:500px;
 }
 #second{
-padding:10% 6%;
+width:500px;
 float:right;
-display:inline;
 }
-.Picture1{
-position:absolute;
-top:10%;
-right:30%;
-}
-.Picture2{
-padding-top:10%;
-padding-right:30%;
+#container{
+width:100%;
 }
 /*Main part bottom*/
 #image {
@@ -202,8 +211,6 @@ padding-right:30%;
 /*footer*/
 #site-footer {
     /*box-shadow: 0 0 75px 35px rgba(0, 0, 0, 0.25);*/
-	bottom: 0px;
-	position: fixed;
 	width: 100%;
 	z-index: 2;
 	background-color: #ffffff;

@@ -32,7 +32,7 @@
 	 if($decider > 0 )
 	 {
 		 $decition = $abf2;
-		 echo "<p style='margin-left: 20px;'>Die Einkaufslisten Deiner Freunde:</p>";
+		 echo "<p style='margin-left: 15px; background-color: #c4c4c4; padding: 10px;width: 732px'>Die Einkaufslisten Deiner Freunde:</p>";
 	 }else
 	 {
 		 $decition = $abf2_reverse;

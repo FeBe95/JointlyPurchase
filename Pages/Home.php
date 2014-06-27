@@ -117,7 +117,7 @@
 							*/
 							?>
 							
-							<br/><p>Deine Einkaufslisten:</p>
+							<br/><p style="background-color: #c4c4c4; padding: 10px;width: 732px;">Deine Einkaufslisten:</p>
 							
 							<?php
 							//Delete shoppinglist before loading List//

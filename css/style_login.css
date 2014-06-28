@@ -201,6 +201,18 @@ width:100%;
 	opacity: 0.3;
 }
 
+#login_image {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	background-image: url(../Pictures/SiteContent/Polygone.jpg);
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	opacity: 0.3;
+}
+
 #bgcredits {
 	position: absolute;
 	bottom: 0px;
@@ -215,9 +227,13 @@ width:100%;
 	z-index: 2;
 	background-color: #ffffff;
 	overflow: hidden;
-	padding: 5em 0 2em;
 	text-align: center;
 	/*border-top:5px solid #727272;*/
+}
+
+#site-footer.login{
+	bottom: 0;
+	position: absolute;
 }
 
 #footer-border {

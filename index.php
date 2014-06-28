@@ -61,12 +61,12 @@
      
 		<div id="footer-border"></div>
 		
-		<footer id="site-footer">
+		<footer id="site-footer" class="login">
 			<div id="wrap">
 				<p id="site-credits">Made with <span>&hearts;</span> in Burgholzhausen, DE. Copyright 2014</p>
 			</div>
 		</footer>
 	
-		<div id="image"></div>
+		<div id="login_image"></div>
     </body>
 </html>

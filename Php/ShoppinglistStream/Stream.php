@@ -1,3 +1,4 @@
+
 <?php
 		  //SQL connection//
 	  include"../Templates/MYSQLConnectionString.php";
@@ -14,8 +15,9 @@
 									user.name,
 									user.vorname,
 									user.ID 
-									FROM einkaufslisten INNER JOIN FriendRelation INNER JOIN user WHERE AreFriends = 2 && userID != ".$ID." && UserID1 = ".$ID." && userID = 			user.ID && UserId2 = user.ID");
-	  $abf2_reverse = mysqli_query($conUser,"SELECT 
+									FROM einkaufslisten INNER JOIN FriendRelation INNER JOIN user WHERE AreFriends = 2 && userID != ".$ID." && UserID1 = ".$ID." && userID = 			user.ID && UserId2 = user.ID
+									UNION
+									SELECT 
 									FriendRelation.UserId1,
 									FriendRelation.UserId2,
 									FriendRelation.AreFriends, 
@@ -26,26 +28,21 @@
 									user.name,
 									user.vorname,
 									user.ID 
-									FROM einkaufslisten INNER JOIN FriendRelation INNER JOIN user WHERE AreFriends = 2 && userID != ".$ID." && UserID2 = ".$ID." && userID = 			user.ID && UserId1 = user.ID");
-	 $decider = mysqli_num_rows($abf2);
+									FROM einkaufslisten INNER JOIN FriendRelation INNER JOIN user WHERE AreFriends = 2 && userID != ".$ID." && UserID2 = ".$ID." && userID = user.ID && UserId1 = user.ID");
 	 //Read data from database//
-	 if($decider > 0 )
-	 {
-		 $decition = $abf2;
-		 echo "<p style='margin-left: 15px; background-color: #c4c4c4; padding: 10px;width: 732px'>Die Einkaufslisten Deiner Freunde:</p>";
-	 }else
-	 {
-		 $decition = $abf2_reverse;
-		 echo "<p style='margin-left: 20px;'>Die Einkaufslisten Deiner Freunde:</p>";
-	 }
-	 while ($listen = mysqli_fetch_assoc($decition))
+		echo "<p style='margin-left: 15px; background-color: #c4c4c4; padding: 10px;width: 732px'>Die Einkaufslisten Deiner Freunde:</p>";
+		echo"<div style='margin-left: 15px;'>";
+		echo "<div id='Accordion2'>";
+	 while ($listen = mysqli_fetch_assoc($abf2))
 	  {
-		  echo "<div id='socialAreaLists'>";
-		  echo "<div class='label'><p style='margin:0px;'>Einkaufsliste <b>".$listen["listName"]."</b> von: <a id='friend_link' href='../Pages/Profil.php?a=".$listen["ID"]."'> " .$listen["vorname"]." ".$listen["name"]."</a><span style='float:right;font-size:12px; font-style: italic;'>zuletzt geändert am: ".$listen["date"]."</span></p></div>";
+
+		 //echo "<div id='socialAreaLists'>";		
+
+		  echo "<h3>Einkaufsliste <b>".$listen["listName"]."</b> von: <a id='friend_link' href='../Pages/Profil.php?a=".$listen["ID"]."'> " .$listen["vorname"]." ".$listen["name"]."</a><span style='float:right;font-size:12px; font-style: italic;'>zuletzt geändert am: ".$listen["date"]."</span></h3>";
 
 		  $abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
 		  $i=0;
-		  echo "<table id='t1'>";
+		  echo "<div><table id='t1'>";
 		  echo "<tr id='shoppinglist_header'><th>Produkt</th><th>Anzahl</th><th>Maximaler Preis</th><th>Anmerkung</th><th>Wird mitgebracht von:</th></tr>";
 		  while ($dsatz = mysqli_fetch_assoc($abf1))
 		  {	  
@@ -94,7 +91,7 @@
 		  }
 		  echo "</table></div>";
 	  }
-	  
+	  echo"</div></div>";
 	  mysqli_close($conUser);
 	  ?>
       <form name="shoppinglistAccept" method="post" action="../Php/ShoppinglistStream/AcceptItem.php">

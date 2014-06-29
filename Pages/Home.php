@@ -141,7 +141,7 @@
 								<?php
 								while ($listen = mysqli_fetch_assoc($abf2)){	
 									$lId=$listen["listID"];
-									echo "<h3><a href='#'>".$listen["listName"]."</a></a></h3>";
+									echo "<h3><a href='#'>".$listen["listName"]."</a></h3>";
 									echo "<div><table id='t1'>";
 									echo "<a title='Einkaufsliste löschen' href='javascript:send2(1,\"$lId\");'><img  style='margin:5px;padding: 5px 5px;border:0px;' class='del_Image' src='../Pictures/SiteContent/cross.svg'></a>";
 									echo "<a title='Einkaufsliste bearbeiten' href='javascript:send2(2,&quot;".$listen["listName"]."&quot;);'><img style='margin:5px;padding: 5px 5px;border:0px;' class='del_Image' src='../Pictures/SiteContent/new.svg'></a>";
@@ -188,9 +188,9 @@
 							
 						</div>
 						<br/>
-                        <div id="socialArea">
+                       
 							<?php include "../Php/ShoppinglistStream/Stream.php"; ?>
-                        </div>
+                      
 					</td>
 					<td style="vertical-align:top;">
 						<?php
@@ -221,6 +221,10 @@
 					heightStyle:"content",
 					collapsible:true
 				}); 
+				$( "#Accordion2" ).accordion({
+					heightStyle:"content",
+					collapsible:true
+				});
 			});
 			
 			function send2(ak,id){

@@ -23,11 +23,14 @@
 	
 	if($num2!=0){
 		echo "<div id='Accordion1'>";
-		while ($listen = mysqli_fetch_assoc($abf2)){	
-			$lId=$listen["listID"];
-			echo "<h3>".$listen["listName"]."</h3>";
+		while ($listen = mysqli_fetch_assoc($abf2)){
+			
+			echo "<h3>".$listen["listName"];
+			echo "<span class='stream-date'>zuletzt geändert am: ".$listen["date"]."</span>";
+			echo "</h3>";
 			echo "<div><table class='t1'>";
 			
+			$lId=$listen["listID"];
 			echo "<a title='Einkaufsliste löschen' href='javascript:send2(1,\"$lId\");'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a>";
 			echo "<a title='Einkaufsliste bearbeiten' href='javascript:send2(2,\"".$listen["listName"]."\");'><img class='del_Image' src='../Pictures/SiteContent/new.svg'></a>";
 			
@@ -79,7 +82,15 @@
 		}
 	}
 	else{
-		echo "Du hast noch keine Einkaufslisten.<br/>Erstelle jetzt Deine erste!<br/></div>";
+		?>
+		Du hast noch keine Einkaufslisten.<br/>Erstelle jetzt Deine erste!<br/></div>
+		<form style="width:672px;" action="../Php/Shoppinglist/AddShoppinglist.php" method="post">								
+			<p>Name:
+				<input name="list" type="text" maxlenght="10" required/>
+				<button type="submit">Liste hinzufügen</button>
+			</p>
+		</form>
+		<?php
 	}
 	
 	mysqli_close($conUser);

@@ -19,13 +19,13 @@ input[type=button] {
 	cursor: pointer;
 	padding: 2px 5px 5px;
 	margin: 0px 0;
-	border-top: 3px solid #9a9a9a;
+	border-top: 2px solid #9a9a9a;
 }
 
 button:hover:enabled, button:active:enabled,
 input[type=submit]:hover:enabled, input[type=submit]:active:enabled,
 input[type=button]:hover:enabled, input[type=button]:active:enabled {
-	border-top: 3px solid #B3C833;
+	border-top: 2px solid #B3C833;
 }
 
 button:disabled,
@@ -37,7 +37,7 @@ input[type=button]:disabled {
 }
 
 input {
-	margin: 0 5px 0 5px;
+	margin: 0 5px;
 }
 
 textarea {
@@ -55,10 +55,6 @@ a {
 }
 
 .contentBlock a:hover, .contentBlock a:focus {
-	text-decoration: underline;
-}
-
-a.friend_link:hover, a.friend_link:focus {
 	text-decoration: underline;
 }
 
@@ -115,14 +111,14 @@ h3 {
 .label {
 	background-color: #B3C833;
 	padding: 10px;
-	margin: 0px 0;
+	margin: 0;
 }
 
 .labelBorder {
 	background-color: white;
 	border: 1px solid grey;
-	padding: 5px 5px;
-	margin: 0px 0;
+	padding: 5px;
+	margin: 0;
 }
 
 .formError {
@@ -415,6 +411,10 @@ h3 {
 	margin: 0px;
 	font-family: Arial,sans-serif;
 	z-index: 1;
+}
+
+a.friend_link:hover, a.friend_link:focus {
+	text-decoration: underline;
 }
 
 /*socialArea*/

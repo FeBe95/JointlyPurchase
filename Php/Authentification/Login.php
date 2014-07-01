@@ -2,6 +2,8 @@
     session_start();
 	$user = $_POST["Email"];
 	$pw = md5($_POST["Pw"]);
+	$redirect = $_POST["redirect"];
+	if($redirect == ""){$redirect = "../../Pages/Home.php";}
 	
     if ($user !='' && $pw !=''){
 		include "../../Templates/MYSQLConnectionString.php";
@@ -11,22 +13,22 @@
 		$ID=$dsatz["ID"];
 		
 		if($pw != $dsatz["passwort"]){
-			header( 'Location: ../../Pages/LoginError.php') ;
+			header( "Location: ../../Pages/LoginError.php?$redirect" ) ;
         }
         elseif(isset($_POST["stayLogIn"])){
 			setcookie("jpusr", $user, time()+3600*100, '/', false );
 			setcookie("jppw", $pw, time()+3600*100, '/', false );
 			$_SESSION["login"] = $ID;
-            header( 'Location: ../../Pages/Home.php' );                   
+            header( "Location: $redirect" );                   
         }
 		else{
 			$_SESSION["login"] = $ID;
-            header( 'Location: ../../Pages/Home.php' );  
+            header( "Location: $redirect" );
 		}
 		mysqli_close($conUser);
     }
     else{
-          header( 'Location: ../../Pages/LoginError.php' );
+          header( "Location: ../../Pages/LoginError.php?$redirect" );
     }
 ?>
 

@@ -169,7 +169,6 @@
 									include "../Templates/MYSQLConnectionString.php";
 									$profilPic= mysqli_query($conUser,"SELECT profilPic FROM user WHERE email = '".$email."'");
 									$profilPic = mysqli_fetch_assoc($profilPic);
-									echo "<br/><a href=\"../Pages/Profil.php?a=".$ID."\">Fertig bearbeitet - zur Übersicht</a>";
 								?>
 							</td>
 						</tr>

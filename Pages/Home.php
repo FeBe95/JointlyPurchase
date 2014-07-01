@@ -28,7 +28,7 @@
 		<script src="../js/jquery/jquery-ui-1.9.2.accordion.custom.min.js"></script>
 		
 		<script>
-			var msg_1 = 'Fehler:';
+		/*	var msg_1 = 'Fehler:';
 		
 			var var_1 = new Array()
 			var_1[0] = new Array('list','c','','');
@@ -38,27 +38,22 @@
 			}
 			
 			function send(ak,id,id2){
-				if (ak==1)
-				{
-					if (confirm("Möchtest du diesen Auftrag abbrechen?"))
-						{
-						document.shoppinglistDecline.itemId.value = id;			
-						document.shoppinglistDecline.listId.value = id2;			
-						document.shoppinglistDecline.submit();	
-						}
-						else{
+				if (ak==1){
+					if (confirm("Möchtest du diesen Auftrag abbrechen?")){
+						document.shoppinglistDecline.itemId.value = id;
+						document.shoppinglistDecline.listId.value = id2;		
+						document.shoppinglistDecline.submit();
+					}
+					else{
 						return;
-						}
+					}
 				}
-				if (ak==2)
-				{
-					
+				if (ak==2){
 					document.shoppinglistAccept.itemId.value = id;
 					document.shoppinglistAccept.listId.value = id2;
 					document.shoppinglistAccept.submit();
-					
 				}
-			}
+			}*/
 		</script>
     </head>
     <body>
@@ -95,7 +90,7 @@
 							</form>
 						</div>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						Leute aus Deiner Nähe:
 					</td>
 				</tr>
@@ -118,7 +113,7 @@
 					</td>
 				</tr>
                 <tr style="height:300px;">
-					<td style="border-left: 2px solid gray;vertical-align:bottom; margin-top:0px;">
+					<td style="border-left: 2px solid gray;vertical-align:bottom; display:block; margin-top:20px;">
 						<div style="background:#faa;display:table-cell;outline:1px solid black;vertical-align:middle;text-align:center;height:300px;">Hier könnte Ihre Werbung stehen</div>
 					</td>
                 </tr>
@@ -138,15 +133,33 @@
 			$(function() {
 				$( "#Accordion1" ).accordion({
 					heightStyle:"content",
-					active: false,
+					active: 0,
 					collapsible:true
 				}); 
 				$( "#Accordion2" ).accordion({
 					heightStyle:"content",
-					active: false,
+					active: 0,
 					collapsible:true
 				});
 			});
+			
+			function send(ak,id,id2){
+				if (ak==1){
+					if (confirm("Möchtest du diesen Auftrag abbrechen?")){
+						document.shoppinglistDecline.itemId.value = id;
+						document.shoppinglistDecline.listId.value = id2;		
+						document.shoppinglistDecline.submit();
+					}
+					else{
+						return;
+					}
+				}
+				if (ak==2){
+					document.shoppinglistAccept.itemId.value = id;
+					document.shoppinglistAccept.listId.value = id2;
+					document.shoppinglistAccept.submit();
+				}
+			}
 			
 			function send2(ak,id){
 				if (ak==1){
@@ -163,6 +176,6 @@
 					
 				}
 			}
-        </script>
+		</script>
     </body>
 </html>

@@ -82,32 +82,30 @@ INSERT INTO `friendrelation` (`Relation_id`, `AreFriends`, `UserId1`, `UserId2`)
 --
 
 CREATE TABLE IF NOT EXISTS `notifications` (
+  `not_id` int(11) NOT NULL AUTO_INCREMENT,
   `NotificationType` int(11) NOT NULL,
   `UserId1` int(11) NOT NULL,
   `UserId2` int(11) NOT NULL,
   `Notification` mediumtext NOT NULL,
   `Status` int(11) NOT NULL,
-  `date` varchar(24) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` varchar(24) NOT NULL,
+  PRIMARY KEY (`not_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `notifications`
 --
 
-INSERT INTO `notifications` (`NotificationType`, `UserId1`, `UserId2`, `Notification`, `Status`, `date`) VALUES
-(2, 60, 57, '182', 0, '28.04.2014 - 17:56'),
-(2, 60, 57, '188', 0, '28.04.2014 - 17:56'),
-(2, 57, 60, '186', 3, '28.04.2014 - 23:13'),
-(2, 57, 58, '185', 3, '01.05.2014 - 01:16'),
-(1, 57, 58, '', 3, ''),
-(1, 57, 59, '', 3, ''),
-(1, 93, 60, '', 3, ''),
-(1, 93, 59, '', 3, ''),
-(2, 59, 57, '274', 0, '09.05.2014 - 14:21'),
-(2, 93, 57, '275', 0, '10.05.2014 - 13:20'),
-(2, 93, 58, '276', 3, '11.05.2014 - 15:22'),
-(2, 93, 59, '262', 3, '26.06.2014 - 16:21'),
-(2, 93, 59, '264', 3, '26.06.2014 - 16:21');
+INSERT INTO `notifications` (`not_id`, `NotificationType`, `UserId1`, `UserId2`, `Notification`, `Status`, `date`) VALUES
+(1, 2, 60, 57, '182', 0, '28.04.2014 - 17:56'),
+(2, 2, 60, 57, '188', 0, '28.04.2014 - 17:56'),
+(3, 2, 57, 60, '186', 3, '28.04.2014 - 23:13'),
+(4, 2, 57, 58, '185', 3, '01.05.2014 - 01:16'),
+(5, 2, 59, 57, '274', 0, '09.05.2014 - 14:21'),
+(6, 2, 93, 57, '275', 0, '10.05.2014 - 13:20'),
+(7, 2, 93, 58, '276', 3, '11.05.2014 - 15:22'),
+(8, 2, 93, 59, '262', 3, '26.06.2014 - 16:21'),
+(9, 2, 93, 59, '264', 3, '26.06.2014 - 16:21');
 
 -- --------------------------------------------------------
 

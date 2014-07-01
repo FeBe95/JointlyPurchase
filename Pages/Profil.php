@@ -68,53 +68,62 @@
 					<td class="contentBlock">
 						<div id="main_center">
 							<table>
-								<?php 
-									include "../Templates/MYSQLConnectionString.php";
-									$relationStatus=mysqli_query($conUser,"SELECT AreFriends, UserId1, UserId2 FROM FriendRelation where UserId1 = ".$ID2." && UserId2 = ".$ID." OR UserId1 = ".$ID." && UserId2 = ".$ID2."");
-									$check = mysqli_num_rows($relationStatus);
-									$case = 0;
-									If ($check > 0 )
-									{
-										$relation = mysqli_fetch_assoc($relationStatus);
-										$case = $relation["AreFriends"];
-									}
-									If($ID2==$ID)
-									{
-										echo('<h1>Das bist du:<a href="../Pages/ProfilSettings.php"><img style="width:20px;margin-left:20px;" src="../Pictures/SiteContent/new.svg"></a></h1>');
-									}elseif($check <= 0){
-										echo("<form method='post' action='../Php/SocialNetwork/AddRelation.php'>");
-										echo("<input name='friendID' type='hidden' value='".$ID2."'/>");
-										echo("<button id='button' type='submit'>Als Freund hinzufügen</button>");
-									}
-									switch ($case) {
-										case 1:
-											if ($relation["UserId2"] == $ID)
-											{
-											echo("<form method='post' action='../Php/SocialNetwork/FriendRequestModifier.php'>");
-											echo("<input name='change' type='hidden' value='accept'/>");
-											echo("<input name='id' type='hidden' value='".$relation["UserId1"]."'/>");
-											echo("<button id='button' type='submit'>Freundschaftsanfrage annehmen</button>");
-											echo ("</form>");
-											}else
-											{
-											echo "<p class='label'>Freundschaftsanfrage versendet</p>";
+								<tr>
+									<td>
+										<?php 
+											include "../Templates/MYSQLConnectionString.php";
+											$relationStatus=mysqli_query($conUser,"SELECT AreFriends, UserId1, UserId2 FROM FriendRelation where UserId1 = ".$ID2." && UserId2 = ".$ID." OR UserId1 = ".$ID." && UserId2 = ".$ID2."");
+											$check = mysqli_num_rows($relationStatus);
+											$case = 0;
+											if ($check > 0){
+												$relation = mysqli_fetch_assoc($relationStatus);
+												$case = $relation["AreFriends"];
 											}
-											break;
-										case 2:
-											echo("<form method='post' action='../Php/SocialNetwork/DeleteRelation.php'>");
-											echo("<input name='friendID' type='hidden' value='".$ID2."'/>");
-											echo("<button id='button' type='submit'>Freund entfernen</button>");
-											echo ("</form>");
-										break;
-										case 3:
-											echo("<form method='post' action='../Php/SocialNetwork/AddRelation.php'>");
-											echo("<input name='friendID' type='hidden' value='".$ID2."'/>");
-											echo("<button id='button' type='submit'>Als Freund hinzufügen</button>");
-											echo ("</form>");
-										break;
-									}
-								?>
-								<br/>
+											if($ID2==$ID){
+												echo '<h1>Das bist du:<a href="../Pages/ProfilSettings.php"><img style="width:20px;margin-left:20px;" src="../Pictures/SiteContent/new.svg"></a></h1>';
+											}
+											elseif($check <= 0){
+												echo "<form method='post' action='../Php/SocialNetwork/AddRelation.php'>";
+												echo "<input name='friendID' type='hidden' value='".$ID2."'/>";
+												echo "<button id='button' type='submit'>Als Freund hinzufügen</button>";
+												echo "</form>";
+												echo "<br/>";
+											}
+											switch($case){
+												case 1:
+													if($relation["UserId2"] == $ID){
+														echo "<form method='post' action='../Php/SocialNetwork/FriendRequestModifier.php'>";
+														echo "<input name='change' type='hidden' value='accept'/>";
+														echo "<input name='id' type='hidden' value='".$relation["UserId1"]."'/>";
+														echo "<button id='button' type='submit'>Freundschaftsanfrage annehmen</button>";
+														echo "</form>";
+														echo "<br/>";
+													}
+													else{
+														echo "<p class='label' style='padding:4px;'>Freundschaftsanfrage versendet</p>";
+														echo "<br/>";
+													}
+													break;
+												case 2:
+													echo "<form method='post' action='../Php/SocialNetwork/DeleteRelation.php'>";
+													echo "<input name='friendID' type='hidden' value='".$ID2."'/>";
+													echo "<button id='button' type='submit'>Freund entfernen</button>";
+													echo "</form>";
+													echo "<br/>";
+												break;
+												case 3:
+													echo "<form method='post' action='../Php/SocialNetwork/AddRelation.php'>";
+													echo "<input name='friendID' type='hidden' value='".$ID2."'/>";
+													echo "<button id='button' type='submit'>Als Freund hinzufügen</button>";
+													echo "</form>";
+													echo "<br/>";
+												break;
+											}
+										?>
+									</td>
+								</tr>
+							</table>
+							<table>
 								<tr>
 									<td>Name:</td>
 									<td><?php echo $vorname_friend." ".$nachname_friend;?></td>
@@ -126,6 +135,7 @@
 									<td>E-Mail:</td>
 									<td><?php echo $email_friend;?></td>
 								</tr>
+								<tr>
 									<td><br/></td>
 								</tr>
 								<tr>
@@ -152,7 +162,7 @@
 							}
 							else{
 								echo"<h1>Einkaufslisten von ".$vorname_friend.":</h1>";
-								include "../Php/ShoppinglistStream/Stream.php";
+								include "../Php/ShoppinglistStream/FriendsStream.php";
 							}
 						?>
                         </div>
@@ -174,17 +184,28 @@
 			$(function() {
 				$( "#Accordion1" ).accordion({
 					heightStyle:"content",
-					active: false,
+					active: 0,
 					collapsible:true
 				}); 
 			});
-			$(function() {
-				$( "#Accordion2" ).accordion({
-					heightStyle:"content",
-					active: false,
-					collapsible:true
-				}); 
-			});
+			
+			function send(ak,id,id2){
+				if (ak==1){
+					if (confirm("Möchtest du diesen Auftrag abbrechen?")){
+						document.shoppinglistDecline.itemId.value = id;
+						document.shoppinglistDecline.listId.value = id2;		
+						document.shoppinglistDecline.submit();
+					}
+					else{
+						return;
+					}
+				}
+				if (ak==2){
+					document.shoppinglistAccept.itemId.value = id;
+					document.shoppinglistAccept.listId.value = id2;
+					document.shoppinglistAccept.submit();
+				}
+			}
 			
 			function send2(ak,id){
 				if (ak==1){

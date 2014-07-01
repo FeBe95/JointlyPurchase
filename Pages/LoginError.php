@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -16,8 +15,8 @@
                 <p class="formError">Ups... Da ist wohl etwas schief gelaufen. Bitte versuch es nochmal.</p>
                 <div id="regbox">
                     <form action="../Php/Authentification/Login.php"  method="post">
-                       <p>E-Mail<input name="Email" type="email" maxlength="50"/></p>
-                       <p>Passwort<input name="Pw" type="password" maxlength="20"/></p></br>
+						<p>E-Mail<input name="Email" type="email" maxlength="50"/></p>
+						<p>Passwort<input name="Pw" type="password" maxlength="20"/></p></br>
                         <button name="send" type="submit" value="send">
                         Login
                         </button>
@@ -27,6 +26,7 @@
                         <button type="button" onclick="window.location.href='NewAccount.php'" value="">
                         Registrieren
                         </button>
+						<input type="hidden" name="redirect" value="<?php echo @$_GET['redirect']?>"/>
                     </form>
                 </div>
             </div>

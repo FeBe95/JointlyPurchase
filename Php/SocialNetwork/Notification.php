@@ -11,7 +11,7 @@ while ($dsatz = mysqli_fetch_assoc($res))
 {
 $name= $dsatz["vorname"] ."</br>".$dsatz["name"] ;
 echo "<tr>";
-echo "<td id='friend_block'><a id='friend_link' href='../Pages/Profil.php?a=".$dsatz['ID']."'><div id='friend_link'>".$name."</div></a></td>";
+echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz['ID']."'>".$name."</a></td>";
 echo "</tr>";
 }
 // Tabellenende

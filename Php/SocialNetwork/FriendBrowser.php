@@ -11,7 +11,7 @@ while (($dsatz = mysqli_fetch_assoc($res)) && ($i <= 5))
 {
 $name= $dsatz["vorname"]." ".$dsatz["name"];
 echo "<tr>";
-echo "<td id='friend_block'><div id='friend_link'><a id='friend_link' href='../Pages/Profil.php?a=".$dsatz['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz["profilPic"]."'></div>".$name."</div></a></td>";
+echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz["profilPic"]."'>".$name."</div></a></td>";
 echo "</tr>";
 $i ++;
 }

@@ -58,6 +58,10 @@ a {
 	text-decoration: underline;
 }
 
+a.friend_link:hover, a.friend_link:focus {
+	text-decoration: underline;
+}
+
 h1 {
 	font-family: Arial,sans-serif;
 	font-size: 26px;
@@ -143,6 +147,15 @@ h3 {
 .settingsalert.error{
 	background-color: #d00;
 }
+
+.listen-error{
+	padding: 4px 10px;
+	background-color:#f55;
+	position: absolute;
+	width: 732px;
+	margin-top: 0;
+}
+
 
 #HeadPopUpBox {
 	background: none repeat scroll 0 0 #FFFFFF;
@@ -389,7 +402,7 @@ h3 {
 	font-family: Arial,sans-serif;
 }
 
-#friend_block {
+.friend_block {
 	background-color: white;
 	width: 170px;
 	height: 70px;
@@ -398,16 +411,12 @@ h3 {
 	border: 1px solid #808080;
 }
 
-#friend_block_font {
+.friend_block_font {
 	margin: 0px;
 	font-family: Arial,sans-serif;
 	z-index: 1;
 }
 
-#friend_link {
-	margin: 0px 0 0px 0;
-	text-decoration: none;
-}
 /*socialArea*/
 #socialAreaLists {
 	background-color: #ffffff;
@@ -428,33 +437,50 @@ h3 {
 	margin-bottom: 10px;
 }
 
-#t1 {
+th{
+	white-space:nowrap;
+	padding: 0 10px;
+}
+
+.t1 {
 	width: 100%;
-	font-family: Arial,sans-serif;
+	margin-top: 10px;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.t1 th{
+	padding-bottom: 8px;
+}
+
+.t2 {
+	width: 100%;
 	margin-top: 10px;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-#t2 {
-	width: 100%;
-	font-family: Arial,sans-serif;
-	margin-top: 10px;
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-#t3 {
-	font-family: Arial,sans-serif;
+.t3 {
 	margin-top: 10px;
 	border-collapse: collapse;
 	border-spacing: 0;
 	text-align: center;
 }
 
-#shoppinglist_item {
+.stream-header{
+	background-color: #c4c4c4;
+	padding: 10px;
+	width: 732px;
+}
+
+.stream-date{
+	float:right;
+	font-size:12px;
+	line-height: 20px;
+	font-style: italic;
+}
+
+.shoppinglist_item {
 	text-align: center;
-	font-family: Special Elite, cursive !important;
 	font-size: 15px;
 }
 
@@ -463,12 +489,12 @@ h3 {
 	font-size: 16px;
 }
 
-#shoppinglist_item_row {
+.shoppinglist_item_row {
 	border-radius: 6px 0 0 0;
 	transition: all 0.2s ease;
 }
 
-#shoppinglist_item_row:hover {
+.ui-accordion-content .shoppinglist_item_row:hover {
 	background-color: #B3C833;
 }
 
@@ -478,9 +504,15 @@ h3 {
 	height: 15px;
 }
 
+.ui-accordion-content .del_Image {
+	margin: 5px 5px 0 5px;
+	padding: 5px;
+}
+
+
 /*table design*/
 .lightgray {
-	background-color: lightgray;
+	background-color: #ddd;
 }
 
 .product {
@@ -504,10 +536,4 @@ h3 {
 .info {
 	padding: 0px;
 	margin: 0px;
-}
-
-.delbutton {
-	padding: 0px;
-	margin: 0px;
-	width: 5%;
 }

@@ -19,7 +19,7 @@ while ($dsatz = mysqli_fetch_assoc($res))
 	{
 	$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
 	echo "<tr>";
-	echo "<td id='friend_req_block'><p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p><p style='font-size:14px;margin-top:0px;'>".$name." möchte dir ein Produkt aus deiner Einkaufsliste : ".$dsatz["listName"]." mitbringen.</p></td>";
+	echo "<td class='friend_req_block'><p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p><p style='font-size:14px;margin-top:0px;'>".$name." möchte dir ein Produkt aus deiner Einkaufsliste : ".$dsatz["listName"]." mitbringen.</p></td>";
 	echo "</tr>";
 	}
 // Tabellenende

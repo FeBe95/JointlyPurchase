@@ -145,87 +145,16 @@
 						?>
                     </td>
                     <td class="contentBlock">
-                    	<?php if($ID2==$ID){echo"<h1>Deine Einkaufslisten:</h1>";}else{echo"<h1>Einkaufslisten von ".$vorname_friend.":</h1>";} 
-                    	
-						//Delete shoppinglist before loading List//
-                        if(isset($_POST["ak"]) && $_POST["ak"]=="deleteList"){
-                            $abf5 = "DELETE FROM produkte WHERE list_id = '".$_POST["id"]."'";
-                            $abf7 = "DELETE FROM einkaufslisten WHERE listID = '".$_POST["id"]."'";
-							mysqli_query($conUser,$abf5);
-							mysqli_query($conUser,$abf7);
-                        }
-							
-                        $abf2 = mysqli_query($conUser,"SELECT * FROM einkaufslisten WHERE userID = ".$ID2."");
-						$num2 = mysqli_num_rows($abf2);
-						
-						if($num2!=0){
-							?>
-							
-							<form style="width:672px;" action="../Php/Shoppinglist/AddShoppinglist.php" method="post">								
-								<p>Name:
-									<input name="list" type="text" maxlenght="10" required/>
-									<button type="submit">Liste hinzufügen</button>
-								</p>
-							</form>
-							
-							<div id="Accordion1">
-							
-							<?php
-							while ($listen = mysqli_fetch_assoc($abf2)){	
-								$lId=$listen["listID"];
-								echo "<h3><a href='#'>".$listen["listName"]."</a></a></h3>";
-								echo "<div><table id='t1'>";
-								if ($ID2 === $ID){
-									echo "<a title='Einkaufsliste löschen' href='javascript:send(1,\"$lId\");'><img  style='margin:5px;padding: 5px 5px;border:0px;' class='del_Image' src='../Pictures/SiteContent/cross.svg'></a>";
-									echo "<a title='Einkaufsliste bearbeiten' href='javascript:send(2,&quot;".$listen["listName"]."&quot;);'><img style='margin:5px;padding: 5px 5px;border:0px;' class='del_Image' src='../Pictures/SiteContent/new.svg'></a>";
-								}
-								
-								$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
-								$num1 = mysqli_num_rows($abf1);
-								$i=0;
-								if($num1!=0){
-									echo "<tr id='shoppinglist_header'><th>Produkt</th><th>Anzahl</th><th>Maximaler Preis</th><th>Anmerkung</th></tr>";
-									while ($dsatz = mysqli_fetch_assoc($abf1)){
-										if ($i==1){
-											echo "<tr class='lightgray' id='shoppinglist_item_row'>";
-											echo "<td class='product' id='shoppinglist_item'><p>" . $dsatz["product"] . "</p></td>";
-											echo "<td class='amount' id='shoppinglist_item'><p>" . $dsatz["amount"] . "</p></td>";
-											echo "<td class='maxPrice' id='shoppinglist_item'><p>" . $dsatz["maxPrice"] . "€</p></td>";
-											echo nl2br("<td class='info' id='shoppinglist_item'><p>" . $dsatz["info"] . "</p></td>");
-											echo "</tr>";
-											$i--;
-										}
-										else{
-											echo "<tr id='shoppinglist_item_row'>";
-											echo "<td class='product' id='shoppinglist_item'><p>" . $dsatz["product"] . "</p></td>";
-											echo "<td class='amount' id='shoppinglist_item'><p>" . $dsatz["amount"] . "</p></td>";
-											echo "<td class='maxPrice' id='shoppinglist_item'><p>" . $dsatz["maxPrice"] . "€</p></td>";
-											echo nl2br("<td class='info' id='shoppinglist_item'><p>" . $dsatz["info"] . "</p></td>");
-											echo "</tr>";
-											$i++;
-										}
-									}
-								}
-								else{
-									echo "<tr><td><div style='margin-left:5px'>Noch keine Produkte eingetragen</div></td></tr>";
-								}
-								echo "</table></div>";
+                    	<?php
+							if($ID2==$ID){
+								echo"<h1>Deine Einkaufslisten:</h1>";
+								include "../Php/ShoppinglistStream/MyStream.php";
 							}
-                        }
-						else{
-							?>
-							Du hast noch keine Einkaufslisten.<br/><br/>
-							Füge jetzt eine hinzu:
-							<form style="width:672px;" action="../Php/Shoppinglist/AddShoppinglist.php" method="post">								
-								Name:
-								<input name="list" type="text" maxlenght="10" required/>
-								<button type="submit">Erstellen</button>
-							</form>
-							<?php
-						}
-						
-                        mysqli_close($conUser);
-                        ?>
+							else{
+								echo"<h1>Einkaufslisten von ".$vorname_friend.":</h1>";
+								include "../Php/ShoppinglistStream/Stream.php";
+							}
+						?>
                         </div>
                     </td>
                 </tr>
@@ -245,11 +174,19 @@
 			$(function() {
 				$( "#Accordion1" ).accordion({
 					heightStyle:"content",
+					active: false,
+					collapsible:true
+				}); 
+			});
+			$(function() {
+				$( "#Accordion2" ).accordion({
+					heightStyle:"content",
+					active: false,
 					collapsible:true
 				}); 
 			});
 			
-			function send(ak,id){
+			function send2(ak,id){
 				if (ak==1){
 					if (confirm("Willst du die Einkaufsliste wirklich löschen?")){
 						document.hidden.ak.value = "deleteList";

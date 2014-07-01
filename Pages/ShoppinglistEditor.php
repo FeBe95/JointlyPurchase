@@ -33,27 +33,22 @@
 			
 			function send(ak,id){
 				if(ak==2){
-					/*if(document.shoppinglist.product.value!="" ||
-					document.shoppinglist.amount.value!="1" ||
-					document.shoppinglist.maxPrice.value!="0" ||
-					document.shoppinglist.info.value!=""){*/
-					
 					if(document.shoppinglist.product.value!=""){
-						if (confirm("Bearbeitung abbrechen und Artikel löschen?")){
+						if(confirm("Bearbeitung abbrechen und Artikel löschen?")){
 							document.shoppinglist.ak.value = "deleteItem";
 							document.shoppinglist.id.value = id;
 							document.shoppinglist.submit();
 						}
 					}
 					else{
-						if (confirm("Artikel löschen?")){
+						if(confirm("Artikel löschen?")){
 							document.shoppinglist.ak.value = "deleteItem";
 							document.shoppinglist.id.value = id;
 							document.shoppinglist.submit();
 						}
 					}
 				}
-				else if (ak==1){
+				else if(ak==1){
 					if (confirm("Willst du die Einkaufsliste wirklich löschen?")){
 						document.shoppinglist.ak.value = "deleteList";
 						document.shoppinglist.id.value = id;
@@ -76,7 +71,7 @@
         ?>
 		<div id="mainwindow">
 			<div id="shoppinglist_add" class="contentBlock">
-				<table id="t3">
+				<table class="t3">
 					<tr>
 						<td>
 							<h1>Einkaufsliste:</h1>
@@ -84,11 +79,11 @@
 						<td>
 							<?php
 							//Einkaufslisten Namen übergeben//
-								if (!(empty($_POST["list"]))){
+								if (isset($_POST["list"])){
 									$_SESSION["list"] = $_POST["list"];
 									$table = $_SESSION["list"];
-									
-								}else{
+								}
+								else{
 									$table = $_SESSION["list"];
 								}
 								echo "<p class='label'>".$table."&nbsp;<a href='javascript:send(1,0);'><img style='width:10px'; class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></p>";
@@ -96,7 +91,7 @@
 						</td>
 					</tr>
 				</table>
-				<table id='t1' border='0'>
+				<table class='t1' border='0'>
 					<tr id='shoppinglist_header'>
 						<th>Produkt</th>
 						<th>Anzahl</th>
@@ -112,43 +107,29 @@
 						$listID = mysqli_fetch_assoc($abf2);
 						$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listID["listID"]."'");
 						
-						
-						//Variables//
-						$info_br = wordwrap(@$_POST['info'], 10, "\n", true );
-						$row = 0 + mysqli_num_rows($abf1);
+						$row = mysqli_num_rows($abf1);
 						$maxItems = 15;
 					
 						//Read data from database//	;
-						if ($row > 0)
-						{
-							$i=0;
-							while ($dsatz = mysqli_fetch_assoc($abf1))
-							{
-								if ($i==1)
-								{
-									$Item_ID = $dsatz["item_id"];
-									echo "<tr class='lightgray' id='shoppinglist_item_row'>";
-									echo "<td class='product' id='shoppinglist_item'><p>" . $dsatz["product"] . "</p></td>";
-									echo "<td class='amount' id='shoppinglist_item'><p>" . $dsatz["amount"] . "</p></td>";
-									echo "<td class='maxPrice' id='shoppinglist_item'><p>" . $dsatz["maxPrice"] . "€</p></td>";
-									echo nl2br("<td class='info' id='shoppinglist_item'><p>" . $dsatz["info"] . "</p></td>");
-									echo "<td id='shoppinglist_item'><a href='javascript:send(2,$Item_ID);'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
-									echo "</tr>";
-									$i--;
-								}else
-								{
-									$Item_ID = $dsatz["item_id"];
-									echo "<tr id='shoppinglist_item_row'>";
-									echo "<td class='product' id='shoppinglist_item'><p>" . $dsatz["product"] . "</p></td>";
-									echo "<td class='amount' id='shoppinglist_item'><p>" . $dsatz["amount"] . "</p></td>";
-									echo "<td class='maxPrice' id='shoppinglist_item'><p>" . $dsatz["maxPrice"] . "€</p></td>";
-									echo nl2br("<td class='info' id='shoppinglist_item'><p>" . $dsatz["info"] . "</p></td>");
-									echo "<td class='delbutton' id='shoppinglist_item'><a href='javascript:send(2,$Item_ID);'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
-									echo "</tr>";
-									$i++;
-								}
+						$i=0;
+						while ($dsatz = mysqli_fetch_assoc($abf1)){
+							
+							
+							if ($i%2==0){
+								echo "<tr class='shoppinglist_item_row lightgray'>";
 							}
+							else{
+								echo "<tr class='shoppinglist_item_row'>";
+							}
+							echo "<td class='shoppinglist_item product'><p>" . $dsatz["product"] . "</p></td>";
+							echo "<td class='shoppinglist_item amount'><p>" . $dsatz["amount"] . "</p></td>";
+							echo "<td class='shoppinglist_item maxPrice'><p>" . $dsatz["maxPrice"] . "€</p></td>";
+							echo "<td class='shoppinglist_item info'><p>" . nl2br($dsatz["info"]) . "</p></td>";
+							echo "<td class='shoppinglist_item delcross'><a href='javascript:send(2,".$dsatz["item_id"].");'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
+							echo "</tr>";
+							$i++;
 						}
+						//}
 						mysqli_close($conUser);							
 					?>
 				</table>
@@ -163,7 +144,7 @@
 						<input name='ak' type='hidden' />
 						<input name='id' type='hidden' />
 					</div>
-					<table id="t2">
+					<table class="t2">
 						<tr>
 							<td>
 								<?php

@@ -11,7 +11,7 @@
 		while ($dsatz = mysqli_fetch_assoc($res)){
 			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
 			echo "<tr>";
-			echo "<td id='friend_req_block'>".$name."<a title='Annehmen' href='javascript:friendrequest(1,".$dsatz["ID"].");'><img style='margin:0px 10px;' class='del_Image' src='../Pictures/SiteContent/tick.svg'></a><a title='Ablehnen' href='javascript:friendrequest(2,".$dsatz["ID"].");'><img style='margin:0px 10px;' class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
+			echo "<td class='friend_req_block'>".$name."<a title='Annehmen' href='javascript:friendrequest(1,".$dsatz["ID"].");'><img style='margin:0px 10px;' class='del_Image' src='../Pictures/SiteContent/tick.svg'></a><a title='Ablehnen' href='javascript:friendrequest(2,".$dsatz["ID"].");'><img style='margin:0px 10px;' class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
 			echo "</tr>";
 		}
 		// Tabellenende

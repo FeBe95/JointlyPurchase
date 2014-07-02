@@ -5,6 +5,10 @@
 	
 	$ItemID=$_POST['itemId'];
 	$ListID=$_POST['listId'];
+	$fp="";
+	if(isset($_POST['fromprofile'])){
+		$fp=$_POST['fromprofile'];
+	}
 	
 	// Check connection
 	if (mysqli_connect_errno()){
@@ -22,6 +26,12 @@
 	
 	mysqli_query($conUser,"UPDATE produkte SET getFromUser = 0 WHERE item_id =".$ItemID);
 	mysqli_query($conUser,"DELETE FROM Notifications WHERE Notification = ".$ItemID);
-	header( 'Location: ../../Pages/Home.php' );
+	
+	if($fp!="")
+		header( "Location: ../../Pages/Profil.php?a=$fp" );
+	else{
+		header( "Location: ../../Pages/Home.php" );
+	}
+	
 	mysqli_close($conUser);
 ?>

@@ -1,5 +1,3 @@
-<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
-<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Lobster|Poiret+One' rel='stylesheet' type='text/css'>
 <div id="head">
     <div id="headcontent">
         <div id="logo">
@@ -9,19 +7,26 @@
             <table>
                 <tr>
                     <td>
-                    <?php
-						include "../Templates/MYSQLConnectionString.php";
-						$profilPic= mysqli_query($conUser,"SELECT profilPic FROM user WHERE email = '".$email."'");
-						$profilPic = mysqli_fetch_assoc($profilPic);
-                        echo "<a href=\"../Pages/Profil.php?a=".$ID."\" class=\"headlink\"><div id='headcrop'><img id='smallcrop' src='../Pictures/Thumbnails/".$profilPic["profilPic"]."'></div>" . $vorname.' '.$nachname . "</a>";
-                    ?>
+						<?php
+							include "../Templates/MYSQLConnectionString.php";
+							$profilPic = mysqli_query($conUser,"SELECT profilPic FROM user WHERE email = '$email'");
+							$profilPic = mysqli_fetch_assoc($profilPic)["profilPic"];
+							
+							echo "<a href='../Pages/Profil.php?a=$ID' class='headlink'><div id='headcrop'>";
+							echo "<img id='smallcrop' src='../Pictures/Thumbnails/$profilPic'>";
+							echo "</div><span class='head-icon'>$vorname $nachname</span></a>";
+						?>
                     </td>
                     <td>
-                       <a href="../Pages/ProfilSettings.php"><img class="rotate" style="height:16px;" id='einstellungen' src='../Pictures/SiteContent/settings.svg'></a>
+						<a href="../Pages/ProfilSettings.php">
+							<img class="head-icon rotate"  id='einstellungen' src='../Pictures/SiteContent/settings.svg'>
+						</a>
                     </td>
 					<td>
                         <div id="HeadPopUp" >
-							<div id="link" style="cursor:pointer;"><img style="height:16px;" src='../Pictures/SiteContent/group.svg'></div>
+							<div id="link" style="cursor:pointer;">
+								<img class="head-icon" src='../Pictures/SiteContent/group.svg'>
+							</div>
 							<div tabindex="-1" id="HeadPopUpBox">
 							  <p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Freundschaftsanfragen</p>
 							  <?php
@@ -32,7 +37,9 @@
                     </td>
 					<td>
                         <div id="HeadPopUp2">
-							<div id="link2" style="cursor:pointer;"><img style="height:16px;" src='../Pictures/SiteContent/notification.svg'></div>
+							<div id="link2" style="cursor:pointer;">
+								<img class="head-icon" src='../Pictures/SiteContent/notification.svg'>
+							</div>
 							<div tabindex="-1" id="HeadPopUpBox2">
 								<p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Benachrichtigungen</p>
 								<?php

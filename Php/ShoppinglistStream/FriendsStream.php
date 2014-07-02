@@ -17,7 +17,6 @@
 			echo "<div><table class='t1'>";
 	
 			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
-			$i=0;
 			
 			echo "<tr id='shoppinglist_header'>
 				  <th>Produkt</th>
@@ -35,22 +34,17 @@
 				$getFromStatus = mysqli_fetch_assoc($abf3);
 				$getFromUser = $getFromStatus["getFromUser"];
 				
-				if ($i%2==0){
-					echo "<tr class='shoppinglist_item_row lightgray'>";
-				}
-				else{
-					echo "<tr class='shoppinglist_item_row'>";
-				}
+				echo "<tr class='shoppinglist_item_row'>";
 				echo "<td class='shoppinglist_item product'><p>" . $dsatz["product"] . "</p></td>";
 				echo "<td class='shoppinglist_item amount'><p>" . $dsatz["amount"] . "</p></td>";
 				echo "<td class='shoppinglist_item maxPrice'><p>" . $dsatz["maxPrice"] . "€</p></td>";
 				echo "<td class='shoppinglist_item info'><p>" . nl2br($dsatz["info"]) . "</p></td>";
 				
 				if ($getFromUser == 0){
-					echo "<td class='shoppinglist_item'><a href='javascript:send(2,$itemId,\"$listId\");'><img src='../Pictures/SiteContent/mitnehmen.png'></a></td>";
+					echo "<td class='shoppinglist_item'><a href='javascript:send(2,$itemId,\"$listId\");' class='mitbringen'>Mitbringen</a></td>";
 				}
 				elseif ($ID == $getFromUser){
-					echo "<td class='shoppinglist_item'><a href='javascript:send(1,$itemId,\"$listId\");'><img src='../Pictures/SiteContent/nichtMitnehmen.png'></a></td>";
+					echo "<td class='shoppinglist_item'><a href='javascript:send(1,$itemId,\"$listId\");' class='mitbringen mbnicht'>Nicht mehr mitbringen</a></td>";
 				}
 				else{
 					echo "<td class='shoppinglist_item'> <a class='friend_link' href='../Pages/Profil.php?a=".$getFromUser."'> " .$getFromStatus["vorname"]." ".$getFromStatus["name"]."</a></td>";
@@ -86,8 +80,10 @@
 <form name="shoppinglistAccept" method="post" action="../Php/ShoppinglistStream/AcceptItem.php">
 	<input name='itemId' type='hidden' />
 	<input name='listId' type='hidden' />
+	<input name='fromprofile' type='hidden' value="<?php echo $_GET["a"]; ?>"/>
 </form>
 <form name="shoppinglistDecline" method="post" action="../Php/ShoppinglistStream/DeclineItem.php">
 	<input name='itemId' type='hidden' />
 	<input name='listId' type='hidden' />
+	<input name='fromprofile' type='hidden' value="<?php echo $_GET["a"]; ?>"/>
 </form>

@@ -36,7 +36,6 @@
 			
 			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
 			$num1 = mysqli_num_rows($abf1);
-			$i=0;
 			if($num1!=0){
 				echo "<tr id='shoppinglist_header'>
 					  <th>Produkt</th>
@@ -54,12 +53,7 @@
 					$getFromStatus = mysqli_fetch_assoc($abf3);
 					$getFromUser = $getFromStatus["getFromUser"];
 					
-					if ($i%2==0){
-						echo "<tr class='shoppinglist_item_row lightgray'>";
-					}
-					else{
-						echo "<tr class='shoppinglist_item_row'>";
-					}
+					echo "<tr class='shoppinglist_item_row'>";
 					echo "<td class='shoppinglist_item product'><p>" . $dsatz["product"] . "</p></td>";
 					echo "<td class='shoppinglist_item amount'><p>" . $dsatz["amount"] . "</p></td>";
 					echo "<td class='shoppinglist_item maxPrice'><p>" . $dsatz["maxPrice"] . "€</p></td>";

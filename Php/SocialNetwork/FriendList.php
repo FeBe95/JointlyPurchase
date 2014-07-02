@@ -36,7 +36,7 @@
 		$i++;
 	}
 	while ($dsatz2 = mysqli_fetch_assoc($res2)){
-		$name= $dsatz2["vorname"]." ".$dsatz2["name"] ;
+		$name= $dsatz2["vorname"]."<br/>".$dsatz2["name"] ;
 		echo "<tr>";
 		echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz2['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz2["profilPic"]."'></div>".$name."</a></td>";
 		echo "</tr>";

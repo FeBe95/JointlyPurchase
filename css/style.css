@@ -7,6 +7,7 @@ body {
 
 html {
 	height: 100%;
+	overflow-y: scroll;
 }
 
 button,
@@ -59,7 +60,6 @@ a {
 }
 
 h1 {
-	font-family: Arial,sans-serif;
 	font-size: 26px;
 	font-weight: normal;
 	line-height: 36px;
@@ -70,21 +70,17 @@ h2 {
 	font-weight: normal;
 	line-height: 36px;
 	color: #00ABF5;
-	font-family: Arial,sans-serif;
 }
 
 h3 {
 	font-weight: normal;
 	line-height: 36px;
 	color: #00ABF5;
-	font-family: Arial,sans-serif;
 }
 
 .rotate {
-	-webkit-transition-duration: 1.5s;
-	-moz-transition-duration: 1.5s;
-	-o-transition-duration: 1.5s;
-	transition-duration: 1.5s;
+	-webkit-transition-duration: 1s;
+	transition-duration: 1s;
 	-webkit-transition-property: -webkit-transform;
 	-moz-transition-property: -moz-transform;
 	-o-transition-property: -o-transform;
@@ -93,9 +89,15 @@ h3 {
 }
 
 .rotate:hover {
-	-webkit-transform: rotate(360deg);
-	-moz-transform: rotate(360deg);
-	-o-transform: rotate(360deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}
+
+.head-icon{
+	height:16px;
+	padding: 15px 3px;
+	margin: -15px -3px;
 }
 
 /*All pages*/
@@ -151,7 +153,6 @@ h3 {
 	width: 732px;
 	margin-top: 0;
 }
-
 
 #HeadPopUpBox {
 	background: none repeat scroll 0 0 #FFFFFF;
@@ -301,21 +302,18 @@ h3 {
 	float: right;
 	-moz-transition: padding 0.7s ease;
 	-webkit-transition: padding 0.7s ease;
- /*Safari and Chrome*/;
 }
 
 #headMenueItem2 {
 	float: right;
 	-moz-transition: padding 0.7s ease;
 	-webkit-transition: padding 0.7s ease;
- /*Safari and Chrome*/;
 }
 
 #headMenueItem3 {
 	float: right;
 	-moz-transition: padding 0.7s ease;
 	-webkit-transition: padding 0.7s ease;
- /*Safari and Chrome*/;
 }
 
 #headMenueItem1:hover {
@@ -491,11 +489,11 @@ th{
 
 .shoppinglist_item_row {
 	border-radius: 6px 0 0 0;
-	transition: all 0.2s ease;
+	transition: background-color 0.1s ease;
 }
 
-.ui-accordion-content .shoppinglist_item_row:hover {
-	background-color: #B3C833;
+.shoppinglist_item_row:nth-child(2n) {
+	background-color: #ddd;
 }
 
 .del_Image {
@@ -504,15 +502,19 @@ th{
 	height: 15px;
 }
 
-.ui-accordion-content .del_Image {
-	margin: 5px 5px 0 5px;
-	padding: 5px;
+.mitbringen{
+	color: #fff;
+	padding: 6px 10px;
+	border-radius: 5px;
+	background-color: #1e5da1;
+}
+.mitbringen:hover, .mitbringen:active{
+	text-decoration: none !important;
 }
 
-
-/*table design*/
-.lightgray {
-	background-color: #ddd;
+.mitbringen.mbnicht{
+	color: #fff;
+	background-color: #dd2d23;
 }
 
 .product {

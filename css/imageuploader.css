@@ -41,6 +41,7 @@
 	border-radius: 3px;
 	background-color: #B3C833;
 	width:1%;
+	transition-duration: 1s;
 }
 #statustxt {
 	top:5px;

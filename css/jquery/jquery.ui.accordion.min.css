@@ -2,4 +2,42 @@
 * http://jqueryui.com
 * Includes: jquery.ui.accordion.css
 * Copyright 2013 jQuery Foundation and other contributors; Licensed MIT */
-.ui-accordion .ui-accordion-header{display:block;cursor:pointer;position:relative;padding:.5em .5em .5em .7em;zoom:1}.ui-accordion .ui-accordion-icons{padding-left:2.2em;background-color:#B3C833;}.ui-accordion .ui-accordion-noicons{padding-left:.7em}.ui-accordion .ui-accordion-icons .ui-accordion-icons{padding-left:2.2em}.ui-accordion .ui-accordion-header .ui-accordion-header-icon{position:absolute;left:.5em;top:50%;margin-top:-8px}.ui-accordion .ui-accordion-content{ background-color:white; padding-top:1em 2.2em;padding-bottom:1em 2.2em;border-top:0;overflow:auto;zoom:1}	
+
+.ui-accordion .ui-accordion-header{
+	display:block;
+	cursor:pointer;
+	position:relative;
+	padding: 10px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none
+}
+.ui-accordion .ui-accordion-icons{
+	padding-left: 34px;
+	background-color:#B3C833
+}
+.ui-accordion .ui-accordion-noicons{
+	padding-left: 7px
+}
+.ui-accordion .ui-accordion-icons .ui-accordion-icons{
+	padding-left: 220px
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon{
+	position:absolute;
+	left: 8px;
+	top:50%;
+	margin-top:-8px
+}
+.ui-accordion-content .del_Image {
+	margin: 5px 5px 0 5px;
+	padding: 5px;
+}
+.ui-accordion-content .shoppinglist_item_row:hover:nth-child(2n) {
+	background-color: #ccc;
+}
+.ui-accordion-content .shoppinglist_item_row:hover:nth-child(2n+1) {
+	background-color: #eee;
+}
+.ui-accordion-header:nth-of-type(2n){
+	background-color: #C2D35C;
+}

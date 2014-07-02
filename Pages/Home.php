@@ -113,8 +113,8 @@
 					</td>
 				</tr>
                 <tr style="height:300px;">
-					<td style="border-left: 2px solid gray;vertical-align:bottom; display:block; margin-top:20px;">
-						<div style="background:#faa;display:table-cell;outline:1px solid black;vertical-align:middle;text-align:center;height:300px;">Hier könnte Ihre Werbung stehen</div>
+					<td style="display:block; margin-top:20px;">
+						<div style="background:#fff;display:table-cell;vertical-align:middle;border-radius:10px;text-align:center;height:300px;width:240px;">Werbung</div>
 					</td>
                 </tr>
 			</table>

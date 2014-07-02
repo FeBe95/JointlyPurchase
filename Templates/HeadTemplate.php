@@ -41,7 +41,7 @@
 								<img class="head-icon" src='../Pictures/SiteContent/notification.svg'>
 							</div>
 							<div tabindex="-1" id="HeadPopUpBox2">
-								<p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Benachrichtigungen</p>
+								<p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Benachrichtigungen</p><a style="font-size:10px; float:right;" href='../../Pages/Notifications.php'>erweiterte Ansicht<a>
 								<?php
 									include "../Php/SocialNetwork/GetNotification.php";
 								?>

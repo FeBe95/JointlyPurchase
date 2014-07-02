@@ -6,7 +6,7 @@
 .ui-widget {
 	background-color: white;
 	width: 748px;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: 2px solid #aaa;
 	overflow: hidden;
 }

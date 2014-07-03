@@ -65,6 +65,7 @@ h1 {
 	font-weight: normal;
 	line-height: 36px;
 	color: #00ABF5;
+	margin: 5px 0;
 }
 
 h2 {
@@ -77,28 +78,6 @@ h3 {
 	font-weight: normal;
 	line-height: 36px;
 	color: #00ABF5;
-}
-
-.rotate {
-	-webkit-transition-duration: 1s;
-	transition-duration: 1s;
-	-webkit-transition-property: -webkit-transform;
-	-moz-transition-property: -moz-transform;
-	-o-transition-property: -o-transform;
-	transition-property: transform;
-	overflow: hidden;
-}
-
-.rotate:hover {
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-}
-
-.head-icon{
-	height:16px;
-	padding: 15px 3px;
-	margin: -15px -3px;
 }
 
 /*All pages*/
@@ -156,18 +135,6 @@ h3 {
 	margin-top: 0;
 }
 
-#HeadPopUpBox {
-	background: none repeat scroll 0 0 #FFFFFF;
-	border: 1px solid #808080;
-	box-shadow: 0 0 10px #808080;
-	display: none;
-	outline: 0 none;
-	padding: 10px;
-	position: absolute;
-	width: 300px;
-	margin: 10px 0 0 -243px;
-}
-
 .triangle {
 	margin: 0;
 	outline: 0 none;
@@ -182,18 +149,6 @@ h3 {
 
 #triNotifi {
 	left: 157px;
-}
-
-#HeadPopUpBox2 {
-	background: none repeat scroll 0 0 #FFFFFF;
-	border: 1px solid #808080;
-	box-shadow: 0 0 10px #808080;
-	display: none;
-	outline: 0 none;
-	padding: 10px;
-	position: absolute;
-	width: 300px;
-	margin: 10px 0 0 -200px;
 }
 
 #friend_req_block {
@@ -220,7 +175,6 @@ h3 {
 	vertical-align: top;
 	width: 0px;
 }
-
 
 /*header styles*/
 #head {
@@ -257,9 +211,69 @@ h3 {
 	margin-right: 20px;
 }
 
+.HeadPopUp{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #808080;
+	box-shadow: 0 0 10px #808080;
+	display: none;
+	outline: 0 none;
+	padding: 10px;
+	position: absolute;
+	width: 300px;
+}
+
+#HeadPopUpBox {
+	margin: 30px 0 0 -243px;
+}
+
+#HeadPopUpBox2 {
+	margin: 30px 0 0 -271px;
+}
+
 #logo {
 	float: left;
 	margin-top: 5px;
+}
+
+.rotate {
+	-webkit-transition-duration: 1s;
+	transition-duration: 1s;
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	transition-property: transform;
+	overflow: hidden;
+}
+
+.rotate:hover {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}
+
+.head-icon{
+	height:20px;
+	padding: 15px 3px;
+	margin: -15px 0px;
+}
+
+.head-icon:hover, .svg-color-change{
+	fill: #B3C833;;
+}
+
+.notification-badge{
+	width: 12px;
+	height: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	color: #fff;
+	position: absolute;
+	float: right;
+	margin-left: 22px;
+	margin-top: -5px;
+	background-color: red;
+	border-radius: 10px;
+	text-align: center;
 }
 
 .logobutton {
@@ -416,7 +430,6 @@ h3 {
 
 .friend_link{
 	display: block;
-	width: 170px;
 	padding: 16px 0;
 }
 
@@ -548,4 +561,8 @@ th{
 .info {
 	padding: 0px;
 	margin: 0px;
+}
+
+.delcross{
+	cursor: pointer;
 }

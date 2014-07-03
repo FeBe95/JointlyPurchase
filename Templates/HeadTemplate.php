@@ -23,28 +23,22 @@
 						</a>
                     </td>
 					<td>
-                        <div id="HeadPopUp" >
+                        <div id="HeadPopUp">
+							<?php
+								include "../Php/SocialNetwork/GetRequest.php";
+							?>
 							<div id="link" style="cursor:pointer;">
-								<img class="head-icon" src='../Pictures/SiteContent/group.svg'>
-							</div>
-							<div tabindex="-1" id="HeadPopUpBox">
-							  <p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Freundschaftsanfragen</p>
-							  <?php
-								  include "../Php/SocialNetwork/GetRequest.php";
-							  ?>
+								<img id="icon1" class="head-icon" src='../Pictures/SiteContent/group.svg'>
 							</div>
 						</div>
                     </td>
 					<td>
                         <div id="HeadPopUp2">
+							<?php
+								include "../Php/SocialNetwork/GetNotification.php";
+							?>
 							<div id="link2" style="cursor:pointer;">
-								<img class="head-icon" src='../Pictures/SiteContent/notification.svg'>
-							</div>
-							<div tabindex="-1" id="HeadPopUpBox2">
-								<p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Benachrichtigungen</p>
-								<?php
-									include "../Php/SocialNetwork/GetNotification.php";
-								?>
+								<img id="icon2" class="head-icon" src='../Pictures/SiteContent/notification.svg'>
 							</div>
 						</div>
                     </td>
@@ -59,31 +53,5 @@
     </div>
 </div>
 <div id="greybar">
-<!--     <ul id="headMenue">
-            	<li class="headMenueItem" id="headMenueItem1" style="background-color:#1AA1E1;"> 
-                  <a href= ../Pages/ProfilSettings.php><img class="rotate" style="height:16px;" id='einstellungen' src='../Pictures/SiteContent/settings.svg'></a>
-              	</li>
-              	<li class="headMenueItem" id="headMenueItem2" style="background-color:#B3C833;">
-                  <div id="HeadPopUp" >
-                      <a id="link" href="#"><img style="height:16px;" src='../Pictures/SiteContent/group.svg'></a>
-                      <div tabindex="-1" id="HeadPopUpBox">
-                          <p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Freundschaftsanfragen</p>
-                          <?php
-                              //include "../Php/SocialNetwork/GetRequest.php";
-                          ?>
-                      </div>
-                  </div>
-              	</li>
-               	<li class="headMenueItem" id="headMenueItem3" style="background-color:#CE5043;">
-                  <div id="HeadPopUp2">
-                      <a id="link2" href="#"><img style="height:16px;" src='../Pictures/SiteContent/notification.svg'></a>
-                      <div tabindex="-1" id="HeadPopUpBox2">
-                          <p style="font-size:12px; font-weight:bold; margin-top:0px; border-bottom:1px solid grey;">Benachrichtigungen</p>
-                          <?php
-                              //include "../Php/SocialNetwork/GetNotification.php";
-                          ?>
-                      </div>
-                  </div>
-              	</li>
-    </ul> -->
 </div>
+<script src="../js/BoogyBox.js"></script>

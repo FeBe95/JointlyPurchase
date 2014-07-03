@@ -74,7 +74,6 @@
 					echo "<td class='shoppinglist_item'> <a class='friend_link' href='../Pages/Profil.php?a=".$getFromUser."'> " .$getFromStatus["vorname"]." ".$getFromStatus["name"]."</a></td>";
 				}
 				echo "</tr>";
-				$i++;
 			}
 			echo "</table></div>";
 		}

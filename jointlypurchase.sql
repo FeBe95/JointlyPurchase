@@ -33,20 +33,21 @@ CREATE TABLE IF NOT EXISTS `einkaufslisten` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` varchar(24) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=161 ;
+-- ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=161 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `einkaufslisten`
 --
 
-INSERT INTO `einkaufslisten` (`userID`, `listName`, `listID`, `id`, `date`) VALUES
+/*INSERT INTO `einkaufslisten` (`userID`, `listName`, `listID`, `id`, `date`) VALUES
 (60, '123', '0ffb8460d08197d28aaf795711fc8f65', 139, '01.05.2014 - 02:18'),
 (60, 'fdf', '3e217225db245e7285eb3f12bf0dd172', 140, '01.05.2014 - 02:18'),
 (60, 'gfgf', 'f4f451881ba63dd33e30ddc621fc3c43', 141, '01.05.2014 - 02:18'),
 (59, '123', 'd9dbc51dc534921589adf460c85cd824', 142, '01.05.2014 - 02:19'),
 (57, '1234', 'f1887d3f9e6ee7a32fe5e76f4ab80d63', 144, '01.05.2014 - 18:40'),
 (58, 'Rewe', '483fe03fda6c394b7908e0fd1a3204a4', 147, '02.05.2014 - 13:55'),
-(57, 'Rewe', 'ee6adcb954cc78c1b28a63dbdc833356', 149, '09.05.2014 - 14:17');
+(57, 'Rewe', 'ee6adcb954cc78c1b28a63dbdc833356', 149, '09.05.2014 - 14:17');*/
 
 -- --------------------------------------------------------
 
@@ -60,20 +61,21 @@ CREATE TABLE IF NOT EXISTS `friendrelation` (
   `UserId1` int(11) NOT NULL,
   `UserId2` int(11) NOT NULL,
   PRIMARY KEY (`Relation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+-- ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `friendrelation`
 --
 
-INSERT INTO `friendrelation` (`Relation_id`, `AreFriends`, `UserId1`, `UserId2`) VALUES
+/*INSERT INTO `friendrelation` (`Relation_id`, `AreFriends`, `UserId1`, `UserId2`) VALUES
 (1, 2, 57, 60),
 (2, 2, 57, 58),
 (3, 2, 57, 59),
-(4, 1, 93, 57),
+(4, 2, 93, 57),
 (5, 2, 93, 59),
 (6, 2, 60, 93),
-(7, 1, 60, 59);
+(7, 2, 60, 59);*/
 
 -- --------------------------------------------------------
 
@@ -90,13 +92,14 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `Status` int(11) NOT NULL,
   `date` varchar(24) NOT NULL,
   PRIMARY KEY (`not_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `notifications`
 --
 
-INSERT INTO `notifications` (`not_id`, `NotificationType`, `UserId1`, `UserId2`, `Notification`, `Status`, `date`) VALUES
+/*INSERT INTO `notifications` (`not_id`, `NotificationType`, `UserId1`, `UserId2`, `Notification`, `Status`, `date`) VALUES
 (1, 2, 60, 57, '182', 0, '28.04.2014 - 17:56'),
 (2, 2, 60, 57, '188', 0, '28.04.2014 - 17:56'),
 (3, 2, 57, 60, '186', 3, '28.04.2014 - 23:13'),
@@ -105,7 +108,7 @@ INSERT INTO `notifications` (`not_id`, `NotificationType`, `UserId1`, `UserId2`,
 (6, 2, 93, 57, '275', 0, '10.05.2014 - 13:20'),
 (7, 2, 93, 58, '276', 3, '11.05.2014 - 15:22'),
 (8, 2, 93, 59, '262', 3, '26.06.2014 - 16:21'),
-(9, 2, 93, 59, '264', 3, '26.06.2014 - 16:21');
+(9, 2, 93, 59, '264', 3, '26.06.2014 - 16:21');*/
 
 -- --------------------------------------------------------
 
@@ -122,13 +125,14 @@ CREATE TABLE IF NOT EXISTS `produkte` (
   `list_id` varchar(255) NOT NULL,
   `getFromUser` int(11) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=306 ;
+-- ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=306 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `produkte`
 --
 
-INSERT INTO `produkte` (`product`, `amount`, `maxPrice`, `info`, `item_id`, `list_id`, `getFromUser`) VALUES
+/*INSERT INTO `produkte` (`product`, `amount`, `maxPrice`, `info`, `item_id`, `list_id`, `getFromUser`) VALUES
 ('123123', 1, '0.00', '', 238, '0ffb8460d08197d28aaf795711fc8f65', 0),
 ('123', 1, '0.00', '', 239, '0ffb8460d08197d28aaf795711fc8f65', 0),
 ('23', 1, '0.00', '', 240, '0ffb8460d08197d28aaf795711fc8f65', 0),
@@ -176,7 +180,7 @@ INSERT INTO `produkte` (`product`, `amount`, `maxPrice`, `info`, `item_id`, `lis
 ('123', 1, '0.00', '', 284, '483fe03fda6c394b7908e0fd1a3204a4', 0),
 ('123', 1, '0.00', '', 285, '483fe03fda6c394b7908e0fd1a3204a4', 0),
 ('Milch', 1, '1.00', 'fettarm', 286, 'ee6adcb954cc78c1b28a63dbdc833356', 0),
-('Brot', 1, '2.00', 'roggen', 287, 'ee6adcb954cc78c1b28a63dbdc833356', 0);
+('Brot', 1, '2.00', 'roggen', 287, 'ee6adcb954cc78c1b28a63dbdc833356', 0);*/
 
 -- --------------------------------------------------------
 
@@ -196,18 +200,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `ID_2` (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Daten für Tabelle `user`
 --
 
 INSERT INTO `user` (`name`, `vorname`, `email`, `passwort`, `lists`, `profilPic`, `plz`, `ID`) VALUES
-('NonnengieÃŸer', 'Nicolas', 'brummbrumm1995@googlemail.com', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '500px-hazard_x.svg-252768683.png', 61381, 57),
-('Lustig', 'Peter', 'peter@lustig.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '0664754001398121513.jpg', 61381, 58),
-('MÃ¼ller', 'Dieter', 'mueller@gmx.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, 'default.png', 60437, 59),
-('Einstein', 'Albert', 'albert@gmx.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '0060795001398337684.png', 60437, 60),
-('Bernhard', 'Felix', 'mail@felix-bernhard.com', '641073e14ae9b47563b4e19fb322617b', 0, 'default.png', 60437, 93);
+('NonnengieÃŸer', 'Nicolas', 'brummbrumm1995@googlemail.com', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '500px-hazard_x.svg-252768683.png', 61381, 1),
+('Lustig', 'Peter', 'peter@lustig.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '0664754001398121513.jpg', 61381, 2),
+('MÃ¼ller', 'Dieter', 'mueller@gmx.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, 'default.png', 60437, 3),
+('Einstein', 'Albert', 'albert@gmx.de', '8d5c6845fa51fd5998cc1b8bc9c41730', 0, '0060795001398337684.png', 60437, 4),
+('Bernhard', 'Felix', 'mail@felix-bernhard.com', '641073e14ae9b47563b4e19fb322617b', 0, 'default.png', 60437, 5);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

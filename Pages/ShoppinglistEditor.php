@@ -15,22 +15,8 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="../js/FormValidation.js"></script>
-    	<script src="../js/BoogyBox.js"></script>
 		
 		<script>
-			$(function(){
-				$( "a" ).click(function(event) {
-					if(document.shoppinglist.product.value!=""){
-						if (confirm("Bearbeitung abbrechen?")){
-							location.href = event.target.href;
-						}
-						else{
-							return false;
-						}
-					}
-				});
-			});
-			
 			function send(ak,id){
 				if(ak==2){
 					if(document.shoppinglist.product.value!=""){
@@ -57,6 +43,16 @@
 				}
 			}
 			
+			$(function(){
+				$( "a" ).click(function(event){
+					if(document.shoppinglist.product.value!=""){
+						if (!confirm("Bearbeitung abbrechen?")){
+							return false;
+						}
+					}
+				});
+			});
+			
 			var msg_1 = 'Fehler:';
 			
 			var var_1 = new Array()
@@ -74,18 +70,15 @@
 				<table class="t3">
 					<tr>
 						<td>
-							<h1>Einkaufsliste:</h1>
+							<h1>Einkaufsliste:&nbsp;</h1>
 						</td>
 						<td>
 							<?php
 							//Einkaufslisten Namen übergeben//
 								if (isset($_POST["list"])){
 									$_SESSION["list"] = $_POST["list"];
-									$table = $_SESSION["list"];
 								}
-								else{
-									$table = $_SESSION["list"];
-								}
+								$table = $_SESSION["list"];
 								echo "<p class='label'>".$table."&nbsp;<a href='javascript:send(1,0);'><img style='width:10px'; class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></p>";
 							?>
 						</td>
@@ -125,7 +118,7 @@
 							echo "<td class='shoppinglist_item amount'><p>" . $dsatz["amount"] . "</p></td>";
 							echo "<td class='shoppinglist_item maxPrice'><p>" . $dsatz["maxPrice"] . "€</p></td>";
 							echo "<td class='shoppinglist_item info'><p>" . nl2br($dsatz["info"]) . "</p></td>";
-							echo "<td class='shoppinglist_item delcross'><a href='javascript:send(2,".$dsatz["item_id"].");'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></td>";
+							echo "<td class='shoppinglist_item delcross'><div onclick='javascript:send(2,".$dsatz["item_id"].");'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></div></td>";
 							echo "</tr>";
 							$i++;
 						}
@@ -133,7 +126,7 @@
 						mysqli_close($conUser);							
 					?>
 				</table>
-				<form name="shoppinglist" id="shoppinglist" action="../Php/Shoppinglist/AddNewItem.php"  method="post" style="font-family:arial, sans-serif;" onSubmit="return validate(this,var_1,msg_1)">
+				<form name="shoppinglist" id="shoppinglist" action="../Php/Shoppinglist/UpdateShoppinglist.php"  method="post" style="font-family:arial, sans-serif;" onSubmit="return validate(this,var_1,msg_1)">
 					<div id="shoppinglist_add_element">
 						<p style="margin:0px;text-align: center;">
 							Produkt:<input type="text" id="product"  name="product" type="text" maxlength="20" value="" autofocus required/>
@@ -148,12 +141,11 @@
 						<tr>
 							<td>
 								<?php
-									if ($row <= $maxItems -1 )
-									{
-									echo "<button Type='submit' id='insert_button' >Eintragen</button><br/>";  
-									}else
-									{
-									echo "<button style='cursor: not-allowed'; Type='submit' id='insert_button' disabled >Eintragen</button><br/>";  
+									if ($row < $maxItems){
+										echo "<button Type='submit' id='insert_button' >Eintragen</button><br/>";  
+									}
+									else{
+										echo "<button style='cursor: not-allowed' type='submit' id='insert_button' disabled >Eintragen</button><br/>";  
 									}
 								?>
 							</td>
@@ -163,7 +155,7 @@
 								?>
 							</td>
 						</tr>
-						<tr>
+						<!--<tr>
 							<td>
 								<?php
 									include "../Templates/MYSQLConnectionString.php";
@@ -171,7 +163,7 @@
 									$profilPic = mysqli_fetch_assoc($profilPic);
 								?>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 				</form>
 			</div>

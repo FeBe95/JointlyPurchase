@@ -24,7 +24,7 @@
 	
 	$abf7 = "DELETE FROM einkaufslisten WHERE listID = '".$listID."'";
 	$abf8 = "UPDATE einkaufslisten SET date='".$date."' WHERE listID ='".$listID."'";
-	$abf9 = "DELETE FROM Notifications WHERE listID = '".$listID."'";	//--------HIER MUSS DAS JOIN HIN, DAS DIE NOTIFICATIONS LÖSCHT
+	$abf9 = "DELETE FROM Notifications INNER JOIN produkte ON Notifications.Notification = produkte.item_id WHERE produkte.list_iD ='".$listID."'";
 	$abf10= "DELETE FROM Notifications WHERE Notification = ".@$_POST['produkt'];
 	
 	//Delete data in database//
@@ -39,7 +39,7 @@
 	elseif(@$_POST["ak"]=="deleteList"){
 		mysqli_query($conUser,$abf5);
 		mysqli_query($conUser,$abf7);
-		mysqli_query($conUser,$abf9); //LÖSCHEN DER NOTIFICATIONS
+		mysqli_query($conUser,$abf9);
 		header( 'Location: ../../Pages/Home.php' );
 	}
 							

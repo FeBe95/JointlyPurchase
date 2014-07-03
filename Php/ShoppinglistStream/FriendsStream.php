@@ -50,28 +50,13 @@
 					echo "<td class='shoppinglist_item'> <a class='friend_link' href='../Pages/Profil.php?a=".$getFromUser."'> " .$getFromStatus["vorname"]." ".$getFromStatus["name"]."</a></td>";
 				}
 				echo "</tr>";
-				$i++;
 			}
 			echo "</table></div>";
 		}
 		echo "</div>"; // Accordion2 Ende
 	}
 	else{
-		include "../Php/Misc/GetYourData.php";
-		include"../Templates/MYSQLConnectionString.php";
-		
-		$listen = mysqli_fetch_assoc($abf2);
-		$friends = mysqli_query($conUser,"SELECT * FROM FriendRelation WHERE AreFriends = 2 AND (UserId1 = $ID OR UserID2 = $ID)");
-		$numfriends = mysqli_num_rows($friends);
-		
-		if($numfriends==0){
-			echo "Du hast noch keine Freunde hinzugefügt.";
-			echo "<br>";
-			echo "Füge Personen als Freunde hinzu, um deren Einkaufslisten zu sehen.<br/><br/></div>";
-		}
-		else{
-			echo "Keiner Deiner Freunde hat bisher eine Einkaufsliste erstellt.<br/><br/></div>";
-		}
+		echo "<div style='width:672px;'>Keine Einkaufslisten gefunden.<br/><br/></div>";
 	}
 	mysqli_close($conUser);
 	  

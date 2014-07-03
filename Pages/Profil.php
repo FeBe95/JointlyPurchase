@@ -23,7 +23,6 @@
         <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-		<script src="../js/BoogyBox.js"></script>
 		<script src="../js/jquery/jquery-ui-1.9.2.dialog.custom.min.js"></script>
 		<script src="../js/jquery/jquery-ui-1.9.2.accordion.custom.min.js"></script>
 		

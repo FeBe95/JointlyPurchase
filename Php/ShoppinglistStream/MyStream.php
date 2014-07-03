@@ -42,7 +42,7 @@
 					  <th>Anzahl</th>
 					  <th>Max. Preis</th>
 					  <th>Anmerkung</th>
-					  <th>Wird mitgebracht von</th>
+					  <th>Wird Dir mitgebracht von</th>
 					  </tr>";
 					  
 				while ($dsatz = mysqli_fetch_assoc($abf1)){
@@ -66,7 +66,6 @@
 						echo "<td class='shoppinglist_item'><a class='friend_link' href='../Pages/Profil.php?a=".$getFromUser."'>".$getFromStatus["vorname"]." ".$getFromStatus["name"]."</a></td>";
 					}
 					echo "</tr>";
-					$i++;
 				}
 			}
 			else{

@@ -13,25 +13,28 @@
 	$timestamp = time();
 	$datum = date("d.m.Y",$timestamp);
 	$uhrzeit = date("H:i",$timestamp);
-	$date = "".$datum." - ".$uhrzeit."";
+	$date = $datum." - ".$uhrzeit;
 
 	//SQL_Querrys//
-	$abf1 = mysqli_query($conUser,"select * from produkte WHERE user_id = ".$ID."");
-	$abf2 = "INSERT produkte (product,amount,maxPrice,info,list_id) values ('".@$_POST['product']."','".@$_POST['amount']."','".@$_POST['maxPrice']."','".@$info_br."','".$listID."')";
+	$abf1 = mysqli_query($conUser,"select * from produkte WHERE user_id = $ID");
+	$abf2 = "INSERT produkte (product,amount,maxPrice,info,list_id) values (
+			 '".@$_POST['product']."',
+			 '".@$_POST['amount']."',
+			 '".@$_POST['maxPrice']."',
+			 '".@$info_br."',
+			 '".$listID."')";
+	
 	$abf3 = "DELETE FROM produkte where item_id = '".@$_POST['id']."'";
 	
-	$abf5 = "DELETE FROM produkte WHERE list_id = '".$listID."'";
+	$abf5 = "DELETE FROM produkte WHERE list_id = '$listID'";
 	
-	$abf7 = "DELETE FROM einkaufslisten WHERE listID = '".$listID."'";
-	$abf8 = "UPDATE einkaufslisten SET date='".$date."' WHERE listID ='".$listID."'";
-	$abf9 = "DELETE FROM Notifications INNER JOIN produkte ON Notifications.Notification = produkte.item_id WHERE produkte.list_iD ='".$listID."'";
-	$abf10= "DELETE FROM Notifications WHERE Notification = ".@$_POST['produkt'];
+	$abf7 = "DELETE FROM einkaufslisten WHERE listID = '$listID'";
+	$abf8 = "UPDATE einkaufslisten SET date='$date' WHERE listID ='$listID'";
 	
 	//Delete data in database//
 	if(@$_POST["ak"]=="deleteItem"){
 		mysqli_query($conUser,$abf3);
 		mysqli_query($conUser,$abf8);
-		mysqli_query($conUser,$abf10);
 		header( 'Location: ../../Pages/ShoppinglistEditor.php' );
 	}
 	
@@ -39,7 +42,6 @@
 	elseif(@$_POST["ak"]=="deleteList"){
 		mysqli_query($conUser,$abf5);
 		mysqli_query($conUser,$abf7);
-		mysqli_query($conUser,$abf9);
 		header( 'Location: ../../Pages/Home.php' );
 	}
 							

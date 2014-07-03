@@ -43,7 +43,7 @@ $(document).ready(function() {
 		time += 3600 * 365 * 24000;
 		now.setTime(time);
 		document.cookie = 
-			'notifications=' + value + 
+			'shoppingnotifications=' + value + 
 			'; expires=' + now.toUTCString() + 
 			'; path=/';
 	});

@@ -211,23 +211,44 @@ h3 {
 	margin-right: 20px;
 }
 
+.PopUpHeader{
+	font-weight: bold;
+	margin: 0;
+	padding: 10px 10px 8px 10px;
+	/* border-bottom: 1px solid #aaa; */
+	box-shadow: 0 0 2px #555;
+	position: relative;
+	z-index: 50;
+}
+
 .HeadPopUp{
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #808080;
-	box-shadow: 0 0 10px #808080;
+	box-shadow: 0 0 2px #555;
 	display: none;
 	outline: 0 none;
-	padding: 10px;
 	position: absolute;
-	width: 300px;
+	width: 361px;
 }
 
 #HeadPopUpBox {
-	margin: 30px 0 0 -243px;
+	margin: 30px 0 0 -200px;
 }
 
 #HeadPopUpBox2 {
-	margin: 30px 0 0 -271px;
+	margin: 30px 0 0 -240px;
+}
+
+.PopUpTable{
+	width:100%;
+	overflow-y: scroll;
+	max-height: 300px;
+	display: block;
+}
+
+.PopUpTable *{
+	position: relative;
+	z-index: 4;
 }
 
 #logo {
@@ -263,17 +284,19 @@ h3 {
 
 .notification-badge{
 	width: 12px;
-	height: 12px;
-	font-size: 12px;
-	line-height: 12px;
+	height: 16px;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: bold;
 	color: #fff;
 	position: absolute;
 	float: right;
 	margin-left: 22px;
-	margin-top: -5px;
-	background-color: red;
-	border-radius: 10px;
+	margin-top: -8px;
+	background-color: #B3C833;
+	border-radius: 2px;
 	text-align: center;
+	box-shadow: 0 0 3px #000;
 }
 
 .logobutton {

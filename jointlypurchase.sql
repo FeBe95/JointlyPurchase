@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `einkaufslisten` (
 
 CREATE TABLE IF NOT EXISTS `friendrelation` (
   `Relation_id` int(11) NOT NULL AUTO_INCREMENT,
-  `AreFriends` int(1) NOT NULL,
+  `AreFriends` tinyint(1) NOT NULL,
   `UserId1` int(11) NOT NULL,
   `UserId2` int(11) NOT NULL,
   PRIMARY KEY (`Relation_id`)
@@ -80,35 +80,34 @@ CREATE TABLE IF NOT EXISTS `friendrelation` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `notifications`
+-- Tabellenstruktur für Tabelle `shoppingnotifications`
 --
 
-CREATE TABLE IF NOT EXISTS `notifications` (
-  `not_id` int(11) NOT NULL AUTO_INCREMENT,
-  `NotificationType` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `shoppingnotifications` (
+  `s_not_id` int(11) NOT NULL AUTO_INCREMENT,
   `UserId1` int(11) NOT NULL,
   `UserId2` int(11) NOT NULL,
-  `Notification` mediumtext NOT NULL,
-  `Status` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `date` varchar(24) NOT NULL,
-  PRIMARY KEY (`not_id`)
+  PRIMARY KEY (`s_not_id`)
 -- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Daten für Tabelle `notifications`
+-- Daten für Tabelle `shoppingnotifications`
 --
 
-/*INSERT INTO `notifications` (`not_id`, `NotificationType`, `UserId1`, `UserId2`, `Notification`, `Status`, `date`) VALUES
-(1, 2, 60, 57, '182', 0, '28.04.2014 - 17:56'),
-(2, 2, 60, 57, '188', 0, '28.04.2014 - 17:56'),
-(3, 2, 57, 60, '186', 3, '28.04.2014 - 23:13'),
-(4, 2, 57, 58, '185', 3, '01.05.2014 - 01:16'),
-(5, 2, 59, 57, '274', 0, '09.05.2014 - 14:21'),
-(6, 2, 93, 57, '275', 0, '10.05.2014 - 13:20'),
-(7, 2, 93, 58, '276', 3, '11.05.2014 - 15:22'),
-(8, 2, 93, 59, '262', 3, '26.06.2014 - 16:21'),
-(9, 2, 93, 59, '264', 3, '26.06.2014 - 16:21');*/
+/*INSERT INTO `shoppingnotifications` (`s_not_id`, `UserId1`, `UserId2`, `product_id`, `status`, `date`) VALUES
+(1, 60, 57, '182', 0, '28.04.2014 - 17:56'),
+(2, 60, 57, '188', 0, '28.04.2014 - 17:56'),
+(3, 57, 60, '186', 3, '28.04.2014 - 23:13'),
+(4, 57, 58, '185', 3, '01.05.2014 - 01:16'),
+(5, 59, 57, '274', 0, '09.05.2014 - 14:21'),
+(6, 93, 57, '275', 0, '10.05.2014 - 13:20'),
+(7, 93, 58, '276', 3, '11.05.2014 - 15:22'),
+(8, 93, 59, '262', 3, '26.06.2014 - 16:21'),
+(9, 93, 59, '264', 3, '26.06.2014 - 16:21');*/
 
 -- --------------------------------------------------------
 
@@ -117,11 +116,11 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 --
 
 CREATE TABLE IF NOT EXISTS `produkte` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `product` varchar(45) CHARACTER SET utf8 NOT NULL,
   `amount` int(11) NOT NULL,
   `maxPrice` decimal(19,2) NOT NULL,
   `info` mediumtext NOT NULL,
-  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `list_id` varchar(255) NOT NULL,
   `getFromUser` int(11) NOT NULL,
   PRIMARY KEY (`item_id`)
@@ -189,14 +188,14 @@ CREATE TABLE IF NOT EXISTS `produkte` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `name` varchar(20) DEFAULT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `vorname` varchar(20) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `passwort` varchar(255) DEFAULT NULL,
   `lists` int(11) NOT NULL,
   `profilPic` varchar(50) NOT NULL DEFAULT 'default.png',
   `plz` int(5) NOT NULL,
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),
   UNIQUE KEY `ID_2` (`ID`)

@@ -32,11 +32,15 @@
 	margin: 5px 5px 0 5px;
 	padding: 5px;
 }
-.ui-accordion-content .shoppinglist_item_row:hover:nth-child(2n) {
+/*.ui-accordion-content .shoppinglist_item_row:hover:nth-child(2n) {
 	background-color: #ccc;
 }
 .ui-accordion-content .shoppinglist_item_row:hover:nth-child(2n+1) {
 	background-color: #eee;
+}*/
+.ui-accordion-content .shoppinglist_item_row:hover {
+	/*background-color: #D1DE85;*/
+	background-color: #99DDFB;
 }
 .ui-accordion-header:nth-of-type(2n){
 	background-color: #C2D35C;

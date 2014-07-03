@@ -104,7 +104,7 @@ function validate(sender,myarray,err_hd) {
 		else if (myarray[i][1].indexOf('c')>-1) {
 			var noble = new Array("de","von","van","der","d","la","da","of");
 			var newvalue='';
-			var myvalue = field.value.split(/ /); //nicht (/\b/), weil dann üöäß nicht gehen!
+			var myvalue = field.value.split(/ /);
 			for (k=0;k<myvalue.length;k++) {
 				newvalue+= myvalue[k].substr(0,1).toUpperCase()+myvalue[k].substring(1)+" "; // " " ist Leerzeichen-Fix
 			}
@@ -112,7 +112,7 @@ function validate(sender,myarray,err_hd) {
 				var reg = new RegExp ("\\b"+noble[k]+"\\b","gi");
 				newvalue = newvalue.replace(reg,noble[k]);
 			}
-			field.value = newvalue;
+			field.value = newvalue.Substring(0, str.Length - 1); //letztes Leerzeichen Entfernen
 		}
 	}
 	

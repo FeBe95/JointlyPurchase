@@ -2,7 +2,7 @@
 	include "../Php/Misc/GetYourData.php"; 
 	include "../Templates/MYSQLConnectionString.php";
 	
-	$res = mysqli_query($conUser,"SELECT
+	$res1 = mysqli_query($conUser,"SELECT
 								   s_not_id,
 								   shoppingnotifications.date,
 								   shoppingnotifications.status,
@@ -33,33 +33,21 @@
 								   WHERE shoppingnotifications.UserId2 = $ID
 								   AND shoppingnotifications.status = 3
 								   
-								   ORDER BY s_not_id DESC
-								   LIMIT 0 , 10");	
+								   ORDER BY s_not_id DESC");	
 								   
-	$num = mysqli_num_rows($res);
+	$num = mysqli_num_rows($res1);
 	
-	if(isset($_COOKIE['shoppingnotifications'])){
-		if($num > $_COOKIE['shoppingnotifications']){
-			echo "<div id='badge2' class='notification-badge'>".($num-$_COOKIE['shoppingnotifications'])."</div>";
-		}
-	}
-	else{
-		echo "<div id='badge2' class='notification-badge'>$num</div>";
-	}
-		
 	if ($num > 0){
-		
-		echo "<div id='HeadPopUpBox2' class='HeadPopUp'>";
-		echo "<p class='PopUpHeader'>Neuste Benachrichtigungen</p>";
+		echo "<h1>Alle Benachrichtigungen:</h1>";
 	
 		// Tabellenbeginn
 		echo "<table cellspacing='10px' class='PopUpTable' >";
-		while ($dsatz = mysqli_fetch_assoc($res)){
+		while ($dsatz = mysqli_fetch_assoc($res1)){
 			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
 			echo "<tr>";
 			//Mitbringen
 			if($dsatz['status']==1){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#dfd'>";
+				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#dfd'>";
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." möchte Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> mitbringen.";
@@ -68,7 +56,7 @@
 			}
 			//NichtMitbringen
 			elseif($dsatz['status']==0){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#fdd'>";
+				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#fdd'>";
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." kann Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> doch nicht mitbringen.";
@@ -77,7 +65,7 @@
 			}
 			//Freundschaftsanfrage
 			elseif($dsatz['status']==3){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#ddf'>";
+				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#ddf'>";
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." hat deine Freundschaftsanfrage angenommen.";
@@ -88,13 +76,10 @@
 		}
 		// Tabellenende
 		echo "</table>";
-	echo "<p class='PopUpFooter'><a href='../Pages/AllNotifications.php'>Alle Benachrichtigungen anzeigen</a></p>";
 	}
 	else{
-		echo "<div id='HeadPopUpBox2' class='HeadPopUp'>";
-		echo "<p class='PopUpHeader'>Neuste Benachrichtigungen</p>";
-		echo"<p style='padding:10px;margin:0;font-style:italic; font-size:14px;'> Du hast noch keine Benachrichtigungen</p>";
+		echo "<p class='PopUpHeader'>Benachrichtigungen</p>";
+		echo"<p style='padding:10px;margin:0;font-style:italic; font-size:12px;'> Du hast zurzeit keine Benachrichtigungen </p>";
 	}
-	echo "</div>";
 	mysqli_close($conUser);
 ?>

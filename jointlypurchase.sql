@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `einkaufslisten` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `friendrelation`
+-- Tabellenstruktur für Tabelle `FriendRelation`
 --
 
-CREATE TABLE IF NOT EXISTS `friendrelation` (
+CREATE TABLE IF NOT EXISTS `FriendRelation` (
   `Relation_id` int(11) NOT NULL AUTO_INCREMENT,
   `AreFriends` tinyint(1) NOT NULL,
   `UserId1` int(11) NOT NULL,
@@ -65,10 +65,10 @@ CREATE TABLE IF NOT EXISTS `friendrelation` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
--- Daten für Tabelle `friendrelation`
+-- Daten für Tabelle `FriendRelation`
 --
 
-/*INSERT INTO `friendrelation` (`Relation_id`, `AreFriends`, `UserId1`, `UserId2`) VALUES
+/*INSERT INTO `FriendRelation` (`Relation_id`, `AreFriends`, `UserId1`, `UserId2`) VALUES
 (1, 2, 57, 60),
 (2, 2, 57, 58),
 (3, 2, 57, 59),

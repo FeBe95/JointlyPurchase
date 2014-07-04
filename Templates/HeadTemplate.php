@@ -10,7 +10,8 @@
 						<?php
 							include "../Templates/MYSQLConnectionString.php";
 							$profilPic = mysqli_query($conUser,"SELECT profilPic FROM user WHERE email = '$email'");
-							$profilPic = mysqli_fetch_assoc($profilPic)["profilPic"];
+							$profilPic = mysqli_fetch_assoc($profilPic);
+							$profilPic = $profilPic["profilPic"];
 							
 							echo "<a href='../Pages/Profil.php?a=$ID' class='headlink'><div id='headcrop'>";
 							echo "<img id='smallcrop' src='../Pictures/Thumbnails/$profilPic'>";
@@ -44,7 +45,7 @@
                     </td>
                     <td>
 						<form action="../Php/Authentification/Logout.php" method="post">
-							<input name="send" style="margin-left:10px;" type="submit" value="Logout"></input>
+							<input name="send" style="margin-left:10px;" type="submit" value="Logout"/>
 						</form>
 					</td>
                 </tr>

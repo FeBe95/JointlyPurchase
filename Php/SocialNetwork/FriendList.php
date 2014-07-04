@@ -42,23 +42,30 @@
 		echo"<h1>Freunde von ".$vorname_friend.":</h1>";
 	}
 
-	// Tabellenbeginn
-	echo "<table cellspacing='10px' style='margin:0 auto;' >";
-	while ($dsatz1 = mysqli_fetch_assoc($res1)){
-		$name= $dsatz1["vorname"]."<br/>".$dsatz1["name"] ;
-		echo "<tr>";
-		echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz1['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz1["profilPic"]."'></div>$name</a></td>";
-		echo "</tr>";
+	if ($num1+$num2 > 0){
+		// Tabellenbeginn
+		echo "<table cellspacing='10px' style='margin:0 auto;' >";
+		while ($dsatz1 = mysqli_fetch_assoc($res1)){
+			$name= $dsatz1["vorname"]."<br/>".$dsatz1["name"] ;
+			echo "<tr>";
+			echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz1['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz1["profilPic"]."'></div>$name</a></td>";
+			echo "</tr>";
+		}
+		while ($dsatz2 = mysqli_fetch_assoc($res2)){
+			$name= $dsatz2["vorname"]."<br/>".$dsatz2["name"] ;
+			echo "<tr>";
+			echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz2['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz2["profilPic"]."'></div>$name</a></td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+		// Tabellenende
 	}
-	while ($dsatz2 = mysqli_fetch_assoc($res2)){
-		$name= $dsatz2["vorname"]."<br/>".$dsatz2["name"] ;
-		echo "<tr>";
-		echo "<td class='friend_block'><a class='friend_link' href='../Pages/Profil.php?a=".$dsatz2['ID']."'><div id='profilPicCrop'><img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz2["profilPic"]."'></div>$name</a></td>";
-		echo "</tr>";
+	elseif ($ID2 == $ID){
+		echo "<p>Du hast noch keine Freunde hinzugefügt.</p>";
 	}
-	// Tabellenende
-	
-	echo "</table>";
+	elseif ($ID2 != $ID){
+		echo "<p>$vorname_friend hat noch keine Freunde hinzugefügt.</p>";
+	}
 	echo "</div>";
 	mysqli_close($conUser);
 ?>

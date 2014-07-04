@@ -1,8 +1,10 @@
 <?php
 	include "../Php/Misc/GetYourData.php"; 
 	include "../Templates/MYSQLConnectionString.php";
-								  
-	$res1 = mysqli_query($conUser,"SELECT
+	
+	
+	//Abfrage für noch nicht angenommene Freundschaftsanfragen (von dir)
+	$res1 = mysqli_query($conUser,"SELECT DISTINCT
 								   FriendRelation.AreFriends,
 								   FriendRelation.UserId1,
 								   FriendRelation.UserId2,
@@ -11,14 +13,15 @@
 								   user.vorname,
 								   user.profilPic
 								   FROM FriendRelation
-								   INNER JOIN user
+								   RIGHT JOIN user
 								   ON FriendRelation.UserId1 = user.ID
 								   WHERE FriendRelation.AreFriends != 2
 								   AND user.ID != $ID
 								   AND user.plz = $plz
 								   LIMIT 0 , 100");
-								  
-	$res2 = mysqli_query($conUser,"SELECT
+			
+	//Abfrage für noch nicht angenommene Freundschaftsanfragen (vom Freund)				  
+	$res2 = mysqli_query($conUser,"SELECT DISTINCT
 								   FriendRelation.AreFriends,
 								   FriendRelation.UserId1,
 								   FriendRelation.UserId2,
@@ -34,8 +37,8 @@
 								   AND user.plz = $plz
 								   LIMIT 0 , 100");
 	
-	/*HIER*/
-	$res3 = mysqli_query($conUser,"SELECT
+	//Abfrage für noch nicht bestehende Freundschaftsanfragen
+	$res3 = mysqli_query($conUser,"SELECT DISTINCT
 								   FriendRelation.AreFriends,
 								   FriendRelation.UserId1,
 								   FriendRelation.UserId2,
@@ -44,14 +47,14 @@
 								   user.vorname,
 								   user.profilPic
 								   FROM FriendRelation
-								   INNER JOIN user
-								   ON FriendRelation.UserId1 = user.ID
-								   WHERE FriendRelation.AreFriends != 2
-								   AND user.ID != $ID
-								   AND user.plz = $plz
+								   RIGHT OUTER JOIN user
+								   ON FriendRelation.UserId1 = user.ID 
+                                   OR FriendRelation.UserId2 = user.ID 
+                                   WHERE FriendRelation.AreFriends IS NULL
+								   AND FriendRelation.AreFriends = 2
 								   LIMIT 0 , 100");
 
-	echo mysqli_error($conUser)."<br/>";							   
+	echo mysqli_error($conUser)."<br/>";						   
 	
 	$num1 = mysqli_num_rows($res1);
 	$num2 = mysqli_num_rows($res2);

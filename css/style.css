@@ -56,6 +56,13 @@ a {
 	color: #00ABF5;
 }
 
+.contentBlock {
+	background-color: white;
+	vertical-align: top;
+	width: 0px;
+	border-radius: 5px;
+}
+
 .contentBlock a:hover, .contentBlock a:focus {
 	text-decoration: underline;
 }
@@ -151,12 +158,6 @@ h3 {
 	left: 157px;
 }
 
-#friend_req_block {
-	background-color: white;
-	border-bottom: 1px solid gray;
-	height: 60px;
-}
-
 #profilcrop {
 	width: 40px;
 	margin-left: 10px;
@@ -168,12 +169,6 @@ h3 {
 	overflow: hidden;
 	float: left;
 	display: block;
-}
-
-.contentBlock {
-	background-color: white;
-	vertical-align: top;
-	width: 0px;
 }
 
 /*header styles*/
@@ -213,12 +208,24 @@ h3 {
 
 .PopUpHeader{
 	font-weight: bold;
-	margin: 0;
 	padding: 10px 10px 8px 10px;
 	/* border-bottom: 1px solid #aaa; */
 	box-shadow: 0 0 2px #555;
 	position: relative;
+	border-radius: 5px 5px 0 0;
 	z-index: 50;
+	margin: 0;
+}
+
+.PopUpFooter{
+	padding: 10px 10px 8px 10px;
+	/* border-bottom: 1px solid #aaa; */
+	box-shadow: 0 0 2px #555;
+	position: relative;
+	border-radius: 0 0 5px 5px;
+	z-index: 50;
+	margin: 0;
+	text-align: center;
 }
 
 .HeadPopUp{
@@ -229,6 +236,7 @@ h3 {
 	outline: 0 none;
 	position: absolute;
 	width: 361px;
+	border-radius: 5px;
 }
 
 #HeadPopUpBox {
@@ -239,16 +247,29 @@ h3 {
 	margin: 30px 0 0 -240px;
 }
 
-.PopUpTable{
+#HeadPopUpBox2 .PopUpTable{
 	width:100%;
 	overflow-y: scroll;
 	max-height: 300px;
 	display: block;
 }
 
+.PopUpTable{
+	width: 100%;
+}
+
 .PopUpTable *{
 	position: relative;
 	z-index: 4;
+}
+
+.friend_req_block {
+	background-color: white;
+	border-radius: 5px;
+}
+
+#HeadPopUpBox .friend_req_block{
+	height: 30px;
 }
 
 #logo {

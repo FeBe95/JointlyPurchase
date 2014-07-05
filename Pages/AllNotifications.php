@@ -41,6 +41,9 @@
 					</td>
 				</tr>
 			</table>
-		<div>
+		</div>
+		<?php 
+			 include "../Templates/FooterTemplate.php";
+		?>
     </body>
 </html>

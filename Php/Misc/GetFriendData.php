@@ -8,6 +8,6 @@
 	$vorname_friend=$dsatz["vorname"];
 	$nachname_friend=$dsatz["name"];
 	$email_friend=$dsatz["email"];
-	$plz=$dsatz["plz"];
+	$plz_friend=$dsatz["plz"];
 	mysqli_close($conUser);
 ?>

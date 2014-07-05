@@ -139,7 +139,7 @@
 								</tr>
 								<tr>
 									<td>Postleitzahl:</td>
-									<td><?php echo $plz;?></td>
+									<td><?php echo $plz_friend;?></td>
 								</tr>
 							</table>
 						</div>

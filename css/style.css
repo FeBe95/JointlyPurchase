@@ -465,6 +465,18 @@ h3 {
 	border: 1px solid #808080;
 	border-radius: 5px;
 }
+.friend_block_empty {
+	background-color: white;
+	width: 170px;
+	height: 230px;
+	margin-top: 10px;
+	margin-right: 8px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+}
+p.friend_block_empty {
+	text-align:left;
+}
 
 .friend_block_font {
 	margin: 0px;

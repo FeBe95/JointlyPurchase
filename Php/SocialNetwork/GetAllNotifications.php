@@ -38,7 +38,7 @@
 	$num = mysqli_num_rows($res1);
 	
 	if ($num > 0){
-		echo "<h1>Alle Benachrichtigungen:</h1>";
+		echo "<h1>Alle Deine Benachrichtigungen:</h1>";
 	
 		// Tabellenbeginn
 		echo "<table cellspacing='10px' class='PopUpTable' >";

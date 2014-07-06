@@ -56,7 +56,7 @@
 		echo "</div>"; // Accordion2 Ende
 	}
 	else{
-		echo "<div style='width:672px;'>Keine Einkaufslisten gefunden<br/><br/></div>";
+		echo "<div style='width:752px;'>Keine Einkaufslisten gefunden<br/><br/></div>";
 	}
 	mysqli_close($conUser);
 	  

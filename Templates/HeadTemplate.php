@@ -3,6 +3,12 @@
         <div id="logo">
             <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein.png" width="250px"/></a>
         </div>
+		<div id="headsearch">
+			<form action="../Pages/SearchResults.php" method="get">
+					<input placeholder="Suche nach Name oder Postleitzahl" name="q" type="text" value="<?php echo @$_GET['q'] ?>"/>
+					<span id="searchbutton" onclick="this.parentNode.submit()">&#128269;</span>
+			</form>
+		</div>
         <div id="headbuttons">
             <table>
                 <tr>
@@ -15,7 +21,7 @@
 							
 							echo "<a href='../Pages/Profil.php?a=$ID' class='headlink'><div id='headcrop'>";
 							echo "<img id='smallcrop' src='../Pictures/Thumbnails/$profilPic'>";
-							echo "</div><span class='head-icon'>$vorname $nachname</span></a>";
+							echo "</div><span id='head-name'>$vorname $nachname</span></a>";
 						?>
                     </td>
                     <td>

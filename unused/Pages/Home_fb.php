@@ -76,7 +76,12 @@
 						</div>
 					</td>
 					<td id="friendsBrowser">
-						<?php include "../Php/SocialNetwork/FriendBrowser.php"; ?>
+						<div id="loadspinner">
+							<div class="spinner">
+								<div class="double-bounce1"></div>
+								<div class="double-bounce2"></div>
+							</div>
+						</div>
 					</td>
 				</tr>
                 <tr style="height:300px;">
@@ -143,6 +148,28 @@
 					
 				}
 			}
+			
+			var friendsBrowser_datei = new XMLHttpRequest();
+			
+			function fb_function(){
+				if(friendsBrowser_datei.responseText != 0){
+					document.getElementById('loadspinner').style.opacity = "0";
+					window.setTimeout(function(){
+						document.getElementById('friendsBrowser').innerHTML = friendsBrowser_datei.responseText;
+						document.getElementById('friendsBrowser').style.verticalAlign = "top";
+						$( "#results" ).show("blind", "slow");
+					},400);
+				}
+			}
+			function fb(){
+				friendsBrowser_datei.open("POST", "../Php/SocialNetwork/FriendBrowser_alt.php");
+				friendsBrowser_datei.onreadystatechange = fb_function;
+				friendsBrowser_datei.send(null);
+			}
+		
+			window.addEventListener('load', function() {
+				fb();
+			});
 		</script>
     </body>
 </html>

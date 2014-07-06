@@ -1,7 +1,8 @@
 body {
 	margin: 0px;
 	height: 100%;
-	background-color: #D3D3D3;
+	/* background-color: #D3D3D3; */
+	background-color: #eee;
 	font-family: Arial,sans-serif;
 }
 
@@ -24,20 +25,23 @@ input[type=button] {
 	padding: 2px 5px 5px;
 	margin: 0px 0;
 	border-top: 2px solid #9a9a9a;
+	transition: border-top 0.1s ease;
 }
 
 button:hover:enabled, button:active:enabled,
 input[type=submit]:hover:enabled, input[type=submit]:active:enabled,
 input[type=button]:hover:enabled, input[type=button]:active:enabled {
 	border-top: 2px solid #B3C833;
+	transition: border-top 0.1s ease;
 }
 
 button:disabled,
 input[type=submit]:disabled,
 input[type=button]:disabled {
-	background-color: #bbb;
+	background-color: #ccc;
 	color: #fff;
 	cursor: default;
+	border-color: #ccc;
 }
 
 input:not([type=submit]):not([type=button]), textarea{
@@ -140,6 +144,7 @@ h3 {
 	position: absolute;
 	width: 732px;
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 .triangle {
@@ -187,6 +192,65 @@ h3 {
 	margin: 0 auto;
 }
 
+#headsearch form{
+	display: inline-block;
+	position: absolute;
+	margin-top: 8px;
+}
+
+#headsearch form input[type="text"]{
+	font-size: 16px;
+	width: 310px;
+	border-radius: 5px;
+	height: 20px;
+	padding-left: 6px;
+	padding-right: 30px;
+}
+
+#searchbutton{
+	cursor: pointer;
+    color: #888;
+	display: inline-block;
+	position: absolute;
+	right: 6px;
+	bottom: 4px;
+	line-height: 10px;
+	padding: 4px 4px;
+	border-left: 1px solid #888;
+}
+input::-webkit-input-placeholder {
+    color: #888;
+}
+input:focus::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+/* Firefox < 19 */
+input:-moz-placeholder {
+    color: #888;
+	opacity: 1;
+}
+input:focus:-moz-placeholder {
+    color: #bbb;
+}
+
+/* Firefox > 19 */
+input::-moz-placeholder {
+    color: #888;
+	opacity: 1;
+}
+input:focus::-moz-placeholder {
+    color: #bbb;
+}
+
+/* Internet Explorer 10 */
+input:-ms-input-placeholder {
+    color: #555;
+}
+input:focus:-ms-input-placeholder {
+    color: #bbb;
+}
+
 #headbuttons {
 	float: right;
 	margin-top: 5px;
@@ -200,10 +264,34 @@ h3 {
 
 .headlink {
 	color: #fff;
-	font-size: 12px;
-	line-height: 28px;
+	font-size: 14px;
+	line-height: 25px;
 	text-decoration: none;
 	margin-right: 20px;
+	display: block;
+	background-color: #999;
+	border-radius: 5px;
+	overflow: hidden;
+	-webkit-transition: background-color 0.2s ease;
+	transition: background-color 0.2s ease;
+}
+
+.headlink:hover{
+	background-color: #888;
+	-webkit-transition: background-color 0.2s ease;
+	transition: background-color 0.2s ease;
+}
+
+#headcrop {
+	height: 25px;
+	width: 25px;
+	overflow: hidden;
+	float: left;
+	display: block;
+}
+
+#head-name{
+	padding: 0 10px;
 }
 
 .PopUpHeader{
@@ -264,8 +352,15 @@ h3 {
 }
 
 .friend_req_block {
-	background-color: white;
+	background-color: #ddf;
 	border-radius: 5px;
+	padding: 5px 20px;
+}
+
+.friend_req_block img {
+	float: right;
+	display: block;
+	top: 2px;
 }
 
 #HeadPopUpBox .friend_req_block{
@@ -332,15 +427,6 @@ h3 {
 	width: 25px;
 	margin-right: 10px;
 	border: 0px;
-}
-
-#headcrop {
-	height: 25px;
-	width: 25px;
-	overflow: hidden;
-	float: left;
-	display: block;
-	margin-right: 10px;
 }
 
 #greybar {
@@ -453,29 +539,86 @@ h3 {
 
 #right {
 	text-align: center;
-	font-family: Arial,sans-serif;
+}
+
+#friendsBrowser{
+	text-align: center;
+}
+
+#loadspinner{
+	position: relative; 
+	width: 0;
+	height: 0;
+	transition: opacity 0.5s ease;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 103px;
+  top: -10px;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: bounce 1s infinite ease-in-out;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+#results{
+	background-color: #fff;
+	text-align: center;
+	display: none;
+	padding: 10px 0 10px 0;
+	border-radius: 5px;
+}
+
+.relationbutton{
+	margin: 10px 0 -10px 0;
 }
 
 .friend_block {
-	background-color: white;
+	background-color: #ddd;
 	width: 170px;
 	height: 70px;
 	margin-top: 10px;
 	margin-right: 8px;
-	border: 1px solid #808080;
 	border-radius: 5px;
 }
 .friend_block_empty {
-	background-color: white;
-	width: 170px;
-	height: 230px;
-	margin-top: 10px;
-	margin-right: 8px;
-	border: 1px solid #808080;
+	background-color: #ddd;
+	width: 150px;
+	margin: 10px auto;
 	border-radius: 5px;
-}
-p.friend_block_empty {
-	text-align:left;
+	padding: 10px 10px;
 }
 
 .friend_block_font {

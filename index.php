@@ -22,7 +22,7 @@
 		<div id="head">
 			<div id="headcontent">
 				<div id="logo">
-					<img src="logo_klein.png" width="250px"/>
+					<img src="logo_klein_beta.png" width="250px"/>
 				</div>
 				<div id="headbuttons">
 					<form action="Php/Authentification/Login.php" method="post">

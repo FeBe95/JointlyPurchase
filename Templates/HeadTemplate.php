@@ -1,7 +1,7 @@
 <div id="head">
     <div id="headcontent">
         <div id="logo">
-            <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein.png" width="250px"/></a>
+            <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein_beta.png" width="250px"/></a>
         </div>
 		<div id="headsearch">
 			<form action="../Pages/SearchResults.php" method="get">

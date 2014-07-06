@@ -33,14 +33,16 @@
 								   WHERE shoppingnotifications.UserId2 = $ID
 								   AND shoppingnotifications.status = 3
 								   
-								   ORDER BY s_not_id DESC
-								   LIMIT 0 , 10");	
-								   
+								   ORDER BY s_not_id DESC");	
+								   // Nicht "LIMIT 0 , 10", da sonst Badge Nummer falsch!
 	$num = mysqli_num_rows($res);
+	echo "<div id='hiddennum' style='display:none'>$num</div>";
+	$i = 0;
 	
 	if(isset($_COOKIE['shoppingnotifications'])){
+		$newnum = $num-$_COOKIE['shoppingnotifications'];
 		if($num > $_COOKIE['shoppingnotifications']){
-			echo "<div id='badge2' class='notification-badge'>".($num-$_COOKIE['shoppingnotifications'])."</div>";
+			echo "<div id='badge2' class='notification-badge'>$newnum</div>";
 		}
 	}
 	else{
@@ -54,12 +56,17 @@
 	
 		// Tabellenbeginn
 		echo "<table cellspacing='10px' class='PopUpTable' >";
-		while ($dsatz = mysqli_fetch_assoc($res)){
+		while (($dsatz = mysqli_fetch_assoc($res)) && $i < 10){
 			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
 			echo "<tr>";
 			//Mitbringen
 			if($dsatz['status']==1){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#dfd'>";
+				if($i<$newnum){
+					echo "<td class='friend_req_block notification accept new'>";
+				}
+				else{
+					echo "<td class='friend_req_block notification accept'>";
+				}
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." möchte Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> mitbringen.";
@@ -68,7 +75,12 @@
 			}
 			//NichtMitbringen
 			elseif($dsatz['status']==0){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#fdd'>";
+				if($i<$newnum){
+					echo "<td class='friend_req_block notification decline new'>";
+				}
+				else{
+					echo "<td class='friend_req_block notification decline'>";
+				}
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." kann Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> doch nicht mitbringen.";
@@ -77,7 +89,12 @@
 			}
 			//Freundschaftsanfrage
 			elseif($dsatz['status']==3){
-				echo "<td class='friend_req_block not_count' style='padding:0 20px;background-color:#ddf'>";
+				if($i<$newnum){
+					echo "<td class='friend_req_block notification friend_accept new'>";
+				}
+				else{
+					echo "<td class='friend_req_block notification friend_accept'>";
+				}
 				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." hat deine Freundschaftsanfrage angenommen.";
@@ -85,6 +102,7 @@
 				echo "</td>";
 			}
 			echo "</tr>";
+			$i++;
 		}
 		// Tabellenende
 		echo "</table>";

@@ -86,7 +86,7 @@
 		<script src="../js/bg.js"></script>
 		-->
 		
-		<div id="mainwindow" style="top:-54px;">
+		<div id="mainwindow" style="top:-56px;">
 			<table>
 				<tr>
 					<td>

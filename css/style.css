@@ -1,12 +1,45 @@
-body {
-	margin: 0px;
-	height: 100%;
-	/* background-color: #D3D3D3; */
+/* ----------------------Copyright-Fix---------------------- */
+body{
+  min-height: 100%;
+  position: relative;
+}
+#mainwindow{
+	padding-bottom: 100px;
+}
+footer{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 92px;
+	background-color:#C4C4C4;
+}
+#footer_content{
+	font-size:15px;
+	width: 100%;
+	text-align:center;
+}
+#footer_top{
+	line-height: 20px;
+	padding: 13px;
+}
+#footer_bottom{
+	/*position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 100;*/
+	background-color:#575757;
+	line-height: 20px;
+	padding: 13px;
+}
+/* ----------------------Copyright-Fix---------------------- */
+
+html, body{
+	margin: auto;
 	background-color: #eee;
 	font-family: Arial,sans-serif;
 }
 
-html {
+html{
 	height: 100%;
 	overflow-y: scroll;
 }
@@ -147,7 +180,8 @@ h3 {
 	background-color:#f55;
 	position: absolute;
 	width: 732px;
-	margin-top: 0;
+	/* width: 1028px; */
+	margin-top: -2px;
 	border-radius: 5px;
 }
 
@@ -183,11 +217,11 @@ h3 {
 /*header styles*/
 #head {
 	background-color: #575757;
-	padding: 3px 0px;
 	height: 40px;
 	position: fixed;
+	padding: 3px 0;
 	z-index: 30;
-	box-shadow: 0 0 2px #555;
+	/* box-shadow: 0 0 2px #555; */
 	width: 100%;
 }
 
@@ -419,6 +453,32 @@ input:focus:-ms-input-placeholder {
 	box-shadow: 0 0 3px #000;
 }
 
+.notification{
+	padding:0 20px;
+}
+.notification.accept{
+	background-color:#dfd;
+}
+.notification.decline{
+	background-color:#fdd;
+}
+.notification.friend_accept{
+	background-color:#ddf;
+}
+.notification.new.accept{
+	background-color:#8f8;
+}
+.notification.new.decline{
+	background-color:#f88;
+}
+.notification.new.friend_accept{
+	background-color:#88f;
+}
+
+.notification.new {
+	box-shadow: inset 0 0 2px #000;
+}
+
 .logobutton {
 	font-family: 'Alegreya Sans SC';
 	font-size: 26px;
@@ -435,10 +495,11 @@ input:focus:-ms-input-placeholder {
 
 #greybar {
 	background-color: #C4C4C4;
-	height: 50px;
+	height: 40px;
 	position: relative;
-	top: 46px;
+	top: 40px;
 	width: 100%;
+	padding: 3px 0;
 }
 
 #headMenue {
@@ -547,6 +608,8 @@ input:focus:-ms-input-placeholder {
 
 #friendsBrowser{
 	text-align: center;
+	padding-top: 36px;
+	vertical-align: top;
 }
 
 #loadspinner{
@@ -768,19 +831,4 @@ th{
 
 .delcross{
 	cursor: pointer;
-}
-/*footer styles*/
-footer{
-	padding:10px;
-	background-color:#c4c4c4;
-	position:relative;
-}
-#footer_content{
-	font-size:15px;
-	width:1100px;
-	margin:0 auto;
-	text-align:center;
-}
-#top_footer{
-	margin-bottom:10px;
 }

@@ -37,7 +37,8 @@ $(document).ready(function() {
 			$('#icon2').attr('class', 'head-icon replaced-svg' );
 		}
 		$('#icon1').attr('class', 'head-icon replaced-svg' );
-		var value = $('.not_count').length;
+		// var value = $('.not_count').length;
+		var value = document.getElementById('hiddennum').innerHTML;
 		var now = new Date();
 		var time = now.getTime();
 		time += 3600 * 365 * 24000;

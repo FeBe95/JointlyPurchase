@@ -26,11 +26,57 @@
 		<script src="../js/jquery/jquery-ui-1.9.2.dialog.custom.min.js"></script>
 		<script src="../js/jquery/jquery-ui-1.9.2.accordion.custom.min.js"></script>
 		
+		<script>
+			$(function() {
+				$( "#Accordion1" ).accordion({
+					heightStyle:"content",
+					active: 0,
+					collapsible:true
+				}); 
+				$( "#Accordion2" ).accordion({
+					heightStyle:"content",
+					active: 0,
+					collapsible:true
+				});
+			});
+			
+			function send(ak,id,id2){
+				if (ak==1){
+					if (confirm("Möchtest du diesen Auftrag abbrechen?")){
+						document.shoppinglistDecline.itemId.value = id;
+						document.shoppinglistDecline.listId.value = id2;		
+						document.shoppinglistDecline.submit();
+					}
+					else{
+						return;
+					}
+				}
+				if (ak==2){
+					document.shoppinglistAccept.itemId.value = id;
+					document.shoppinglistAccept.listId.value = id2;
+					document.shoppinglistAccept.submit();
+				}
+			}
+			
+			function send2(ak,id){
+				if (ak==1){
+					if (confirm("Willst du die Einkaufsliste wirklich löschen?")){
+						document.hidden.ak.value = "deleteList";
+						document.hidden.id.value = id;
+						document.hidden.submit();
+					}
+				}
+				if (ak==2){
+					document.hidden2.ak.value = "change";
+					document.hidden2.list.value = id;
+					document.hidden2.submit();
+					
+				}
+			}
+		</script>
     </head>
     <body>
-        <?php 
-            include "../Templates/HeadTemplate.php"
-        ?>
+        <?php include "../Templates/HeadTemplate.php"; ?>
 		
 		<!--
 		<canvas id="bgCanvas" width="1000" Style="opacity:0.1;position:fixed; top:0px; left:0px;z-index:1;"></canvas>
@@ -95,54 +141,6 @@
 				<input name='list' type='hidden' />
 			</form>
 		</div>
-		
-		<script>
-			$(function() {
-				$( "#Accordion1" ).accordion({
-					heightStyle:"content",
-					active: 0,
-					collapsible:true
-				}); 
-				$( "#Accordion2" ).accordion({
-					heightStyle:"content",
-					active: 0,
-					collapsible:true
-				});
-			});
-			
-			function send(ak,id,id2){
-				if (ak==1){
-					if (confirm("Möchtest du diesen Auftrag abbrechen?")){
-						document.shoppinglistDecline.itemId.value = id;
-						document.shoppinglistDecline.listId.value = id2;		
-						document.shoppinglistDecline.submit();
-					}
-					else{
-						return;
-					}
-				}
-				if (ak==2){
-					document.shoppinglistAccept.itemId.value = id;
-					document.shoppinglistAccept.listId.value = id2;
-					document.shoppinglistAccept.submit();
-				}
-			}
-			
-			function send2(ak,id){
-				if (ak==1){
-					if (confirm("Willst du die Einkaufsliste wirklich löschen?")){
-						document.hidden.ak.value = "deleteList";
-						document.hidden.id.value = id;
-						document.hidden.submit();
-					}
-				}
-				if (ak==2){
-					document.hidden2.ak.value = "change";
-					document.hidden2.list.value = id;
-					document.hidden2.submit();
-					
-				}
-			}
-		</script>
+		<?php include "../Templates/FooterTemplate.php"; ?>
     </body>
 </html>

@@ -273,5 +273,8 @@
 				</tr>
 			</table>
 		</div>
+		<?php 
+			 include "../Templates/FooterTemplate.php";
+		?>
 	</body>
 </html>

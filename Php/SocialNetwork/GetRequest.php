@@ -14,14 +14,15 @@
 	if ($num > 0){
 		echo "<div id='badge1' class='notification-badge'>$num</div>";
 		echo "<div id='HeadPopUpBox' class='HeadPopUp'>";
+		echo "<div class='PopUpArrow'></div>";
 		echo "<p class='PopUpHeader'>Freundschaftsanfragen</p>";
 	
 		// Tabellenbeginn
-		echo "<table cellspacing='10px' class='PopUpTable' >";
+		echo "<table cellspacing='0px' class='PopUpTable' >";
 		while ($dsatz = mysqli_fetch_assoc($res)){
 			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"]." ".$dsatz["name"]."</a>" ;
 			echo "<tr>";
-			echo "<td class='friend_req_block requests'>".$name;
+			echo "<td class='friend_req_block notification requests'>".$name;
 			echo "<a title='Ablehnen' href='javascript:friendrequest(2,".$dsatz["ID"].");'>";
 			echo "<img style='margin:0px 10px;' class='del_Image' src='../Pictures/SiteContent/cross.svg'>";
 			echo "</a>";

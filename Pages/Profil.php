@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../Php/Authentification/SessionChecker.php";
-    include "../Php/Misc/GetYourData.php";
+	include "../Php/Misc/GetYourData.php";
 	include "../Php/Misc/GetFriendData.php";
 ?>
 
@@ -32,9 +32,9 @@
 					width:700,
 					autoOpen:false,
 					modal:true,
-					resizable:false,
+					resizable: false,
 					draggable: false,
-					title:"Profilbild"
+					width: 'auto'
 				});
 				
 				$( "#mainProfilPicCrop" ).click(function() {
@@ -45,7 +45,8 @@
 				});
 			});
 		</script>
-				<script>
+		
+		<script>
 			$(function() {
 				$( "#Accordion1" ).accordion({
 					heightStyle:"content",
@@ -108,20 +109,21 @@
 						</div>
 					</td>
 					<td class="contentBlock">
-						<div id="main_center">
+						<div id="main_center" style="width:752px;">
+							<?php if($ID != $ID2) { ?>
+							<form method="post" action="../Pages/Chat.php?a=<?php echo $ID2; ?>">
+								<button class="relationbutton" type="submit">
+									Chat
+								</button>
+							</form>
+							<?php } ?>
+							<?php
+								include "../Php/SocialNetwork/RelationButton.php";
+							?>
 							<table>
 								<tr>
-									<td>
-										<?php
-											include "../Php/SocialNetwork/RelationButton.php";
-										?>
-									</td>
-								</tr>
-							</table>
-							<table>
-								<tr>
-									<td>Name:</td>
-									<td><?php echo $vorname_friend." ".$nachname_friend;?></td>
+									<td><br>Name:</td>
+									<td><br><?php echo $vorname_friend." ".$nachname_friend;?></td>
 								</tr>
 								<tr>
 									<td><br/></td>
@@ -145,7 +147,7 @@
                 	<td class="contentBlock">
                     	<?php 
 						include"../Php/SocialNetwork/FriendList.php";
-						include"../Php/SocialNetwork/PendingFriends.php";
+						include"../Php/SocialNetwork/GetPendingFriends.php";
                         include "../Templates/MYSQLConnectionString.php";
 						?>
                     </td>

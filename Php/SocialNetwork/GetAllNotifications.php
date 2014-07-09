@@ -41,14 +41,17 @@
 		echo "<h1>Alle Deine Benachrichtigungen:</h1>";
 	
 		// Tabellenbeginn
-		echo "<table cellspacing='10px' class='PopUpTable' >";
+		echo "<table cellspacing='0px' class='PopUpTable all_notifications'>";
 		while ($dsatz = mysqli_fetch_assoc($res1)){
-			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
+			$name = "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
+			
+			include "../Php/Misc/GetTime.php";
+			
 			echo "<tr>";
 			//Mitbringen
 			if($dsatz['status']==1){
-				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#dfd'>";
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<td class='friend_req_block notification accept'>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." möchte Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> mitbringen.";
 				echo "</p>";
@@ -56,17 +59,31 @@
 			}
 			//NichtMitbringen
 			elseif($dsatz['status']==0){
-				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#fdd'>";
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<td class='friend_req_block notification decline'>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." kann Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> doch nicht mitbringen.";
 				echo "</p>";
 				echo "</td>";
 			}
+			//Nachricht
+			elseif($dsatz['status']==2){
+				if($i<$newnum){
+					echo "<td class='friend_req_block notification new'>";
+				}
+				else{
+					echo "<td class='friend_req_block notification'>";
+				}
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
+				echo "<p style='font-size:14px;margin-top:0px;'>";
+				echo $name." hat Dir eine <a href='Chat.php?a=$ID2'>Nachricht</a> gesendet.";
+				echo "</p>";
+				echo "</td>";
+			}
 			//Freundschaftsanfrage
 			elseif($dsatz['status']==3){
-				echo "<td class='friend_req_block' style='padding:0 20px;background-color:#ddf'>";
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<td class='friend_req_block notification friend_accept'>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." hat deine Freundschaftsanfrage angenommen.";
 				echo "</p>";

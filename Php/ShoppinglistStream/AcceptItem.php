@@ -19,7 +19,7 @@
 	$timestamp = time();
 	$datum = date("d.m.Y",$timestamp);
 	$uhrzeit = date("H:i",$timestamp);
-	$date = "".$datum." - ".$uhrzeit."";
+	$date = "".$datum." - ".$uhrzeit;
 	
 	$res = mysqli_query($conUser,"SELECT einkaufslisten.userID,user.ID,user.name,user.vorname FROM einkaufslisten JOIN user WHERE user.ID=einkaufslisten.userID && einkaufslisten.listID='$ListID'");
 	$result = mysqli_fetch_assoc($res);

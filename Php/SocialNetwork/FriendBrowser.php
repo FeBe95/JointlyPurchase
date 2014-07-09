@@ -14,12 +14,10 @@
 	$num1 = mysqli_num_rows($res);				   
 	
 	echo "<div id='results' style='display:block'>";
-	echo "Leute aus Deiner Nähe:";
+	echo "<div class='fb_header'>Leute aus Deiner Nähe:</div>";
 	// Tabellenbeginn
 	
 	if ($num1 > 0){
-		// Tabellenbeginn
-		echo "<table cellspacing='10px' style='margin:0 auto;' >";
 		while ($dsatz1 = mysqli_fetch_assoc($res)){
 			$ID2 = $dsatz1["ID"];
 			$name= $dsatz1["vorname"]."<br/>".$dsatz1["name"] ;
@@ -40,20 +38,16 @@
 			$case = $relation["AreFriends"];
 			
 			if($case != 2){
-				echo "<tr>";
-				echo "<td class='friend_block'>";
+				echo "<div class='friend_block'>";
 				echo "<a class='friend_link' href='../Pages/Profil.php?a=".$dsatz1['ID']."'>
 						<div id='profilPicCrop'>
 							<img id='profilcrop' src='../Pictures/Thumbnails/".$dsatz1["profilPic"]."'>
 						</div>
 						$name
 					  </a>";
-				echo "</td>";
-				echo "</tr>";
+				echo "</div>";
 			}
 		}
-		echo "</table>";
-		// Tabellenende
 	}
 
 	if ($num1 == 0) {

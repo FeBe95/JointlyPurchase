@@ -1,4 +1,11 @@
 <div id="head">
+	<?php
+			setlocale(LC_ALL, 'german');
+			setlocale(LC_ALL, 'de_DE');
+			date_default_timezone_set('Europe/Berlin');
+			include "../Php/Misc/GetYourData.php";
+	?>
+	
     <div id="headcontent">
         <div id="logo">
             <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein_beta.png" width="250px"/></a>
@@ -31,9 +38,7 @@
                     </td>
 					<td>
                         <div id="HeadPopUp">
-							<?php
-								include "../Php/SocialNetwork/GetRequest.php";
-							?>
+							<?php include "../Php/SocialNetwork/GetRequest.php"; ?>
 							<div id="link" style="cursor:pointer;">
 								<img id="icon1" class="head-icon" src='../Pictures/SiteContent/group.svg'>
 							</div>
@@ -41,9 +46,7 @@
                     </td>
 					<td>
                         <div id="HeadPopUp2">
-							<?php
-								include "../Php/SocialNetwork/GetNotification.php";
-							?>
+							<?php include "../Php/SocialNetwork/GetNotification.php"; ?>
 							<div id="link2" style="cursor:pointer;">
 								<img id="icon2" class="head-icon" src='../Pictures/SiteContent/notification.svg'>
 							</div>

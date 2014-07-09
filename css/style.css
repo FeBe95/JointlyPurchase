@@ -10,7 +10,8 @@ footer{
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	height: 92px;
+	/* height: 92px; */
+	height: 52px;
 	background-color:#C4C4C4;
 	z-index:11;
 }
@@ -21,7 +22,8 @@ footer{
 }
 #footer_top{
 	line-height: 20px;
-	padding: 13px;
+	/* padding: 13px; */
+	padding: 3px;
 }
 #footer_bottom{
 	/*position: fixed;
@@ -30,7 +32,8 @@ footer{
 	z-index: 100;*/
 	background-color:#575757;
 	line-height: 20px;
-	padding: 13px;
+	/* padding: 13px; */
+	padding: 3px;
 }
 /* ----------------------Copyright-Fix---------------------- */
 
@@ -353,6 +356,7 @@ input:focus:-ms-input-placeholder {
 	z-index: 50;
 	margin: 0;
 	text-align: center;
+	background-color: #fff;
 }
 
 .HeadPopUp{
@@ -367,23 +371,32 @@ input:focus:-ms-input-placeholder {
 }
 
 #HeadPopUpBox {
-	margin: 30px 0 0 -200px;
+	margin: 34px 0 0 -200px;
 }
 
 #HeadPopUpBox2 {
-	margin: 30px 0 0 -240px;
+	margin: 34px 0 0 -240px;
 }
 
 #HeadPopUpBox2 .PopUpTable{
 	width:100%;
 	overflow-y: scroll;
-	max-height: 300px;
+	max-height: 456px;
 	display: block;
 }
 
 .PopUpTable{
 	width: 100%;
+	margin-bottom: -1px;
+	border-radius: 0 0 5px 5px;
+	overflow: hidden;
 }
+
+.PopUpTable td{
+	border-bottom: 1px solid #aaa;
+	border-radius: 0px;
+}
+
 
 .PopUpTable *{
 	position: relative;
@@ -391,7 +404,6 @@ input:focus:-ms-input-placeholder {
 }
 
 .friend_req_block {
-	background-color: #ddf;
 	border-radius: 5px;
 	padding: 5px 20px;
 }
@@ -437,9 +449,24 @@ input:focus:-ms-input-placeholder {
 	fill: #B3C833;;
 }
 
+.PopUpArrow{
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 14px solid transparent;
+	border-right: 14px solid transparent;
+	border-bottom: 14px solid #fff;
+	top: -10px;
+	z-index: 200;
+}
+#HeadPopUpBox .PopUpArrow{
+	right: 130px;
+}
+#HeadPopUpBox2 .PopUpArrow{
+	right: 90px;
+}
+
 .notification-badge{
-	width: 12px;
-	height: 16px;
 	font-size: 14px;
 	line-height: 16px;
 	font-weight: bold;
@@ -452,32 +479,51 @@ input:focus:-ms-input-placeholder {
 	border-radius: 2px;
 	text-align: center;
 	box-shadow: 0 0 3px #000;
+	padding: 0 2px;
 }
 
 .notification{
-	padding:0 20px;
+	padding: 0 20px;
 }
 .notification.accept{
-	background-color:#dfd;
+	background-color:#efe;
 }
 .notification.decline{
-	background-color:#fdd;
+	background-color:#fee;
+}
+.notification.message{
+	background-color:#ffe;
 }
 .notification.friend_accept{
-	background-color:#ddf;
+	background-color:#eef;
 }
 .notification.new.accept{
-	background-color:#8f8;
+	background-color:#bfb;
 }
 .notification.new.decline{
-	background-color:#f88;
+	background-color:#fbb;
+}
+.notification.new.message{
+	background-color:#ffb;
 }
 .notification.new.friend_accept{
-	background-color:#88f;
+	background-color:#bbf;
+}
+.notification.new {
+	/* box-shadow: inset 0 0 2px #000; */
 }
 
-.notification.new {
-	box-shadow: inset 0 0 2px #000;
+.notification.requests{
+	background-color: #eef;
+	padding: 6px 20px;
+}
+
+.all_notifications td{
+	border-bottom: 0;
+	border-radius: 5px;
+	display: block;
+	margin-bottom: 10px;
+	padding: 1px 20px;
 }
 
 .logobutton {
@@ -560,11 +606,14 @@ input:focus:-ms-input-placeholder {
 }
 
 #main_right {
+	background-color: white;
 }
 
 #main_center {
-	font-family: Arial,sans-serif;
 	background-color: white;
+}
+#main_center form {
+	display: inline;
 }
 
 .ProfilInfo {
@@ -586,8 +635,9 @@ input:focus:-ms-input-placeholder {
 }
 
 #fullpic {
-	margin: auto;
 	display: block;
+	max-width: 680px;
+	max-height: 720px;
 }
 
 .RowWidth {
@@ -626,6 +676,23 @@ input:focus:-ms-input-placeholder {
   position: absolute;
   left: 103px;
   top: -10px;
+}
+
+#chatload {
+  position: relative; 
+  width: 0;
+  height: 0;
+  transition: opacity 0.3s ease;
+  left: 50%;
+  top: 50%;
+}
+
+.bounce_container {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -25px;
 }
 
 .double-bounce1, .double-bounce2 {
@@ -667,19 +734,35 @@ input:focus:-ms-input-placeholder {
 	display: none;
 	padding: 10px 0 10px 0;
 	border-radius: 5px;
+	width: 240px;
+}
+
+.chat_fb #results{
+	width: 100%;
 }
 
 .relationbutton{
 	margin: 10px 0 -10px 0;
+	border-radius: 2px;
+}
+
+.relationlabel {
+	background-color: #B3C833;
+	padding: 3px 5px 5px 5px;
+	border-radius: 2px;
+}
+
+.fb_header{
+	margin-bottom: 5px;
 }
 
 .friend_block {
 	background-color: #ddd;
 	width: 170px;
 	height: 70px;
-	margin-top: 10px;
-	margin-right: 8px;
+	margin: 5px;
 	border-radius: 5px;
+	display: inline-block;
 }
 .friend_block_empty {
 	background-color: #ddd;
@@ -702,6 +785,87 @@ input:focus:-ms-input-placeholder {
 
 a.friend_link:hover, a.friend_link:focus {
 	text-decoration: underline;
+}
+
+.chatpic{
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-bottom: -4px;
+}
+
+#chatList{
+	padding: 6px 2px;
+	overflow-y: scroll;
+	border: 1px solid black;
+	height: 500px;
+	width: 200px;
+}
+
+#chatnachricht{
+	width: 500px;
+	margin-left: 0;
+	margin-bottom: 8px;
+}
+
+#currentChat{
+	width: 500px;
+	/* height: 616px; */
+	height: 500px;
+	padding-bottom: 116px; /* Platz für Textarea */
+}
+#chat{
+	border: 1px solid black;
+	width: 100%;
+	height: 500px;
+	margin-bottom: 10px;
+	padding: 6px 2px;
+	overflow-y: scroll;
+}
+
+#chat span{
+	opacity: 0;
+	cursor: default;
+}
+
+#chatelements{
+	cursor: default;
+}
+.chatelement .text{
+	cursor: text;
+}
+.chatelement{
+	width: 50%;
+	box-shadow: 0 0 2px #555;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 0px 2px 10px 2px;
+	overflow: hidden;
+}
+
+.chatelement.left{
+	background-color: #B3C833;
+	float: left;
+}
+.chatelement.right{
+	background-color: #fff;
+	float: right;
+}
+
+.chatelement .datum{
+	font-size: 12px;
+	float: right;
+}
+
+#newalert{
+	border-radius: 5px;
+	opacity: 0.5;
+	text-align: center;
+    background-color: #000;
+	color: white;
+    width: 280px;
+    margin: -34px auto 10px auto;
+	padding: 2px 0;
+	cursor: pointer;
 }
 
 /*socialArea*/

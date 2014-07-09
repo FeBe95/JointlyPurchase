@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../Php/Authentification/SessionChecker.php";
-    include "../Php/Misc/GetYourData.php";
+	include "../Php/Misc/GetYourData.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +31,9 @@
 					width:700,
 					autoOpen:false,
 					modal:true,
-					resizable:false,
+					resizable: false,
 					draggable: false,
-					title:"Profilbild"
+					width: 'auto'
 				});
 				
 				$( "#mainProfilPicCrop" ).click(function() {
@@ -72,17 +72,17 @@
 				
 				if(nPW == "" || nPWw == ""){
 					tick.style.display = "none";
-					PWsm.disabled = true;
+					//PWsm.disabled = true;
 				}
 				if(nPW == nPWw && nPW != ""){
 					tick.style.display = "block";
-					PWsm.disabled = false;
-					return true;
+					//PWsm.disabled = false;
+					//return true;
 				}
 				if(nPW != nPWw && nPW != ""){
 					tick.style.display = "none";
-					PWsm.disabled = true;
-					return false;
+					//PWsm.disabled = true;
+					//return false;
 				}
 			}
 			
@@ -96,7 +96,6 @@
 				}
 			}
 		</script>
-	
     </head>
     <body>
 		<?php
@@ -161,11 +160,11 @@
 						<br/>
 						<button id="create-user" style="width:100%;">Profilbild ändern</button>
 					</td>
-					<td class="contentBlock" valign="top" style="padding-top:20px;width:752px;">
-						<div class="contentBlock" id="main_center">
+					<td class="contentBlock" style="width:752px;">
+						<div id="main_center">
+							<h1>Profil bearbeiten:</h1>
 							<form name="updateData" onSubmit="return checkPW()" action="../Php/Profil/ChangeData.php" method="post">
 								<table>
-									<h1>Profil bearbeiten:</h1>
 									<tr>
 										<td class="RowWidth">
 											<p class="ProfilInfo">E-Mail:</p>
@@ -214,7 +213,7 @@
 											<p class="ProfilInfo">Wiederholen:</p>
 										</td>
 										<td class="RowWidth">
-											<input tabindex="7" name="neuesPWwiederholen" maxlength="20" type="password" onkeypress="checkPW()"></input>
+											<input tabindex="7" name="neuesPWwiederholen" maxlength="20" type="password" onkeyup="checkPW()"></input>
 										</td>
 										<td>
 											<img id="PWchecked" style="display:none;margin:0px 10px;" class="del_Image" src="../Pictures/SiteContent/tick.svg">
@@ -241,7 +240,8 @@
 										<td></td>
 										<td></td>
 										<td class="RowWidth">
-											<button id="pwsubmit" type= "submit" disabled>Speichern</button>
+											<!--<button id="pwsubmit" type= "submit" disabled>Speichern</button>-->
+											<button id="pwsubmit" type= "submit">Speichern</button>
 										</td>
 									</tr>
 								</table>
@@ -250,7 +250,7 @@
 					</td>
 				</tr>
 				<tr>
-				    <td id="chooseimage" class="contentBlock" style="width:100%; display: none;" colspan="2">
+				    <td id="chooseimage" class="contentBlock" style="display: none;" colspan="2">
 						<div class="grid">
 							<div class="col-8-12">
 								<div id="upload-wrapper">
@@ -273,6 +273,7 @@
 				</tr>
 			</table>
 		</div>
+		
 		<?php 
 			 include "../Templates/FooterTemplate.php";
 		?>

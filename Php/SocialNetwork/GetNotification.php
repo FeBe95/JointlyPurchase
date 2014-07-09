@@ -31,9 +31,8 @@
 								   FROM shoppingnotifications
 								   INNER JOIN user ON shoppingnotifications.UserId1 = user.ID
 								   WHERE shoppingnotifications.UserId2 = $ID
-								   AND shoppingnotifications.status = 3
 								   
-								   ORDER BY s_not_id DESC");	
+								   ORDER BY s_not_id DESC");
 								   // Nicht "LIMIT 0 , 10", da sonst Badge Nummer falsch!
 	$num = mysqli_num_rows($res);
 	echo "<div id='hiddennum' style='display:none'>$num</div>";
@@ -47,17 +46,23 @@
 	}
 	else{
 		echo "<div id='badge2' class='notification-badge'>$num</div>";
+		$newnum = $num;
+		
 	}
 		
 	if ($num > 0){
 		
 		echo "<div id='HeadPopUpBox2' class='HeadPopUp'>";
+		echo "<div class='PopUpArrow'></div>";
 		echo "<p class='PopUpHeader'>Neuste Benachrichtigungen</p>";
 	
 		// Tabellenbeginn
-		echo "<table cellspacing='10px' class='PopUpTable' >";
+		echo "<table cellspacing='0px' class='PopUpTable'>";
 		while (($dsatz = mysqli_fetch_assoc($res)) && $i < 10){
-			$name= "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
+			$name = "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"] ." ".$dsatz["name"]."</a>" ;
+			
+			include "../Php/Misc/GetTime.php";
+			
 			echo "<tr>";
 			//Mitbringen
 			if($dsatz['status']==1){
@@ -67,7 +72,7 @@
 				else{
 					echo "<td class='friend_req_block notification accept'>";
 				}
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." möchte Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> mitbringen.";
 				echo "</p>";
@@ -81,9 +86,23 @@
 				else{
 					echo "<td class='friend_req_block notification decline'>";
 				}
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
 				echo $name." kann Dir <b>".$dsatz["product"]."</b> aus Deiner Einkaufsliste <b>".$dsatz["listName"]."</b> doch nicht mitbringen.";
+				echo "</p>";
+				echo "</td>";
+			}
+			//Nachricht
+			elseif($dsatz['status']==2){
+				if($i<$newnum){
+					echo "<td class='friend_req_block notification message new'>";
+				}
+				else{
+					echo "<td class='friend_req_block notification message'>";
+				}
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
+				echo "<p style='font-size:14px;margin-top:0px;'>";
+				echo $name." hat Dir eine <a href='Chat.php?a=$ID2'>Nachricht</a> gesendet.";
 				echo "</p>";
 				echo "</td>";
 			}
@@ -95,9 +114,9 @@
 				else{
 					echo "<td class='friend_req_block notification friend_accept'>";
 				}
-				echo "<p style='font-size:12px;margin-bottom:0px;'>".$dsatz["date"]."</p>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
 				echo "<p style='font-size:14px;margin-top:0px;'>";
-				echo $name." hat deine Freundschaftsanfrage angenommen.";
+				echo $name." hat Deine Freundschaftsanfrage angenommen.";
 				echo "</p>";
 				echo "</td>";
 			}

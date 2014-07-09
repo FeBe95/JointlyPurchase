@@ -24,11 +24,19 @@
 .ui-icon {
 	width: 16px;
 	height: 16px;
-	background-image: url(images/ui-icons_454545_256x240.png);
+	background-image: url(images/ui-icons_888888_256x240.png);
 }
 .ui-icon-triangle-1-e {
 	background-position: -32px -16px;
 }
 .ui-icon-triangle-1-s {
 	background-position: -64px -16px;
+}
+.ui-icon-closethick {
+	background-position: -97px -129px;
+	display: 
+}
+.ui-widget-overlay {
+	background-color: #000;
+	opacity: 0.3;
 }

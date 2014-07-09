@@ -184,6 +184,22 @@ CREATE TABLE IF NOT EXISTS `produkte` (
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId1` int(11) NOT NULL,
+  `UserId2` int(11) NOT NULL,
+  `nachricht` text NOT NULL,
+  `date` varchar(24) NOT NULL,
+  PRIMARY KEY (`message_id`)
+-- ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `user`
 --
 
@@ -194,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(50) DEFAULT NULL,
   `passwort` varchar(255) DEFAULT NULL,
   `lists` int(11) NOT NULL,
-  `profilPic` varchar(50) NOT NULL DEFAULT 'default.png',
+  `profilPic` varchar(100) NOT NULL DEFAULT 'default.png',
   `plz` int(5) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),

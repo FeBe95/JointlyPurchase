@@ -40,7 +40,7 @@
 				echo "<br/>";
 			}
 			else{
-				echo "<p class='label relationbutton' style='padding:4px;margin: 10px 0 -10px 0'>Freundschaftsanfrage versendet</p>";
+				echo "<span class='relationlabel relationbutton'>Freundschaftsanfrage versendet</span>";
 				echo "<br/>";
 			}
 			break;

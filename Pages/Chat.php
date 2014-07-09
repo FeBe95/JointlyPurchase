@@ -160,7 +160,7 @@
 			
 			function initial_getChat_function(){
 				if(chat_datei.readyState == 4 && chat_datei.status == 200){
-					number_of_messages = chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1];
+					number_of_messages = parseInt(chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1]);
 					document.getElementById('chatelements').innerHTML = chat_datei.responseText;
 					$( "#chatelements" ).show("fade", "slow");
 					document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
@@ -170,9 +170,9 @@
 			
 			function updateChat_function(){
 				if(chat_datei.readyState == 4 && chat_datei.status == 200){
-					number_of_messages_new = chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1];
+					number_of_messages_new = parseInt(chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1]);
 					if(number_of_messages_new > number_of_messages){
-						number_of_messages = chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1];
+						number_of_messages = parseInt(chat_datei.responseText.match(/<span[^>]*>([^<]+)<\/span>/)[1]);
 						
 						document.getElementById('chatelements').innerHTML = chat_datei.responseText;
 						if(document.getElementById("chat").scrollHeight-document.getElementById("chat").scrollTop-512 < 300){

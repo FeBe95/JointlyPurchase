@@ -32,14 +32,16 @@
 	
 	if($num2!=0){
 		echo "<div id='Accordion2'>";
-		while ($listen = mysqli_fetch_assoc($abf2)){		
+		while ($dsatz = mysqli_fetch_assoc($abf2)){		
 	
+			include "../Php/Misc/GetTime.php";
+			
 			echo "<h3>";
-			echo "Einkaufsliste <b>".$listen["listName"]."</b> von ".$listen["vorname"]." ".$listen["name"];
-			echo "<span class='stream-date'>zuletzt geändert am: ".$listen["date"]."</span>";
+			echo "Einkaufsliste <b>".$dsatz["listName"]."</b> von ".$dsatz["vorname"]." ".$dsatz["name"];
+			echo "<span class='stream-date'>zuletzt geändert $zeit</span>";
 			echo "</h3>";
 	
-			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
+			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$dsatz["listID"]."'");
 			
 			echo "<div><table class='t1'>";
 			echo "<tr id='shoppinglist_header'>
@@ -80,10 +82,6 @@
 		echo "</div>"; // Accordion2 Ende
 	}
 	else{
-		include "../Php/Misc/GetYourData.php";
-		include"../Templates/MYSQLConnectionString.php";
-		
-		$listen = mysqli_fetch_assoc($abf2);
 		$friends = mysqli_query($conUser,"SELECT * FROM FriendRelation WHERE AreFriends = 2 AND (UserId1 = $ID OR UserID2 = $ID)");
 		$numfriends = mysqli_num_rows($friends);
 		

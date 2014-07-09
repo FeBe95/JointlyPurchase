@@ -9,14 +9,16 @@
 	
 	if($num2!=0){
 		echo "<div id='Accordion1'>";
-		while ($listen = mysqli_fetch_assoc($abf2)){
+		while ($dsatz = mysqli_fetch_assoc($abf2)){
 			
-			echo "<h3>".$listen["listName"];
-			echo "<span class='stream-date'>zuletzt geändert am: ".$listen["date"]."</span>";
+			include "../Php/Misc/GetTime.php";
+			
+			echo "<h3>".$dsatz["listName"];
+			echo "<span class='stream-date'>zuletzt geändert $zeit</span>";
 			echo "</h3>";
 			echo "<div><table class='t1'>";
 	
-			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
+			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$dsatz["listID"]."'");
 			
 			echo "<tr id='shoppinglist_header'>
 				  <th>Produkt</th>

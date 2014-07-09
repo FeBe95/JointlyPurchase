@@ -23,19 +23,21 @@
 	
 	if($num2!=0){
 		echo "<div id='Accordion1'>";
-		while ($listen = mysqli_fetch_assoc($abf2)){
+		while ($dsatz = mysqli_fetch_assoc($abf2)){
 			
-			echo "<h3>".$listen["listName"];
-			echo "<span class='stream-date'>zuletzt geändert am: ".$listen["date"]."</span>";
+			include "../Php/Misc/GetTime.php";
+			
+			echo "<h3>".$dsatz["listName"];
+			echo "<span class='stream-date'>zuletzt geändert $zeit</span>";
 			echo "</h3>";
 			echo "<div><table class='t1'>";
 			
 			echo "<p>";
-			echo "<div title='Ablehnen' onClick='send2(1,\"".$listen["listID"]."\");' class='icon cross floatLeft'></div>";
-			echo "<div title='Annehmen' onClick='send2(2,\"".$listen["listName"]."\");' class='icon edit'></div>";
+			echo "<div title='Ablehnen' onClick='send2(1,\"".$dsatz["listID"]."\");' class='icon cross floatLeft'></div>";
+			echo "<div title='Annehmen' onClick='send2(2,\"".$dsatz["listName"]."\");' class='icon edit'></div>";
 			echo "</p>";
 
-			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
+			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$dsatz["listID"]."'");
 			$num1 = mysqli_num_rows($abf1);
 			if($num1!=0){
 				echo "<tr id='shoppinglist_header'>

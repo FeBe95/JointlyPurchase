@@ -832,6 +832,7 @@ a.friend_link:hover, a.friend_link:focus {
 }
 .chatelement .text{
 	cursor: text;
+	word-break:break-all;
 }
 .chatelement{
 	width: 50%;

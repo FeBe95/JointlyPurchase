@@ -37,7 +37,7 @@
 		// Tabellenende
 	}
 	else{
-		echo "<p>Keine Nachrichten vorhanden</p>";
+		echo "Starte jetzt den Chat!";
 	}
 	mysqli_close($conUser);
 ?>

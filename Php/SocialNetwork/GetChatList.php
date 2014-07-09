@@ -47,7 +47,7 @@
 		}
 	}
 	else{
-		echo "<p>Du hast noch keine Freunde hinzugefügt.</p>";
+		echo "<p>Du hast noch keine Chats.</p>";
 	}
 	echo "</div>";
 	mysqli_close($conUser);

@@ -30,10 +30,11 @@
 			echo "</h3>";
 			echo "<div><table class='t1'>";
 			
-			$lId=$listen["listID"];
-			echo "<a title='Einkaufsliste löschen' href='javascript:send2(1,\"$lId\");'><img class='del_Image' src='../Pictures/SiteContent/cross.svg'></a>";
-			echo "<a title='Einkaufsliste bearbeiten' href='javascript:send2(2,\"".$listen["listName"]."\");'><img class='del_Image' src='../Pictures/SiteContent/new.svg'></a>";
-			
+			echo "<p>";
+			echo "<div title='Ablehnen' onClick='send2(1,\"".$listen["listID"]."\");' class='icon cross floatLeft'></div>";
+			echo "<div title='Annehmen' onClick='send2(2,\"".$listen["listName"]."\");' class='icon edit'></div>";
+			echo "</p>";
+
 			$abf1 = mysqli_query($conUser,"SELECT * FROM produkte WHERE list_id = '".$listen["listID"]."'");
 			$num1 = mysqli_num_rows($abf1);
 			if($num1!=0){
@@ -69,7 +70,7 @@
 				}
 			}
 			else{
-				echo "<tr><td><div style='margin-left:5px'>Noch keine Produkte eingetragen</div></td></tr>";
+				echo "<tr><td><div style='margin:0 0 5px 5px'>Noch keine Produkte eingetragen</div></td></tr>";
 			}
 			echo "</table></div>";
 		}

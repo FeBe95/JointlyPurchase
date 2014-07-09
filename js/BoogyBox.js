@@ -1,12 +1,14 @@
 $(document).ready(function() {
 	$('html').click(function() {
-		$('#HeadPopUpBox').hide();
+		$('#HeadPopUpBox1').hide();
 		$('#HeadPopUpBox2').hide();
-		$('#icon1').attr('class', 'head-icon replaced-svg' );
-		$('#icon2').attr('class', 'head-icon replaced-svg' );
+		$('#HeadPopUpBox3').hide();
+		$('#friendrequests').attr('class','icon');
+		$('#messages').attr('class','icon');
+		$('#notifications').attr('class','icon');
 	})
 	
-	$('#HeadPopUp').click(function(e){
+	$('#HeadPopUp1').click(function(e){
 		e.stopPropagation();
 	});
 	
@@ -14,70 +16,59 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
-	$('#link').click(function(e) {
-		$('#HeadPopUpBox').toggle();
-		$('#HeadPopUpBox2').hide();
-		if($('#HeadPopUpBox').is(":visible")){
-			$('#icon1').attr('class', 'head-icon replaced-svg svg-color-change' );
-		}
-		else{
-			$('#icon1').attr('class', 'head-icon replaced-svg' );
-		}
-		$('#icon2').attr('class', 'head-icon replaced-svg' );
+	$('#HeadPopUp3').click(function(e){
+		e.stopPropagation();
 	});
 	
-	$('#link2').click(function(e) {
-		$('#badge2').hide();
-		$('#HeadPopUpBox2').toggle();
-		$('#HeadPopUpBox').hide();
-		if($('#HeadPopUpBox2').is(":visible")){
-			$('#icon2').attr('class', 'head-icon replaced-svg svg-color-change' );
+	$('#friendrequests').click(function(e) {
+		$('#HeadPopUpBox1').toggle();
+		$('#HeadPopUpBox2').hide();
+		$('#HeadPopUpBox3').hide();
+		if($('#HeadPopUpBox1').is(":visible")){
+			$('#friendrequests').attr('class','icon clicked');
 		}
 		else{
-			$('#icon2').attr('class', 'head-icon replaced-svg' );
+			$('#friendrequests').attr('class','icon');
 		}
-		$('#icon1').attr('class', 'head-icon replaced-svg' );
-		// var value = $('.not_count').length;
+		$('#messages').attr('class','icon');
+		$('#notifications').attr('class','icon');
+	});
+	
+	$('#messages').click(function(e) {
+		$('#badge2').hide();
+		$('#HeadPopUpBox1').hide();
+		$('#HeadPopUpBox2').toggle();
+		$('#HeadPopUpBox3').hide();
+		if($('#HeadPopUpBox2').is(":visible")){
+			$('#messages').attr('class','icon clicked');
+		}
+		else{
+			$('#messages').attr('class','icon');
+		}
+		$('#friendrequests').attr('class','icon');
+		$('#notifications').attr('class','icon');
+		
+		
 		var value = document.getElementById('hiddennum').innerHTML;
 		var now = new Date();
 		var time = now.getTime();
 		time += 3600 * 365 * 24000;
 		now.setTime(time);
-		document.cookie = 
-			'shoppingnotifications=' + value + 
-			'; expires=' + now.toUTCString() + 
-			'; path=/';
+		document.cookie = 'notifications='+value+'; expires='+now.toUTCString()+'; path=/';
+	});	
+	
+	$('#notifications').click(function(e) {
+		$('#badge3').hide();
+		$('#HeadPopUpBox1').hide();
+		$('#HeadPopUpBox2').hide();
+		$('#HeadPopUpBox3').toggle();
+		if($('#HeadPopUpBox3').is(":visible")){
+			$('#notifications').attr('class','icon clicked');
+		}
+		else{
+			$('#notifications').attr('class','icon');
+		}
+		$('#friendrequests').attr('class','icon');
+		$('#messages').attr('class','icon');
 	});
-});
-
-/*
- * Replace all SVG images with inline SVG
- */
-$('img.head-icon').each(function(i){
-    var $img = $(this);
-    var imgID = $img.attr('id');
-    var imgClass = $img.attr('class');
-    var imgURL = $img.attr('src');
-    $.get(imgURL, function(data) {
-        // Get the SVG tag, ignore the rest
-        var $svg = $(data).find('svg');
-
-        // Add replaced image's ID to the new SVG
-        if(typeof imgID !== 'undefined') {
-            $svg = $svg.attr('id', imgID);
-        }
-        // Add replaced image's classes to the new SVG
-        if(typeof imgClass !== 'undefined') {
-            $svg = $svg.attr('class', imgClass+' replaced-svg');
-        }
-
-        // Remove any invalid XML tags as per http://validator.w3.org
-        $svg = $svg.removeAttr('xmlns:a');
-
-		$svg = $svg.attr('style', 'padding: 15px 6px; margin: -15px 0px' );
-		
-        // Replace image with new SVG
-        $img.replaceWith($svg);
-
-    }, 'xml');
 });

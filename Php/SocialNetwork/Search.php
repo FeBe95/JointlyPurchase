@@ -11,7 +11,7 @@
 		exit;
 	}
 	
-	$res = mysqli_query($conUser,"SELECT
+	$res1 = mysqli_query($conUser,"SELECT
 								  user.ID,
 								  user.name,
 								  user.vorname,
@@ -21,16 +21,26 @@
 								  OR user.name LIKE '%$q%'
 								  OR user.plz LIKE '%$q%')
 								  AND user.ID != $ID");
+								  
+	$res2 = mysqli_query($conUser,"SELECT
+								  user.ID,
+								  einkaufslisten.listName
+								  FROM user
+								  JOIN einkaufslisten
+								  ON user.ID = einkaufslisten.userID
+								  WHERE einkaufslisten.listName LIKE '%$q%'
+								  AND user.ID = $ID");
 	
-	$num1 = mysqli_num_rows($res);
+	$num1 = mysqli_num_rows($res1);
+	$num2 = mysqli_num_rows($res2);
 	
 	echo"<div id='right'>";
 	echo"<h1>Suchergebnisse zu \"$q\":</h1>";
 
-	if ($num1 > 0){
+	if ($num1+$num > 0){
 		// Tabellenbeginn
 		echo "<table cellspacing='10px' style='margin:0 auto;' >";
-		while ($dsatz1 = mysqli_fetch_assoc($res)){
+		while ($dsatz1 = mysqli_fetch_assoc($res1)){
 			$name= $dsatz1["vorname"]."<br/>".$dsatz1["name"] ;
 			echo "<tr>";
 			echo "<td class='friend_block'>
@@ -47,8 +57,13 @@
 			include "../Php/SocialNetwork/RelationButton.php";
 			echo "</td>";
 			echo "</tr>";
-		
-
+		}
+		while ($dsatz2 = mysqli_fetch_assoc($res2)){
+			echo "<tr>";
+			echo "<td class='friend_block'>";
+			echo "<a class='friend_link' href='ShoppinglistEditor.php?list=".$dsatz2['listName']."'>Einkaufsliste<br/>".$dsatz2['listName']."</a>";
+			echo "</td>";
+			echo "</tr>";
 		}
 		echo "</table>";
 		// Tabellenende

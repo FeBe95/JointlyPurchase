@@ -20,7 +20,12 @@
 		$case = $relation["AreFriends"];
 	}
 	if($ID2 == $ID){
-		echo '<h1>Das bist du:<a href="../Pages/ProfilSettings.php"><img style="width:20px;margin-left:20px;" src="../Pictures/SiteContent/new.svg"></a></h1>';
+		echo "<h1>
+				Das bist du:
+				<a href='../Pages/ProfilSettings.php'>
+					<span title='Bearbeiten' class='icon edit'></span>
+				</a>
+			  </h1>";
 	}
 	elseif($num == 0){
 		echo "<form method='post' action='../Php/SocialNetwork/AddRelation.php'>";

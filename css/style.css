@@ -59,10 +59,11 @@ input[type=button] {
 	color: #fff;
 	border: 0px;
 	cursor: pointer;
-	padding: 2px 5px 5px;
+	padding: 1px 5px 5px;
 	margin: 0px 0;
 	border-top: 2px solid #9a9a9a;
 	transition: border-top 0.1s ease;
+	height: 24px;
 }
 
 button:hover:enabled, button:active:enabled,
@@ -95,6 +96,37 @@ a {
 	font-family: Arial,sans-serif;
 	text-decoration: none;
 	color: #00ABF5;
+}
+
+.icon{
+	height: 24px;
+	width: 24px;
+	margin: 0px 6px;
+	background-image: url('../Pictures/SiteContent/icons.png');
+	background-size: 500%;
+	cursor: pointer;
+}
+
+.floatRight{
+	float: right;
+}
+
+.floatLeft{
+	float: left;
+}
+
+.icon.checkmark{
+	display: block;
+	background-position: 0 0;
+}
+
+.icon.cross{
+	display: block;
+	background-position: 25% 0;
+}
+.icon.edit{
+	display: inline-block;
+	background-position: 50% 0;
 }
 
 .contentBlock {
@@ -218,48 +250,65 @@ h3 {
 	display: block;
 }
 
-/*header styles*/
+
+/* ======================================================================== */
+/*								HEAD										*/
+/* ======================================================================== */
+
 #head {
 	background-color: #575757;
-	height: 40px;
+	height: 30px;
 	position: fixed;
-	padding: 3px 0;
+	padding: 7px 0;
 	z-index: 30;
 	/* box-shadow: 0 0 2px #555; */
 	width: 100%;
 }
 
-#headcontent {
-	width: 60%;
-	margin: 0 auto;
+#headContent {
+	width: 1000px;
+	height: 100%;
+	margin: auto;
 }
 
-#headsearch form{
-	display: inline-block;
-	position: absolute;
-	margin-top: 8px;
+/* =============================LOGO======================================= */
+#logo {
+	float: left;
 }
 
-#headsearch form input[type="text"]{
+#logo img{
+	width: 200px;
+	margin-top: 3px;
+}
+
+/* =============================SUCHE====================================== */
+#headSearch{
+	float: left;
+}
+
+#headSearch form input[type="text"]{
 	font-size: 16px;
-	width: 310px;
+	width: 300px;
 	border-radius: 5px;
+	border: 0;
+	margin: 3px 20px;
 	height: 20px;
 	padding-left: 6px;
 	padding-right: 30px;
 }
 
-#searchbutton{
+#searchButton{
 	cursor: pointer;
     color: #888;
-	display: inline-block;
-	position: absolute;
-	right: 6px;
-	bottom: 4px;
 	line-height: 10px;
-	padding: 4px 4px;
+	padding: 4px;
+	margin: 6px;
+	margin-left: -48px;
+	position: absolute;
 	border-left: 1px solid #888;
 }
+
+/* Safari, Chrome */
 input::-webkit-input-placeholder {
     color: #888;
 }
@@ -293,21 +342,16 @@ input:focus:-ms-input-placeholder {
     color: #bbb;
 }
 
-#headbuttons {
-	float: right;
-	margin-top: 5px;
+/* =============================HEADBUTTONS================================ */
+#headButtons {
+	float: left;
 }
 
-.headfont {
-	color: #fff;
-	font-size: 12px;
-	margin: 0;
-}
-
-.headlink {
+/* =============================HEADNAME=================================== */
+.headLink {
 	color: #fff;
 	font-size: 14px;
-	line-height: 25px;
+	line-height: 24px;
 	text-decoration: none;
 	margin-right: 20px;
 	display: block;
@@ -318,109 +362,55 @@ input:focus:-ms-input-placeholder {
 	transition: background-color 0.2s ease;
 }
 
-.headlink:hover{
+.headLink:hover{
 	background-color: #888;
 	-webkit-transition: background-color 0.2s ease;
 	transition: background-color 0.2s ease;
 }
 
-#headcrop {
-	height: 25px;
-	width: 25px;
+#headPicCrop {
+	height: 24px;
+	width: 24px;
 	overflow: hidden;
 	float: left;
 	display: block;
 }
 
-#head-name{
-	padding: 0 10px;
+#headName{
+	padding: 0 10px 0 8px;
 }
 
-.PopUpHeader{
-	font-weight: bold;
-	padding: 10px 10px 8px 10px;
-	/* border-bottom: 1px solid #aaa; */
-	box-shadow: 0 0 2px #555;
-	position: relative;
-	border-radius: 5px 5px 0 0;
-	z-index: 50;
-	margin: 0;
+/* =============================HEADICONS================================== */
+#settings{
+	background-position: 0 25%;
+}
+#settings:hover,
+#settings .clicked{
+	background-position: 0 50%;
 }
 
-.PopUpFooter{
-	padding: 10px 10px 8px 10px;
-	/* border-bottom: 1px solid #aaa; */
-	box-shadow: 0 0 2px #555;
-	position: relative;
-	border-radius: 0 0 5px 5px;
-	z-index: 50;
-	margin: 0;
-	text-align: center;
-	background-color: #fff;
+#friendrequests{
+	background-position: 25% 25%;
+}
+#friendrequests:hover,
+#friendrequests.clicked{
+	background-position: 25% 50%;
 }
 
-.HeadPopUp{
-	background: none repeat scroll 0 0 #FFFFFF;
-	border: 1px solid #808080;
-	box-shadow: 0 0 2px #555;
-	display: none;
-	outline: 0 none;
-	position: absolute;
-	width: 361px;
-	border-radius: 5px;
+#messages{
+	background-position: 50% 25%;
+}
+#messages:hover,
+#messages.clicked{
+	background-position: 50% 50%;
 }
 
-#HeadPopUpBox {
-	margin: 34px 0 0 -200px;
+#notifications{
+	background-position: 75% 25%;
 }
-
-#HeadPopUpBox2 {
-	margin: 34px 0 0 -240px;
-}
-
-#HeadPopUpBox2 .PopUpTable{
-	width:100%;
-	overflow-y: scroll;
-	max-height: 456px;
-	display: block;
-}
-
-.PopUpTable{
-	width: 100%;
-	margin-bottom: -1px;
-	border-radius: 0 0 5px 5px;
-	overflow: hidden;
-}
-
-.PopUpTable td{
-	border-bottom: 1px solid #aaa;
-	border-radius: 0px;
-}
-
-
-.PopUpTable *{
-	position: relative;
-	z-index: 4;
-}
-
-.friend_req_block {
-	border-radius: 5px;
-	padding: 5px 20px;
-}
-
-.friend_req_block img {
-	float: right;
-	display: block;
-	top: 2px;
-}
-
-#HeadPopUpBox .friend_req_block{
-	height: 30px;
-}
-
-#logo {
-	float: left;
-	margin-top: 5px;
+#notifications:hover,
+#notifications.clicked{
+	background-position: 75% 50%;
 }
 
 .rotate {
@@ -439,31 +429,128 @@ input:focus:-ms-input-placeholder {
 	-o-transform: rotate(180deg);
 }
 
-.head-icon{
-	height:20px;
-	padding: 15px 3px;
-	margin: -15px 0px;
+/* =============================HEADPOPUPS================================= */
+.HeadPopUp{
+	background-color: #fff;
+	border: 1px solid #808080;
+	box-shadow: 0 0 2px #555;
+	display: none;
+	position: absolute;
+	width: 360px;
+	border-radius: 5px;
+	margin-top: 32px;
 }
 
-.head-icon:hover, .svg-color-change{
-	fill: #B3C833;;
+#HeadPopUpBox1 {
+	margin-left: -200px;
+}
+
+#HeadPopUpBox2 {
+	margin-left: -240px;
+}
+
+#HeadPopUpBox3 {
+	margin-left: -280px;
 }
 
 .PopUpArrow{
 	position: absolute;
 	width: 0;
 	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-bottom: 14px solid #fff;
-	top: -10px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #fff;
+	margin-right: 4px;
+	top: -8px;
 	z-index: 200;
 }
-#HeadPopUpBox .PopUpArrow{
+
+#HeadPopUpBox1 .PopUpArrow{
 	right: 130px;
 }
+
 #HeadPopUpBox2 .PopUpArrow{
 	right: 90px;
+}
+
+#HeadPopUpBox3 .PopUpArrow{
+	right: 50px;
+}
+
+#HeadPopUpBox2 .PopUpTable,
+#HeadPopUpBox3 .PopUpTable{
+	overflow-y: scroll;
+	max-height: 456px;
+	display: block;
+}
+
+.PopUpTable{
+	width: 100%;
+	margin-bottom: -1px;
+	border-radius: 0 0 5px 5px;
+	overflow: hidden;
+}
+
+.PopUpTable *{
+	position: relative;
+	z-index: 4;
+}
+
+.PopUpTable td{
+	border-bottom: 1px solid #aaa;
+	border-radius: 0px;
+}
+
+.PopUpHeader{
+	font-weight: bold;
+	padding: 10px 10px 8px 10px;
+	box-shadow: 0 0 2px #555;
+	position: relative;
+	border-radius: 5px 5px 0 0;
+	z-index: 50;
+	margin: 0;
+}
+
+.PopUpFooter{
+	padding: 10px 10px 8px 10px;
+	box-shadow: 0 0 2px #555;
+	position: relative;
+	border-radius: 0 0 5px 5px;
+	z-index: 50;
+	margin: 0;
+	text-align: center;
+	background-color: #fff;
+}
+
+.headerBlock {
+	border-radius: 5px;
+	padding: 5px 20px;
+}
+
+.headerBlock img {
+	float: right;
+	display: block;
+	top: 2px;
+}
+
+#HeadPopUpBox1 .headerBlock{
+	height: 30px;
+}
+
+.friendrequestName{
+	line-height: 24px;
+}
+
+.message{
+	background-color: #ffb;
+}
+.message:hover{
+	background-color: #ff8;
+}
+
+.messageElement{
+	width: 360px;
+	cursor: pointer;
 }
 
 .notification-badge{
@@ -485,35 +572,29 @@ input:focus:-ms-input-placeholder {
 .notification{
 	padding: 0 20px;
 }
-.notification.accept{
+.notification.accepted{
 	background-color:#efe;
 }
-.notification.decline{
+.notification.declined{
 	background-color:#fee;
 }
-.notification.message{
-	background-color:#ffe;
-}
-.notification.friend_accept{
+.notification.friendRequestAccepted{
 	background-color:#eef;
 }
-.notification.new.accept{
+.notification.new.accepted{
 	background-color:#bfb;
 }
-.notification.new.decline{
+.notification.new.declined{
 	background-color:#fbb;
 }
-.notification.new.message{
-	background-color:#ffb;
-}
-.notification.new.friend_accept{
+.notification.new.friendRequestAccepted{
 	background-color:#bbf;
 }
 .notification.new {
 	/* box-shadow: inset 0 0 2px #000; */
 }
 
-.notification.requests{
+.notification.request{
 	background-color: #eef;
 	padding: 6px 20px;
 }
@@ -524,20 +605,6 @@ input:focus:-ms-input-placeholder {
 	display: block;
 	margin-bottom: 10px;
 	padding: 1px 20px;
-}
-
-.logobutton {
-	font-family: 'Alegreya Sans SC';
-	font-size: 26px;
-	line-height: 28px;
-	color: #fff;
-	border: 0px;
-}
-
-#smallcrop {
-	width: 25px;
-	margin-right: 10px;
-	border: 0px;
 }
 
 #greybar {
@@ -763,6 +830,7 @@ input:focus:-ms-input-placeholder {
 	margin: 5px;
 	border-radius: 5px;
 	display: inline-block;
+	/* word-break: break-all; */
 }
 .friend_block_empty {
 	background-color: #ddd;
@@ -832,7 +900,7 @@ a.friend_link:hover, a.friend_link:focus {
 }
 .chatelement .text{
 	cursor: text;
-	word-break:break-all;
+	word-break: break-all;
 }
 .chatelement{
 	width: 50%;
@@ -993,8 +1061,4 @@ th{
 .info {
 	padding: 0px;
 	margin: 0px;
-}
-
-.delcross{
-	cursor: pointer;
 }

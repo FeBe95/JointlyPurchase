@@ -1,8 +1,12 @@
 <?php
     session_start();
+	//header("Cache-Control: max-age=600");
     include "../Php/Authentification/SessionChecker.php";
 	include "../Php/Misc/GetYourData.php";
 	include "../Php/Misc/GetFriendData.php";
+	if(!isset($_GET['a']) || $_GET['a']==""){
+		include "../Php/SocialNetwork/GetFirstChatID.php";
+	}
 ?>
 
 <!DOCTYPE html>

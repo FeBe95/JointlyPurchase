@@ -6,17 +6,17 @@
 			include "../Php/Misc/GetYourData.php";
 	?>
 	
-    <div id="headcontent">
+    <div id="headContent">
         <div id="logo">
-            <a href="../Pages/Home.php" class="logobutton"><img src="../logo_klein_beta.png" width="250px"/></a>
+            <a href="../Pages/Home.php" ><img src="../Pictures/SiteContent/logo_klein_beta.png" width="250px"/></a>
         </div>
-		<div id="headsearch">
+		<div id="headSearch">
 			<form action="../Pages/SearchResults.php" method="get">
-					<input placeholder="Suche nach Name oder Postleitzahl" name="q" type="text" value="<?php echo @$_GET['q'] ?>"/>
-					<span id="searchbutton" onclick="this.parentNode.submit()">&#128269;</span>
+					<input placeholder="Suche nach Namen, PLZ oder Listen" name="q" type="text" value="<?php echo @$_GET['q'] ?>"/>
+					<span id="searchButton" onclick="this.parentNode.submit()">&#128269;</span>
 			</form>
 		</div>
-        <div id="headbuttons">
+        <div id="headButtons">
             <table>
                 <tr>
                     <td>
@@ -26,29 +26,37 @@
 							$profilPic = mysqli_fetch_assoc($profilPic);
 							$profilPic = $profilPic["profilPic"];
 							
-							echo "<a href='../Pages/Profil.php?a=$ID' class='headlink'><div id='headcrop'>";
-							echo "<img id='smallcrop' src='../Pictures/Thumbnails/$profilPic'>";
-							echo "</div><span id='head-name'>$vorname $nachname</span></a>";
+							echo "<a href='../Pages/Profil.php?a=$ID' class='headLink'>
+									<img id='headPicCrop' src='../Pictures/Thumbnails/$profilPic'>
+								    <span id='headName'>
+										$vorname $nachname
+									</span>
+								  </a>";
 						?>
                     </td>
                     <td>
 						<a href="../Pages/ProfilSettings.php">
-							<img class="head-icon rotate"  id='einstellungen' src='../Pictures/SiteContent/settings.svg'>
+							<div id="settings" class="icon rotate"></div>
 						</a>
                     </td>
 					<td>
-                        <div id="HeadPopUp">
-							<?php include "../Php/SocialNetwork/GetRequest.php"; ?>
-							<div id="link" style="cursor:pointer;">
-								<img id="icon1" class="head-icon" src='../Pictures/SiteContent/group.svg'>
+                        <div id="HeadPopUp1">
+							<?php include "../Php/Header/GetRequests.php"; ?>
+								<div id="friendrequests" class="icon"></div>
 							</div>
 						</div>
                     </td>
 					<td>
                         <div id="HeadPopUp2">
-							<?php include "../Php/SocialNetwork/GetNotification.php"; ?>
-							<div id="link2" style="cursor:pointer;">
-								<img id="icon2" class="head-icon" src='../Pictures/SiteContent/notification.svg'>
+							<?php include "../Php/Header/GetMessages.php"; ?>
+								<div id="messages" class="icon"></div>
+							</div>
+						</div>
+                    </td>
+					<td>
+                        <div id="HeadPopUp3">
+							<?php include "../Php/Header/GetNotifications.php"; ?>
+								<div id="notifications" class="icon"></div>
 							</div>
 						</div>
                     </td>

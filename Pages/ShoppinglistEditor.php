@@ -78,8 +78,15 @@
 								if (isset($_POST["list"])){
 									$_SESSION["list"] = $_POST["list"];
 								}
+								if (isset($_GET["list"])){
+									$_SESSION["list"] = $_GET["list"];
+								}
 								$table = $_SESSION["list"];
-								echo "<p class='label'>".$table."&nbsp;<a href='javascript:send(1,0);'><img style='width:10px'; class='del_Image' src='../Pictures/SiteContent/cross.svg'></a></p>";
+								echo "<p class='label'>$table&nbsp;
+										<a href='javascript:send(1,0);'>
+											<span title='Löschen' class='icon cross floatRight'></span>
+										</a>
+									  </p>";
 							?>
 						</td>
 					</tr>

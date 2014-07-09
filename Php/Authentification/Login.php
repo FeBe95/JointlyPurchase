@@ -7,28 +7,32 @@
 	
     if ($user !='' && $pw !=''){
 		include "../../Templates/MYSQLConnectionString.php";
-		$res= mysqli_query($conUser,"SELECT ID, passwort, vorname FROM user WHERE email = '$user'");
-		$dsatz=mysqli_fetch_assoc($res);
-		$name=$dsatz["vorname"];
-		$ID=$dsatz["ID"];
-		
-		if($pw != $dsatz["passwort"]){
-			header( "Location: ../../Pages/LoginError.php?$redirect" ) ;
-        }
-        elseif(isset($_POST["stayLogIn"])){
-			setcookie("jpusr", $user, time()+3600*100, '/', false );
-			setcookie("jppw", $pw, time()+3600*100, '/', false );
-			$_SESSION["login"] = $ID;
-            header( "Location: $redirect" );                   
-        }
-		else{
-			$_SESSION["login"] = $ID;
-            header( "Location: $redirect" );
+		$stmt = mysqli_stmt_init($conUser);
+		If (mysqli_stmt_prepare($stmt, 'SELECT ID, passwort, vorname FROM user WHERE email = ?')){
+			
+			mysqli_stmt_bind_param($stmt,'s', $_POST['Email']);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $ID, $password, $vorname);
+			mysqli_stmt_fetch($stmt);
+			If ( md5($_POST["Pw"]) != $password){
+				header( "Location: ../../Pages/LoginError.php?$redirect" ) ;
+			}
+			elseif(isset($_POST["stayLogIn"])){
+				setcookie("jpusr", $_POST['Email'], time()+3600*100, '/', false );
+				setcookie("jppw", $password, time()+3600*100, '/', false );
+				$_SESSION["login"] = $ID;
+				header( "Location: $redirect" );
+			}
+			else{
+				$_SESSION["login"] = $ID;
+				header( "Location: $redirect" );	
+			}
+			mysqli_stmt_close($stmt);
 		}
 		mysqli_close($conUser);
-    }
-    else{
-          header( "Location: ../../Pages/LoginError.php?$redirect" );
-    }
+	}
+	else{
+		header( "Location: ../../Pages/LoginError.php?$redirect" );
+	}
 ?>
 

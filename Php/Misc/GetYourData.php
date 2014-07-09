@@ -3,15 +3,14 @@
 	$path.= "/JointlyPurchase/Templates/MYSQLConnectionString.php";
 	include $path;
 	//$userID = $_SESSION['login'];
-    $query="SELECT * FROM user WHERE ID = ".$_SESSION['login']."";
-    $res= mysqli_query($conUser,$query);
-    $dsatz=mysqli_fetch_assoc($res);
-	
-	$vorname=$dsatz["vorname"];
-	$nachname=$dsatz["name"];
-	$email=$dsatz["email"];
-	$plz=$dsatz["plz"];
-	$ID=$dsatz["ID"];
+	$stmt = mysqli_stmt_init($conUser);
+		If (mysqli_stmt_prepare($stmt, 'SELECT vorname, name, email, plz, ID FROM user WHERE ID = (?)')){
+			
+			mysqli_stmt_bind_param($stmt,'s', $_SESSION['login']);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $vorname, $nachname, $email, $plz, $ID);
+			mysqli_stmt_fetch($stmt);
+		}
+	mysqli_stmt_close($stmt);
 	mysqli_close($conUser);
-
 ?>

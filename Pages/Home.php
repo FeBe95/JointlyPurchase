@@ -87,7 +87,7 @@
 		-->
 		
 		<div id="mainwindow" style="top:-56px;">
-			<table>
+			<table id="streamsTable">
 				<tr>
 					<td>
 						<div id="middle_top">
@@ -127,7 +127,7 @@
 				</tr>
                 <tr style="height:300px;">
 					<td style="display:block; margin-top:20px;">
-						<div style="background:#c4c4c4;display:table-cell;vertical-align:middle;border-radius:5px;text-align:center;height:300px;width:240px;">Werbung</div>
+						<div style="background:#c4c4c4;border-radius:5px;text-align:center;line-height:240px;width:200px;">Werbung</div>
 					</td>
                 </tr>
 			</table>

@@ -20,19 +20,10 @@
             <table>
                 <tr>
                     <td>
-						<?php
-							include "../Templates/MYSQLConnectionString.php";
-							$profilPic = mysqli_query($conUser,"SELECT profilPic FROM user WHERE email = '$email'");
-							$profilPic = mysqli_fetch_assoc($profilPic);
-							$profilPic = $profilPic["profilPic"];
-							
-							echo "<a href='../Pages/Profil.php?a=$ID' class='headLink'>
-									<img id='headPicCrop' src='../Pictures/Thumbnails/$profilPic'>
-								    <span id='headName'>
-										$vorname $nachname
-									</span>
-								  </a>";
-						?>
+						<a href="../Pages/Profil.php?a=<?php echo $ID; ?>" class="headLink">
+							<img id="headPicCrop" src="../Pictures/Thumbnails/<?php echo $profilPic; ?>">
+							<span id="headName"><?php echo $vorname." ".$nachname; ?></span>
+						</a>
                     </td>
                     <td>
 						<a href="../Pages/ProfilSettings.php">

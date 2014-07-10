@@ -25,7 +25,7 @@
 								  OR messages.UserId1 = $ID
 								  ORDER BY messages.message_id DESC");
 	
-	$num = mysqli_num_rows($res);
+	$num = mysqli_num_rows($res)/2; //Jedes 2te (Eigene ID)
 
 	if ($num > 0){
 		echo "<div id='badge2' class='notification-badge'>$num</div>";

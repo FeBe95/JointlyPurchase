@@ -80,7 +80,7 @@
 	else{
 		?>
 		Du hast noch keine Einkaufslisten.<br/>Erstelle jetzt Deine erste!<br/></div>
-		<form style="width:672px;" action="../Php/Shoppinglist/AddShoppinglist.php" method="post">								
+		<form action="../Php/Shoppinglist/AddShoppinglist.php" method="post">								
 			<p>Name:
 				<input name="list" type="text" maxlenght="10" required/>
 				<button type="submit">Liste hinzufügen</button>

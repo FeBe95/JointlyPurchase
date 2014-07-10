@@ -9,6 +9,7 @@
 								  user.profilPic,
 								  messages.message_id,
 								  messages.nachricht,
+								  messages.date,
 								  messages.UserId1,
 								  messages.UserId2
 								  FROM (
@@ -26,27 +27,51 @@
 								  ORDER BY messages.message_id DESC");
 	
 	$num = mysqli_num_rows($res)/2; //Jedes 2te (Eigene ID)
+	echo "<div id='hiddennum2' style='display:none'>$num</div>";
+	$i = 0;
 
+		
 	if ($num > 0){
-		echo "<div id='badge2' class='notification-badge'>$num</div>";
+		if(isset($_COOKIE['messages'])){
+			$newnum = $num-$_COOKIE['messages'];
+			if($num > $_COOKIE['messages']){
+				echo "<div id='badge2' class='notification-badge'>$newnum</div>";
+			}
+		}
+		else{
+			$newnum = $num;
+			echo "<div id='badge2' class='notification-badge'>$newnum</div>";
+		}
+
 		echo "<div id='HeadPopUpBox2' class='HeadPopUp'>";
 		echo "<div class='PopUpArrow'></div>";
 		echo "<p class='PopUpHeader'>Letzte Nachrichten</p>";
 	
 		// Tabellenbeginn
 		echo "<table cellspacing='0px' class='PopUpTable' >";
-		while ($dsatz1 = mysqli_fetch_assoc($res)){
-			if($dsatz1["ID"] != $ID){
-				//$name = "<a style='margin:0px;' href='../Pages/Profil.php?a=".$dsatz["ID"]."'>".$dsatz["vorname"]." ".$dsatz["name"]."</a>" ;
-				$name = $dsatz1["vorname"]." ".$dsatz1["name"];
-				echo "<tr>
-						<td class='headerBlock message'>
-							<div class='messageElement' onClick='location.href=\"../Pages/Chat.php?a=".$dsatz1["ID"]."\"'>
-							$name:<br/>
-							".$dsatz1["nachricht"]."
-							</div>
-						</td>
-					</tr>";
+		while (($dsatz = mysqli_fetch_assoc($res)) && $i < 10){
+			if($dsatz["ID"] != $ID){
+				$name = $dsatz["vorname"]." ".$dsatz["name"];
+				
+				include "../Php/Misc/GetTime.php";
+				
+				echo "<tr>";
+				
+				if($i<$newnum){
+					echo "<td class='headerBlock message new'>";
+				}
+				else{
+					echo "<td class='headerBlock message'>";
+				}
+				echo "<div class='messageElement' onClick='location.href=\"../Pages/Chat.php?a=".$dsatz["ID"]."\"'>";
+				echo "<p style='font-size:12px;margin-bottom:0px;'>$zeit</p>";
+				echo "<p style='font-size:14px;margin-top:0px;'>";
+				echo $name.": ".$dsatz["nachricht"];
+				echo "</p>";
+				echo "</div>";
+				echo "</td>";
+				echo "</tr>";
+				$i++;
 			}
 		}
 		// Tabellenende

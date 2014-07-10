@@ -48,13 +48,12 @@ $(document).ready(function() {
 		$('#friendrequests').attr('class','icon');
 		$('#notifications').attr('class','icon');
 		
-		
-		var value = document.getElementById('hiddennum').innerHTML;
+		var value = document.getElementById('hiddennum2').innerHTML;
 		var now = new Date();
 		var time = now.getTime();
 		time += 3600 * 365 * 24000;
 		now.setTime(time);
-		document.cookie = 'notifications='+value+'; expires='+now.toUTCString()+'; path=/';
+		document.cookie = 'messages='+value+'; expires='+now.toUTCString()+'; path=/';
 	});	
 	
 	$('#notifications').click(function(e) {
@@ -70,5 +69,12 @@ $(document).ready(function() {
 		}
 		$('#friendrequests').attr('class','icon');
 		$('#messages').attr('class','icon');
+		
+		var value = document.getElementById('hiddennum3').innerHTML;
+		var now = new Date();
+		var time = now.getTime();
+		time += 3600 * 365 * 24000;
+		now.setTime(time);
+		document.cookie = 'notifications='+value+'; expires='+now.toUTCString()+'; path=/';
 	});
 });

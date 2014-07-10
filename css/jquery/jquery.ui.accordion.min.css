@@ -10,6 +10,7 @@
 	padding: 10px;
 	-webkit-user-select:none;
 	-moz-user-select:none;
+	-ms-user-select:none;
 }
 .ui-accordion .ui-accordion-icons{
 	padding-left: 34px;

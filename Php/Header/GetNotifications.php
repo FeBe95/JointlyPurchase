@@ -39,7 +39,7 @@
 								   
 								   
 	$num = mysqli_num_rows($res);
-	echo "<div id='hiddennum' style='display:none'>$num</div>";
+	echo "<div id='hiddennum3' style='display:none'>$num</div>";
 	$i = 0;
 
 		

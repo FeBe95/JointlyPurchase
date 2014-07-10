@@ -60,38 +60,7 @@
 		</script>
     </head>
     <body>
-		<div id="head">
-			<div id="headcontent">
-				<div id="logo">
-					<a href="../index.php" class="logobutton"><img src="../logo_klein.png" width="250px"/></a>
-				</div>
-				<div id="headbuttons">
-					<form action="../Php/Authentification/Login.php" method="post">
-						<table>
-							<tr>
-								<td>
-									<p class="headfont">Email:<input name="Email" type="email" maxlength="50"/></p>
-								</td>
-								<td>
-									<p class="headfont">Passwort:<input name="Pw" type="password" maxlength="20"/></p>
-								</td>
-								<td>
-									<button name="send" type="submit" value="send">Login</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-								</td>
-								<td>
-									<p class="headfont newbg" style="font-size:12px;float:right;">Angemeldet bleiben<input type="checkbox" name="stayLogIn" value="true"/></p> 
-								</td>
-							</tr>
-						</table>
-					</form>
-				</div>
-			</div>
-		</div>
-		
+		<?php include "../Templates/LoginHeadTemplate.php"; ?>
         <div id="mainReg">
             <div id="greybox">
 				<?php
@@ -137,8 +106,8 @@
         <div id="footer-border"> 
 		</div>
 		
-		<footer id="site-footer">
-			<div id="wrap">  
+		<footer id="site-footer" class="login">
+			<div id="wrap">
 				<p id="site-credits">Made with <span>&hearts;</span> in Burgholzhausen, DE. Copyright 2014</p>
 			</div>
 		</footer>

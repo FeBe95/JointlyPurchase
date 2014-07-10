@@ -216,7 +216,7 @@
 											<input tabindex="7" name="neuesPWwiederholen" maxlength="20" type="password" onkeyup="checkPW()"></input>
 										</td>
 										<td>
-											<img id="PWchecked" style="display:none;margin:0px 10px;" class="del_Image" src="../Pictures/SiteContent/tick.svg">
+											<div id="PWchecked" class="icon checkmark floatRight" style="display:none;"></div>
 										</td>
 									</tr>
 									<tr>
